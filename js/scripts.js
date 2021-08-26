@@ -2439,6 +2439,67 @@ if (SummaryChart != null && typeof SummaryChart != "undefined") {
   chart.render();
 }
 
+// doctor_appointment
+
+var options_doctor = {
+  series: [
+    {
+      name: "預約取消",
+      data: [1, 2, 4, 3, 4, 5, 1],
+    },
+    {
+      name: "予約成功",
+      data: [31, 40, 28, 51, 42, 109, 100],
+    },
+  ],
+
+  chart: {
+    height: 350,
+    type: "area",
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "smooth",
+  },
+  xaxis: {
+    type: "datetime",
+    categories: [
+      " Jan 2021",
+      " Feb 2021",
+      " Mar 2021",
+      " Apr 2021",
+      " May 2021",
+      " Jun 2021",
+      " Jul 2021",
+    ],
+  },
+  tooltip: {
+    x: {
+      // format: "dd MMM yyyy",
+      format: "MMM 'yy",
+    },
+  },
+
+  theme: {
+    mode: "light",
+    palette: "palette7",
+    monochrome: {
+      enabled: false,
+      color: "#255aee",
+      shadeTo: "light",
+      shadeIntensity: 0.65,
+    },
+  },
+};
+
+var chart_doctor = new ApexCharts(
+  document.querySelector("#chart_doctor"),
+  options_doctor
+);
+chart_doctor.render();
+
 /* PrismJS 1.19.0
 https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+http+javadoclike+json+jsonp+json5+markup-templating+php+phpdoc+plsql+python+sass+scss+sql&plugins=unescaped-markup+normalize-whitespace+toolbar+copy-to-clipboard */
 var _self =

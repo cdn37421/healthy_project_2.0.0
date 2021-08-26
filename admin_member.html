@@ -8,11 +8,16 @@
     />
     <link rel="shortcut icon" href="./img/logo2.png" type="image/x-icon" />
     <link
+      href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css"
     />
-    <!-- <link rel="stylesheet" type="text/css" href="css/general.css" /> -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/table.css" />
+
     <title>Welcome To Healthy</title>
   </head>
   <body class="bg-gray-100">
@@ -30,22 +35,20 @@
       <!-- logo -->
       <div class="flex-none w-56 flex flex-row items-center">
         <a href="index.html">
-          
           <img
-          src="img/healthy.png"
-          class="w-12 flex-none"
-          style="width: 10.5rem"
+            src="img/healthy.png"
+            class="w-12 flex-none"
+            style="width: 10.5rem"
           />
-          <!-- <strong class="capitalize ml-1 flex-1">Healthy</strong> -->
-          
-          <button
+        </a>
+
+        <button
           id="sliderBtn"
-          class="flex-none text-right text-gray-900 hidden md:block"
-          >
+          class="flex-none text-right text-gray-900 hidden md:block ml-2"
+        >
           <i class="fad fa-list-ul"></i>
         </button>
       </div>
-    </a>
       <!-- end logo -->
 
       <!-- navbar content toggle -->
@@ -64,7 +67,7 @@
           md:top-0
           md:w-full
           md:left-0
-          md:mt-16
+          md:mt-20
           md:border-t
           md:border-b
           md:border-gray-200
@@ -911,23 +914,42 @@
           <!-- end link -->
 
           <!-- link -->
-                  <a
-                  href="admin_member.html"
-                  class="
-                    mb-3
-                    capitalize
-                    font-medium
-                    text-sm
-                    hover:text-teal-600
-                    transition
-                    ease-in-out
-                    duration-500
-                  "
-                  >
-                  <i class="fas fa-users text-xs mr-2"></i>
-                  會員管理後台
-                  </a>
-                  <!-- end link -->
+          <a
+            href="admin_member.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fas fa-users text-xs mr-2"></i>
+            會員管理後台
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="patient_list_2.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fas fa-users text-xs mr-2"></i>
+            醫生管理後台
+          </a>
+          <!-- end link -->
           <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
             應用程式
           </p>
@@ -1067,7 +1089,24 @@
           <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
             元件文件
           </p>
-
+          <!-- link -->
+          <a
+            href="admin_member_profile.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-text text-xs mr-2"></i>
+            個人資料頁面
+          </a>
+          <!-- end link -->
           <!-- link -->
           <a
             href="#"
@@ -1133,7 +1172,6 @@
 
       <!-- strat content -->
       <div class="bg-gray-100 flex-1 p-6 md:mt-16">
-       
         <!-- members Overview -->
         <div class="card mt-6">
           <!-- header -->
@@ -1141,113 +1179,64 @@
             <h1 class="h6">會員列表</h1>
 
             <div class="flex flex-row justify-center items-center">
-              <a href="">
-                <i class="fad fa-chevron-double-down mr-6"></i>
-              </a>
-
-              <a href="">
-                <i class="fad fa-ellipsis-v"></i>
-              </a>
+      <!-- you can put any thing in right side -->
             </div>
           </div>
           <!-- end header -->
-          <table class="table-auto w-full text-left"> 
-            <thead>
-              <tr>
-                <th class="px-4 py-2 border-r">帳號權限等級</th>
-                <th class="px-4 py-2 border-r">使用者名稱</th>
-                <th class="px-4 py-2 border-r">性別</th>
-                <th class="px-4 py-2">信箱</th>
-              </tr>
-              <tr>
-                <td
-                  class="
-                    border border-l-0
-                    px-4
-                    py-2
-                    text-center text-green-500
-                  "
-                  >
-                  <i class="fad fa-circle"></i>
-                 醫生
-                </td>
-                <td class="border border-l-0 px-4 py-2">
-                  RYO
-                </td>
-                <td class="border border-l-0 px-4 py-2">
-                 男
-                </td>
-                <td class="border border-l-0 border-r-0 px-4 py-2">
-                  Healthy@emaxmple.com
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="border border-l-0 px-4 py-2 text-center text-red-500"
-                >
-                  <i class="fad fa-circle"></i>
-                  管理者
-                </td>
-                <td class="border border-l-0 px-4 py-2">拌過頭的咖哩飯</td>
-                <td class="border border-l-0 px-4 py-2">
-                  女
-                </td>
-                <td class="border border-l-0 border-r-0 px-4 py-2">
-                  Healthy@emaxmple.com
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="
-                    border border-l-0
-                    px-4
-                    py-2
-                    text-center text-gray-500
-                  "
-                >
-                  <i class="fad fa-circle"></i>
-                  一般會員
-                </td>
-                <td class="border border-l-0 px-4 py-2">大顆壽司</td>
-                <td class="border border-l-0 px-4 py-2">
-               男
-      
-                </td>
-                <td class="border border-l-0 border-r-0 px-4 py-2">
-                  Healthy@emaxmple.com
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="
-                    border border-l-0
-                    px-4
-                    py-2
-                    text-center text-yellow-500
-                  "
-                >
-                  <i class="fad fa-circle"></i>
-                  高級會員
-                </td>
-                <td class="border border-l-0 px-4 py-2">涼掉的山竹</td>
-                <td class="border border-l-0 px-4 py-2">
-               男
-      
-                </td>
-                <td class="border border-l-0 border-r-0 px-4 py-2">
-                  Healthy@emaxmple.com
-                </td>
-              </tr>
-            </thead>
-
+          <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+            <table
+              id="member_table"
+              class="stripe hover"
+              style="width: 100%; padding-top: 1em; padding-bottom: 1em"
+            >
+              <thead>
+                <tr>
+                  <th data-priority="1">使用者名稱</th>
+                  <th data-priority="2">帳號權限等級</th>
+                  <th data-priority="3">性別</th>
+                  <th data-priority="4">信箱</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">RYO</td>
+                  <td  class=" text-center text-green-500"><i class="fad fa-circle mr-4 mb-4 "></i> 醫生</td>
+                  <td class="text-center">男</td>
+                  <td class="text-center" >healthy@example.com</td>
+                </tr>
+                <tr>
+                  <td class="text-center">Sasha</td>
+                  <td  class=" text-center text-red-500"><i class="fad fa-circle mr-4 mb-4 "></i> 管理者</td>
+                  <td class="text-center">女</td>
+                  <td class="text-center" >healthy@example.com</td>
+                </tr>
+                <tr>
+                  <td class="text-center">Ben</td>
+                  <td  class=" text-center text-gray-500"><i class="fad fa-circle mr-4 mb-4 "></i> 一般會員</td>
+                  <td class="text-center">男</td>
+                  <td class="text-center" >healthy@example.com</td>
+                </tr>
+                <tr>
+                  <td class="text-center">Justin</td>
+                  <td  class=" text-center text-gray-500"><i class="fad fa-circle mr-4 mb-4 "></i> 一般會員</td>
+                  <td class="text-center">男</td>
+                  <td class="text-center" >healthy@example.com</td>
+                </tr>
+                <tr>
+                  <td class="text-center">Heren</td>
+                  <td  class=" text-center text-yellow-500"><i class="fad fa-circle mr-4 mb-4 "></i> 高級會員</td>
+                  <td class="text-center">女</td>
+                  <td class="text-center" >healthy@example.com</td>
+                </tr>
+               
+                
+                <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
+              </tbody>
             </table>
-
-     
+          </div>
         </div>
 
         <!-- end members Overview -->
-
-      
 
         <!-- start quick Info -->
         <div class="grid grid-cols-3 gap-6 mt-6 xl:grid-cols-1">
@@ -1255,7 +1244,7 @@
           <div class="card">
             <div class="card-header">會員數量</div>
 
-            <!-- brawser -->
+            <!-- position data -->
             <div
               class="
                 p-6
@@ -1270,11 +1259,11 @@
                 <i class="fad fa-circle mr-4 mb-4"></i>
                 <h1>醫生</h1>
               </div>
-              <div> 1位</div>
+              <div>1位</div>
             </div>
-            <!-- end brawser -->
+            <!-- end position data -->
 
-            <!-- brawser -->
+            <!-- position data -->
             <div
               class="
                 p-6
@@ -1285,15 +1274,15 @@
                 border-b
               "
             >
-            <div class="flex items-center text-red-500">
-              <i class="fad fa-circle mr-4 mb-4"></i>
-              <h1>管理者</h1>
+              <div class="flex items-center text-red-500">
+                <i class="fad fa-circle mr-4 mb-4"></i>
+                <h1>管理者</h1>
+              </div>
+              <div>1位</div>
             </div>
-            <div> 1位</div>
-            </div>
-            <!-- end brawser -->
+            <!-- end position data -->
 
-            <!-- brawser -->
+            <!-- position data -->
             <div
               class="
                 p-6
@@ -1304,15 +1293,15 @@
                 border-b
               "
             >
-            <div class="flex items-center text-gray-500">
-              <i class="fad fa-circle mr-4 mb-4"></i>
-              <h1>一般會員</h1>
+              <div class="flex items-center text-gray-500">
+                <i class="fad fa-circle mr-4 mb-4"></i>
+                <h1>一般會員</h1>
+              </div>
+              <div>1位</div>
             </div>
-            <div> 1位</div>
-            </div>
-            <!-- end brawser -->
+            <!-- end position data -->
 
-            <!-- brawser -->
+            <!-- position data -->
             <div
               class="
                 p-6
@@ -1323,20 +1312,19 @@
                 border-b-0
               "
             >
-            <div class="flex items-center text-yellow-500">
-              <i class="fad fa-circle mr-4 mb-4"></i>
-              <h1>高級會員</h1>
+              <div class="flex items-center text-yellow-500">
+                <i class="fad fa-circle mr-4 mb-4"></i>
+                <h1>高級會員</h1>
+              </div>
+              <div>1位</div>
             </div>
-            <div> 1位</div>
-            </div>
-            <!-- end brawser -->
+            <!-- end position data -->
           </div>
           <!-- end Browser Stats -->
 
           <!-- Start Recent Sales -->
           <div class="card col-span-2 xl:col-span-1">
-            <div class="card-header">近期動態（暫時無作用）
-            </div>
+            <div class="card-header">近期動態（暫時無作用）</div>
 
             <table class="table-auto w-full text-left">
               <thead>
@@ -1347,9 +1335,7 @@
                   <th class="px-4 py-2">日期</th>
                 </tr>
               </thead>
-              <tbody>
-                
-              </tbody>
+              <tbody></tbody>
               <tbody class="text-gray-600">
                 <tr>
                   <td
@@ -1473,96 +1459,37 @@
         </div>
 
         <!-- end quick Info -->
-      </div>
+    
       <!-- end content -->
 
-      <!-- footer -->
-      <!-- <footer class="footer" id="footer">
-        <div class="container grid grid--footer">
-          <div class="logo-col">
-            <a href="#" class="footer-logo">
-              <img
-                class="footer-logo"
-                alt="Health LOGO"
-                src="img/healthy-logo2.png"
-              />
-            </a>
-
-            <ul class="social-links">
-              <li>
-                <a class="footer-link" href="#"
-                  ><ion-icon
-                    class="social-icon"
-                    name="logo-instagram"
-                  ></ion-icon
-                ></a>
-              </li>
-              <li>
-                <a class="footer-link" href="#"
-                  ><ion-icon class="social-icon" name="logo-facebook"></ion-icon
-                ></a>
-              </li>
-              <li>
-                <a class="footer-link" href="#"
-                  ><ion-icon class="social-icon" name="logo-twitter"></ion-icon
-                ></a>
-              </li>
-            </ul>
-
-            <p class="copyright">
-              Copyright &copy; <span class="year">2021</span> by Healthy, Inc.
-              All rights reserved.
-            </p>
-          </div>
-          <div class="address-col">
-            <p class="footer-heading">Contact us</p>
-            <address class="contacts">
-              <p class="address">高雄市前金區中正四路211號8樓之1</p>
-              <p>
-                <a class="footer-link" href="tel:07-969-9885">07-969-9885</a
-                ><br />
-                <a class="footer-link" href="mailto:starthealth@google.com"
-                  >starthealth@google.com</a
-                >
-              </p>
-            </address>
-          </div>
-          <nav class="nav-col">
-            <p class="footer-heading">Account</p>
-            <ul class="footer-nav">
-              <li><a class="footer-link" href="#">建立帳號</a></li>
-              <li><a class="footer-link" href="#">登入</a></li>
-              <li><a class="footer-link" href="#">iOS app</a></li>
-              <li><a class="footer-link" href="#">Android app</a></li>
-            </ul>
-          </nav>
-
-          <nav class="nav-col">
-            <p class="footer-heading">Company</p>
-            <ul class="footer-nav">
-              <li><a class="footer-link" href="#">關於我們</a></li>
-              <li><a class="footer-link" href="#">商業合作</a></li>
-              <li><a class="footer-link" href="#">醫生合作</a></li>
-              <li><a class="footer-link" href="#">職涯</a></li>
-            </ul>
-          </nav>
-
-          <nav class="nav-col">
-            <p class="footer-heading">Resources</p>
-            <ul class="footer-nav">
-              <li><a class="footer-link" href="#">醫生名單</a></li>
-              <li><a class="footer-link" href="#">客服系統</a></li>
-              <li><a class="footer-link" href="#">服務條款</a></li>
-            </ul>
-          </nav>
-        </div>
-      </footer> 
-    --></div>
+   
+    </div>
     <!-- end wrapper -->
 
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="js/scripts.js"></script>
+
+    <!-- jQuery -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+    ></script>
+
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script>
+     
+      $(document).ready(function () {
+        var table = $("#member_table")
+          .DataTable({
+            responsive: true,
+          })
+          .columns.adjust()
+          .responsive.recalc();
+      });
+    </script>
     <!-- end script -->
   </body>
 </html>

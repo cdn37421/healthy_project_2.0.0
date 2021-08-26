@@ -30,22 +30,20 @@
       <!-- logo -->
       <div class="flex-none w-56 flex flex-row items-center">
         <a href="index.html">
-          
           <img
-          src="img/healthy.png"
-          class="w-12 flex-none"
-          style="width: 10.5rem"
+            src="img/healthy.png"
+            class="w-12 flex-none"
+            style="width: 10.5rem"
           />
-          <!-- <strong class="capitalize ml-1 flex-1">Healthy</strong> -->
-          
-          <button
+        </a>
+
+        <button
           id="sliderBtn"
-          class="flex-none text-right text-gray-900 hidden md:block"
-          >
+          class="flex-none text-right text-gray-900 hidden md:block ml-2"
+        >
           <i class="fad fa-list-ul"></i>
         </button>
       </div>
-    </a>
       <!-- end logo -->
 
       <!-- navbar content toggle -->
@@ -64,7 +62,7 @@
           md:top-0
           md:w-full
           md:left-0
-          md:mt-16
+          md:mt-20
           md:border-t
           md:border-b
           md:border-gray-200
@@ -911,23 +909,23 @@
           <!-- end link -->
 
           <!-- link -->
-                  <a
-                  href="admin_member.html"
-                  class="
-                    mb-3
-                    capitalize
-                    font-medium
-                    text-sm
-                    hover:text-teal-600
-                    transition
-                    ease-in-out
-                    duration-500
-                  "
-                  >
-                  <i class="fas fa-users text-xs mr-2"></i>
-                  會員管理後台
-                  </a>
-                  <!-- end link -->
+          <a
+            href="admin_member.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fas fa-users text-xs mr-2"></i>
+            會員管理後台
+          </a>
+          <!-- end link -->
           <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
             應用程式
           </p>
@@ -1133,64 +1131,150 @@
 
       <!-- strat content -->
       <div class="bg-gray-100 flex-1 p-6 md:mt-16">
-
         <!-- start personal Info -->
         <div class="grid grid-cols-3 gap-6 mt-6 xl:grid-cols-1">
           <!-- personal pic -->
           <div class="card">
-            <div class="card-header     flex flex-row justify-between">
+            <div class="card-header flex flex-row justify-between">
               RYO
               <i class="fad fa-wrench ml-2 text-xs leading-none"></i>
             </div>
             <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
-              <img class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="/img/user.svg" alt="" width="384" height="512">
+              <img
+                class="
+                  w-32
+                  h-32
+                  md:w-48 md:h-auto md:rounded-none
+                  rounded-full
+                  mx-auto
+                "
+                src="/img/user.svg"
+                alt=""
+                width="384"
+                height="512"
+              />
               <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
-                  <p class="text-lg font-semibold text-green-500">
-                    <i class="fad fa-circle mr-4 mb-4 "></i>
+                <p class="text-lg font-semibold text-green-500">
+                  <i class="fad fa-circle mr-4 mb-4"></i>
                   醫生
-                  </p>
+                </p>
               </div>
             </figure>
 
-            <div class="card-header">
-              其他資訊
-            </div>
-            
+            <div class="card-header">其他資訊</div>
           </div>
-        <!-- end personal pic -->
+          <!-- end personal pic -->
 
           <!-- Start member data -->
-          <div class="card col-span-2 xl:col-span-1  ">
-            <div class="card-header">會員資料
-            </div>
+          <div class="card col-span-2 xl:col-span-1">
+            <div class="card-header">會員資料</div>
             <form class="w-full max-w-lg flex flex-col m-6">
               <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3">
-                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 required" for="grid-last-name">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                      required
+                    "
+                    for="grid-last-name"
+                  >
                     姓氏
                   </label>
-                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe">
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border border-gray-200
+                      rounded
+                      py-3
+                      px-4
+                      mb-3
+                      leading-tight
+                      focus:outline-none focus:bg-white focus:border-gray-500
+                    "
+                    id="grid-last-name"
+                    type="text"
+                    placeholder="Doe"
+                  />
                 </div>
 
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    "
+                    for="grid-first-name"
+                  >
                     名字
                   </label>
-  
-                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
-                  
-                </div>
 
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border
+                      rounded
+                      py-3
+                      px-4
+                      leading-tight
+                      focus:outline-none focus:bg-white
+                    "
+                    id="grid-first-name"
+                    type="text"
+                    placeholder="Jane"
+                  />
+                </div>
               </div>
-             
-              <div class="flex flex-wrap -mx-3 ">
-             
+
+              <div class="flex flex-wrap -mx-3">
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    "
+                    for="grid-state"
+                  >
                     縣市
                   </label>
                   <div class="relative">
-                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select
+                      class="
+                        block
+                        appearance-none
+                        w-full
+                        bg-gray-200
+                        border border-gray-200
+                        text-gray-700
+                        py-3
+                        px-4
+                        pr-8
+                        rounded
+                        leading-tight
+                        focus:outline-none focus:bg-white focus:border-gray-500
+                      "
+                      id="grid-state"
+                    >
                       <option value="">請選擇縣市</option>
                       <option value="基隆市">基隆市</option>
                       <option value="台北市">台北市</option>
@@ -1215,29 +1299,73 @@
                       <option value="連江縣">連江縣</option>
                       <option value="澎湖縣">澎湖縣</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    <div
+                      class="
+                        pointer-events-none
+                        absolute
+                        inset-y-0
+                        right-0
+                        flex
+                        items-center
+                        px-2
+                        text-gray-700
+                      "
+                    >
+                      <svg
+                        class="fill-current h-4 w-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                        />
+                      </svg>
                     </div>
                   </div>
-
                 </div>
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-address">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    "
+                    for="grid-address"
+                  >
                     詳細地址
                   </label>
-                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque">
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border border-gray-200
+                      rounded
+                      py-3
+                      px-4
+                      leading-tight
+                      focus:outline-none focus:bg-white focus:border-gray-500
+                    "
+                    id="grid-city"
+                    type="text"
+                    placeholder="Albuquerque"
+                  />
                 </div>
               </div>
               <button class="btn hover:bg-teal-400">修改變更</button>
             </form>
           </div>
-          <!-- End  member data --> 
+          <!-- End  member data -->
         </div>
 
         <!-- end quick Info -->
       </div>
       <!-- end content -->
-
     </div>
     <!-- end wrapper -->
 
