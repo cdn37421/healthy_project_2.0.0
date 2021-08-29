@@ -8,15 +8,11 @@
     />
     <link rel="shortcut icon" href="./img/logo2.png" type="image/x-icon" />
     <link
-    href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css"
-  />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="stylesheet" type="text/css" href="css/table.css" />
+      rel="stylesheet"
+      href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css"
+    />
+    <!-- <link rel="stylesheet" type="text/css" href="css/general.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Welcome To Healthy</title>
   </head>
   <body class="bg-gray-100">
@@ -930,10 +926,29 @@
             會員管理後台
           </a>
           <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="patient_list_2.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fas fa-users text-xs mr-2"></i>
+            醫生管理後台
+          </a>
+          <!-- end link -->
           <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
             應用程式
           </p>
-
+          <!-- end link -->
           <!-- link -->
           <a
             href="./email.html"
@@ -1069,7 +1084,24 @@
           <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
             元件文件
           </p>
-
+          <!-- link -->
+          <a
+            href="admin_member_profile.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-text text-xs mr-2"></i>
+            個人資料頁面
+          </a>
+          <!-- end link -->
           <!-- link -->
           <a
             href="#"
@@ -1135,68 +1167,703 @@
 
       <!-- strat content （從這裡開始寫）-->
       <div class="bg-gray-100 flex-1 p-6 md:mt-16">
-    
-        <div class="flex flex-row justify-between items-center mb-4">
-          <h1 class="font-extrabold text-lg">病人列表</h1>
-          <h1 class="font-extrabold text-xl "><span class="text-teal-400">3</span> 位</h1>
-          
-          <a href="#" class="btn-gray text-sm">編輯欄位</a>
-        </div>
-
-        <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-          <table
-            id="member_table"
-            class="stripe hover"
-            style="width: 100%; padding-top: 1em; padding-bottom: 1em"
+        <div
+          class="
+            mx-auto
+            container
+            bg-white
+            dark:bg-gray-800 dark:bg-gray-800
+            shadow
+            rounded
+          "
+        >
+          <div
+            class="
+              flex flex-col
+              lg:flex-row
+              p-4
+              lg:p-8
+              justify-between
+              items-start
+              lg:items-stretch
+              w-full
+            "
           >
-            <thead>
-              <tr>
-                <th data-priority="1">使用者名稱</th>
-                <th data-priority="2">帳號權限等級</th>
-                <th data-priority="3">性別</th>
-                <th data-priority="4">信箱</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center">RYO</td>
-                <td  class=" text-center text-green-500"><i class="fad fa-circle mr-4 mb-4 "></i> 醫生</td>
-                <td class="text-center">男</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-              <tr>
-                <td class="text-center">Sasha</td>
-                <td  class=" text-center text-red-500"><i class="fad fa-circle mr-4 mb-4 "></i> 管理者</td>
-                <td class="text-center">女</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-              <tr>
-                <td class="text-center">Ben</td>
-                <td  class=" text-center text-gray-500"><i class="fad fa-circle mr-4 mb-4 "></i> 一般會員</td>
-                <td class="text-center">男</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-              <tr>
-                <td class="text-center">Justin</td>
-                <td  class=" text-center text-gray-500"><i class="fad fa-circle mr-4 mb-4 "></i> 一般會員</td>
-                <td class="text-center">男</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-              <tr>
-                <td class="text-center">Heren</td>
-                <td  class=" text-center text-yellow-500"><i class="fad fa-circle mr-4 mb-4 "></i> 高級會員</td>
-                <td class="text-center">女</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-             
-              
-              <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
-            </tbody>
-          </table>
-        </div>
+            <div
+              class="
+                w-full
+                lg:w-1/3
+                flex flex-col
+                lg:flex-row
+                items-start
+                lg:items-center
+              "
+            >
+              病患清單
+            </div>
+            <div
+              class="
+                w-full
+                lg:w-2/3
+                flex flex-col
+                lg:flex-row
+                items-start
+                lg:items-center
+                justify-end
+              "
+            >
+              <div
+                class="
+                  flex
+                  items-center
+                  lg:border-l lg:border-r
+                  border-gray-300
+                  py-3
+                  lg:py-0 lg:px-6
+                "
+              >
+                <p
+                  class="text-base text-gray-600 dark:text-gray-400"
+                  id="page-view"
+                >
+                  Viewing 1 - 20 of 60
+                </p>
+                <button
+                  class="
+                    text-gray-600
+                    dark:text-gray-400
+                    ml-2
+                    border-transparent border
+                    cursor-pointer
+                    rounded
+                    focus:outline-none focus:ring-2 focus:ring-gray-500
+                  "
+                  onclick="pageView(false)"
+                  aria-label="Goto previous page "
+                  role="button"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-chevron-left"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <polyline points="15 6 9 12 15 18" />
+                  </svg>
+                </button>
+                <button
+                  class="
+                    text-gray-600
+                    dark:text-gray-400
+                    border-transparent border
+                    rounded
+                    focus:outline-none focus:ring-2 focus:ring-gray-500
+                    cursor-pointer
+                  "
+                  aria-label="goto next page"
+                  role="button"
+                  onclick="pageView(true)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-chevron-right"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <polyline points="9 6 15 12 9 18" />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="
+                  flex
+                  items-center
+                  lg:border-r
+                  border-gray-300
+                  pb-3
+                  lg:pb-0 lg:px-6
+                "
+              ></div>
+
+              <div class="lg:ml-6 flex items-end">
+                <button
+                  class="
+                    bg-gray-200
+                    transition
+                    duration-150
+                    ease-in-out
+                    focus:outline-none
+                    border border-transparent
+                    focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700
+                    hover:bg-gray-300
+                    rounded
+                    text-indigo-700
+                    px-5
+                    h-8
+                    flex
+                    items-center
+                    text-sm
+                  "
+                >
+                  下載PDF
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="w-full overflow-x-scroll xl:overflow-x-hidden">
+            <table class="min-w-full bg-white dark:bg-gray-800">
+              <thead>
+                <tr class="w-full h-16 border-gray-300 border-b py-8">
+                  <th
+                    class="
+                      pl-8
+                      text-gray-600
+                      dark:text-gray-400
+                      font-normal
+                      pr-6
+                      text-left text-sm
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    <input
+                      placeholder="check box"
+                      type="checkbox"
+                      class="
+                        cursor-pointer
+                        relative
+                        w-5
+                        h-5
+                        border
+                        rounded
+                        border-gray-400
+                        bg-white
+                        dark:bg-gray-800
+                        focus:outline-none
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-gray-400
+                      "
+                      onclick="checkAll(this)"
+                    />
+                  </th>
+
+                  <th
+                    role="columnheader"
+                    class="
+                      text-gray-600
+                      dark:text-gray-400
+                      font-normal
+                      pr-6
+                      text-left text-sm
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    預約編號
+                  </th>
+                  <th
+                    role="columnheader"
+                    class="
+                      text-gray-600
+                      dark:text-gray-400
+                      font-normal
+                      pr-6
+                      text-left text-sm
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    病患姓名
+                  </th>
+                  <th
+                    role="columnheader"
+                    class="
+                      text-gray-600
+                      dark:text-gray-400
+                      font-normal
+                      pr-6
+                      text-left text-sm
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    症狀描述
+                  </th>
+                  <th
+                    role="columnheader"
+                    class="
+                      text-gray-600
+                      dark:text-gray-400
+                      font-normal
+                      pr-6
+                      text-left text-sm
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    預約日期
+                  </th>
+                  <th
+                    role="columnheader"
+                    class="
+                      text-gray-600
+                      dark:text-gray-400
+                      font-normal
+                      pr-6
+                      text-left text-sm
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    預約時間
+                  </th>
+
+                  <td
+                    role="columnheader"
+                    class="
+                      text-gray-600
+                      dark:text-gray-400
+                      font-normal
+                      pr-8
+                      text-left text-sm
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    修改
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="h-24 border-gray-300 border-b">
+                  <td
+                    class="
+                      pl-8
+                      pr-6
+                      text-left
+                      whitespace-no-wrap
+                      text-sm text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    <input
+                      placeholder="check box"
+                      type="checkbox"
+                      class="
+                        cursor-pointer
+                        relative
+                        w-5
+                        h-5
+                        border
+                        rounded
+                        border-gray-400
+                        bg-white
+                        dark:bg-gray-800
+                        focus:outline-none
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-gray-400
+                      "
+                      onclick="tableInteract(this)"
+                    />
+                  </td>
+
+                  <td
+                    class="
+                      text-sm
+                      pr-6
+                      whitespace-no-wrap
+                      text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    #MC10023
+                  </td>
+                  <td class="pr-6 whitespace-no-wrap">
+                    <div class="flex items-center">
+                      <div class="h-8 w-8">
+                        <img
+                          src="img/user.svg"
+                          alt="Display Avatar of Carrie Anthony"
+                          role="img"
+                          class="
+                            h-full
+                            w-full
+                            rounded-full
+                            overflow-hidden
+                            shadow
+                          "
+                        />
+                      </div>
+                      <p
+                        class="
+                          ml-2
+                          text-gray-800
+                          dark:text-gray-100
+                          tracking-normal
+                          leading-4
+                          text-sm
+                        "
+                      >
+                        小籠包
+                      </p>
+                    </div>
+                  </td>
+
+                  <td
+                    class="
+                      text-sm
+                      pr-6
+                      whitespace-no-wrap
+                      text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    湯包破洞
+                  </td>
+                  <td
+                    class="
+                      text-sm
+                      pr-6
+                      whitespace-no-wrap
+                      text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    2021/08/28
+                  </td>
+                  <td
+                    class="
+                      text-sm
+                      pr-6
+                      whitespace-no-wrap
+                      text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    18:30
+                  </td>
+
+                  <td class="pr-8 relative">
+                    <button
+                      onclick="dropdownFunction(this)"
+                      aria-label="dropdown"
+                      role="button"
+                      class="
+                        dropbtn
+                        text-gray-500
+                        rounded
+                        cursor-pointer
+                        border border-transparent
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-offset-2
+                        focus:ring-gray-400
+                      "
+                    >
+                      <i class="fas fa-ellipsis-v text-xl dropbtn"></i>
+                    </button>
+                    <div
+                      class="
+                        dropdown-content
+                        mt-1
+                        absolute
+                        left-0
+                        -ml-12
+                        shadow-md
+                        z-10
+                        hidden
+                        w-32
+                      "
+                    >
+                      <ul class="bg-white dark:bg-gray-800 shadow rounded py-1">
+                        <li
+                          class="
+                            cursor-pointer
+                            text-gray-600
+                            dark:text-gray-400
+                            text-sm
+                            leading-3
+                            tracking-normal
+                            py-3
+                            hover:bg-indigo-700 hover:text-white
+                            px-3
+                            font-normal
+                          "
+                        >
+                          Edit
+                        </li>
+                        <li
+                          class="
+                            cursor-pointer
+                            text-gray-600
+                            dark:text-gray-400
+                            text-sm
+                            leading-3
+                            tracking-normal
+                            py-3
+                            hover:bg-indigo-700 hover:text-white
+                            px-3
+                            font-normal
+                          "
+                        >
+                          Delete
+                        </li>
+                        <li
+                          class="
+                            cursor-pointer
+                            text-gray-600
+                            dark:text-gray-400
+                            text-sm
+                            leading-3
+                            tracking-normal
+                            py-3
+                            hover:bg-indigo-700 hover:text-white
+                            px-3
+                            font-normal
+                          "
+                        >
+                          Duplicate
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="h-24 border-gray-300 border-b">
+                  <td
+                    class="
+                      pl-8
+                      pr-6
+                      text-left
+                      whitespace-no-wrap
+                      text-sm text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    <input
+                      placeholder="check box"
+                      type="checkbox"
+                      class="
+                        cursor-pointer
+                        relative
+                        w-5
+                        h-5
+                        border
+                        rounded
+                        border-gray-400
+                        bg-white
+                        dark:bg-gray-800
+                        focus:outline-none
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-gray-400
+                      "
+                      onclick="tableInteract(this)"
+                    />
+                  </td>
+
+                  <td
+                    class="
+                      text-sm
+                      pr-6
+                      whitespace-no-wrap
+                      text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    #MC10023
+                  </td>
+                  <td class="pr-6 whitespace-no-wrap">
+                    <div class="flex items-center">
+                      <div class="h-8 w-8">
+                        <img
+                          src="img/user.svg"
+                          alt="Display Avatar of Carrie Anthony"
+                          role="img"
+                          class="
+                            h-full
+                            w-full
+                            rounded-full
+                            overflow-hidden
+                            shadow
+                          "
+                        />
+                      </div>
+                      <p
+                        class="
+                          ml-2
+                          text-gray-800
+                          dark:text-gray-100
+                          tracking-normal
+                          leading-4
+                          text-sm
+                        "
+                      >
+                        黑輪
+                      </p>
+                    </div>
+                  </td>
+
+                  <td
+                    class="
+                      text-sm
+                      pr-6
+                      whitespace-no-wrap
+                      text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    車輪爆胎
+                  </td>
+                  <td
+                    class="
+                      text-sm
+                      pr-6
+                      whitespace-no-wrap
+                      text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    2021/08/28
+                  </td>
+                  <td
+                    class="
+                      text-sm
+                      pr-6
+                      whitespace-no-wrap
+                      text-gray-800
+                      dark:text-gray-100
+                      tracking-normal
+                      leading-4
+                    "
+                  >
+                    18:30
+                  </td>
+
+                  <td class="pr-8 relative">
+                    <button
+                      onclick="dropdownFunction(this)"
+                      aria-label="dropdown"
+                      role="button"
+                      class="
+                        dropbtn
+                        text-gray-500
+                        rounded
+                        cursor-pointer
+                        border border-transparent
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-offset-2
+                        focus:ring-gray-400
+                      "
+                    >
+                      <i class="fas fa-ellipsis-v text-xl dropbtn"></i>
+                    </button>
+                    <div
+                      class="
+                        dropdown-content
+                        mt-1
+                        absolute
+                        left-0
+                        -ml-12
+                        shadow-md
+                        z-10
+                        hidden
+                        w-32
+                      "
+                    >
+                      <ul class="bg-white dark:bg-gray-800 shadow rounded py-1">
+                        <li
+                          class="
+                            cursor-pointer
+                            text-gray-600
+                            dark:text-gray-400
+                            text-sm
+                            leading-3
+                            tracking-normal
+                            py-3
+                            hover:bg-indigo-700 hover:text-white
+                            px-3
+                            font-normal
+                          "
+                        >
+                          Edit
+                        </li>
+                        <li
+                          class="
+                            cursor-pointer
+                            text-gray-600
+                            dark:text-gray-400
+                            text-sm
+                            leading-3
+                            tracking-normal
+                            py-3
+                            hover:bg-indigo-700 hover:text-white
+                            px-3
+                            font-normal
+                          "
+                        >
+                          Delete
+                        </li>
+                        <li
+                          class="
+                            cursor-pointer
+                            text-gray-600
+                            dark:text-gray-400
+                            text-sm
+                            leading-3
+                            tracking-normal
+                            py-3
+                            hover:bg-indigo-700 hover:text-white
+                            px-3
+                            font-normal
+                          "
+                        >
+                          Duplicate
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    
+
       <!-- end content -->
     </div>
     <!-- end wrapper -->
@@ -1204,26 +1871,7 @@
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="js/scripts.js"></script>
-     <!-- jQuery -->
-     <script
-     type="text/javascript"
-     src="https://code.jquery.com/jquery-3.4.1.min.js"
-   ></script>
-
-   <!--Datatables -->
-   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-   <script>
-    
-     $(document).ready(function () {
-       var table = $("#member_table")
-         .DataTable({
-           responsive: true,
-         })
-         .columns.adjust()
-         .responsive.recalc();
-     });
-   </script>
+    <script src="js/patient_list.js"></script>
     <!-- end script -->
   </body>
 </html>

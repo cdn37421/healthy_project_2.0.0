@@ -66,7 +66,13 @@
               <li><a class="dropdown-item" href="login.html">建立新帳號</a></li>
               <li><a class="dropdown-item" href="admin.html">後台介面</a></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">關於我們</a></li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="https://ryo-protfolio.netlify.app/"
+                  >關於作者</a
+                >
+              </li>
             </ul>
           </li>
           <!-- bootstrap -->
@@ -87,7 +93,7 @@
             <p class="hero-description">
               24小時一週七日，我們不打烊，我們關心您的健康
             </p>
-            <a href="appointment.html" class="btn btn--full margin-right-sm"
+            <a href="login.html" class="btn btn--full margin-right-sm"
               >預約診療</a
             >
             <a href="#doctors" class="btn btn--outline">更多資訊 &darr;</a>
@@ -112,21 +118,16 @@
       <!-- featured  -->
       <section class="section-how" id="how">
         <div class="container">
-          <span class="subheading">如何使用</span>
-          <h2 class="heading-secondary">只要簡單三個步驟，開始預約看診</h2>
+          <span class="subheading">我們的產品</span>
+          <h2 class="heading-secondary">系統架構</h2>
         </div>
 
         <div class="container grid grid--2-cols grid--center-v">
           <!-- STEP 01 -->
           <div class="step-text-box">
             <p class="step-number">01</p>
-            <h3 class="heading-tertiary">註冊會員</h3>
-            <p class="step-description">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Explicabo voluptatum minus quaerat repudiandae ex consequatur cum
-              ab ad unde quasi. Neque minus recusandae incidunt labore ipsum
-              earum dignissimos commodi ad?
-            </p>
+            <h3 class="heading-tertiary">會員功能</h3>
+            <p class="step-description">會員管理相關系統</p>
           </div>
           <div class="step-img-box">
             <img
@@ -146,25 +147,15 @@
           </div>
           <div class="step-text-box">
             <p class="step-number">02</p>
-            <h3 class="heading-tertiary">填寫資料</h3>
-            <p class="step-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-              vero reiciendis libero maxime animi incidunt, ipsum molestiae,
-              aspernatur quia nesciunt deserunt corporis iste, recusandae quis
-              veritatis facere laudantium distinctio officiis.
-            </p>
+            <h3 class="heading-tertiary">預約看診</h3>
+            <p class="step-description">提供醫師與病患線上看診服務</p>
           </div>
 
           <!-- STEP 03 -->
           <div class="step-text-box">
             <p class="step-number">03</p>
-            <h3 class="heading-tertiary">開始預約</h3>
-            <p class="step-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium possimus, voluptatem non quo beatae officiis velit
-              eveniet exercitationem sed, illum adipisci odio. Ad autem soluta
-              rem magni at recusandae libero.
-            </p>
+            <h3 class="heading-tertiary">健康存摺</h3>
+            <p class="step-description">提供會員控管自身健康狀況</p>
           </div>
           <div class="step-img-box">
             <img
@@ -172,6 +163,19 @@
               class="step-img"
               alt="iPhone  screen"
             />
+          </div>
+          <!-- STEP 02 -->
+          <div class="step-img-box">
+            <img
+              src="img/app/IPhone_12_Pro.png"
+              class="step-img"
+              alt="iPhone  screen"
+            />
+          </div>
+          <div class="step-text-box">
+            <p class="step-number">04</p>
+            <h3 class="heading-tertiary">購物商城</h3>
+            <p class="step-description">提供健康產品販賣服務</p>
           </div>
         </div>
       </section>
@@ -433,19 +437,21 @@
 
         <div class="container grid grid--4-cols">
           <div class="feature">
-            <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
+            <ion-icon class="feature-icon" name="leaf-outline"></ion-icon>
+            <p class="feature-title">No waste</p>
+            <p class="feature-text">
+              在疫情衝擊之下，使醫療分流，減少使用不必要的醫療資源
+            </p>
+          </div>
+          <div class="feature">
+            <ion-icon class="feature-icon" name="alarm-outline"></ion-icon>
             <p class="feature-title">Never again!</p>
             <p class="feature-text">您再也不必要花時間，大老遠跑出門看診</p>
           </div>
           <div class="feature">
-            <ion-icon class="feature-icon" name="nutrition-outline"></ion-icon>
-            <p class="feature-title">Health and happy</p>
-            <p class="feature-text">享受更健康的生活</p>
-          </div>
-          <div class="feature">
-            <ion-icon class="feature-icon" name="leaf-outline"></ion-icon>
-            <p class="feature-title">No waste time</p>
-            <p class="feature-text">使用線上看診，更節省醫療資源</p>
+            <ion-icon class="feature-icon" name="heart-outline"></ion-icon>
+            <p class="feature-title">Pause anytime</p>
+            <p class="feature-text">提供健康整合資訊，了解自身健康況狀</p>
           </div>
           <div class="feature">
             <ion-icon class="feature-icon" name="pause-outline"></ion-icon>
@@ -464,7 +470,7 @@
 
               <form class="cta-form" action="#">
                 <div>
-                  <label for="full-name">Full Name</label>
+                  <label for="full-name">姓名</label>
                   <input
                     id="full-name"
                     type="text"
@@ -474,7 +480,7 @@
                 </div>
 
                 <div>
-                  <label for="email">Email address</label>
+                  <label for="email">信箱</label>
                   <input
                     id="email"
                     type="email"
@@ -495,7 +501,7 @@
                   </select>
                 </div>
 
-                <button class="btn btn--form">馬上註冊</button>
+                <button class="btn btn--form">馬上諮詢</button>
               </form>
             </div>
             <div class="cta-img-box" role="img" aria-label="ok sign"></div>
@@ -535,7 +541,7 @@
 
           <p class="copyright">
             Copyright &copy; <span class="year">2021</span> by Healthy, Inc. All
-            rights reserved.
+            rights reserved. Created by RYO.
           </p>
         </div>
         <div class="address-col">

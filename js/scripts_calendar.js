@@ -106,6 +106,21 @@ function app() {
 
       return today.toDateString() === d.toDateString() ? true : false;
     },
+    getDateValue(date) {
+      let selectedDate = new Date(this.year, this.month, date);
+      this.datepickerValue = selectedDate.toDateString();
+
+      this.$refs.date.value =
+        selectedDate.getFullYear() +
+        "-" +
+        ("0" + selectedDate.getMonth()).slice(-2) +
+        "-" +
+        ("0" + selectedDate.getDate()).slice(-2);
+
+      console.log(this.$refs.date.value);
+
+      this.showDatepicker = false;
+    },
 
     showEventModal(date) {
       // open the modal
@@ -158,6 +173,9 @@ function app() {
 
       //close the modal
       this.openEventModal = false;
+    },
+    updateEvent(new_event_title) {
+      this.event_title = new_event_title;
     },
 
     getNoOfDays() {

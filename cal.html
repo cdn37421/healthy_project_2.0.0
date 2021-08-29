@@ -8,17 +8,11 @@
     />
     <link rel="shortcut icon" href="./img/logo2.png" type="image/x-icon" />
     <link
-    href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css"
-  />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="stylesheet" type="text/css" href="css/table.css" />
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  
+      rel="stylesheet"
+      href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css"
+    />
+    <script src="js/calculateBMI.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Welcome To Healthy</title>
   </head>
   <body class="bg-gray-100">
@@ -36,20 +30,22 @@
       <!-- logo -->
       <div class="flex-none w-56 flex flex-row items-center">
         <a href="index.html">
+          
           <img
-            src="img/healthy.png"
-            class="w-12 flex-none"
-            style="width: 10.5rem"
+          src="img/healthy.png"
+          class="w-12 flex-none"
+          style="width: 10.5rem"
           />
-        </a>
-
-        <button
+          <!-- <strong class="capitalize ml-1 flex-1">Healthy</strong> -->
+          
+          <button
           id="sliderBtn"
           class="flex-none text-right text-gray-900 hidden md:block"
-        >
+          >
           <i class="fad fa-list-ul"></i>
         </button>
       </div>
+    </a>
       <!-- end logo -->
 
       <!-- navbar content toggle -->
@@ -68,7 +64,7 @@
           md:top-0
           md:w-full
           md:left-0
-          md:mt-20
+          md:mt-16
           md:border-t
           md:border-b
           md:border-gray-200
@@ -862,344 +858,273 @@
           faster
         "
       >
-       <!-- sidebar content -->
-       <div class="flex flex-col">
-        <!-- sidebar toggle -->
-        <div class="text-right hidden md:block mb-4">
-          <button id="sideBarHideBtn">
-            <i class="fad fa-times-circle"></i>
-          </button>
+        <!-- sidebar content -->
+        <div class="flex flex-col">
+          <!-- sidebar toggle -->
+          <div class="text-right hidden md:block mb-4">
+            <button id="sideBarHideBtn">
+              <i class="fad fa-times-circle"></i>
+            </button>
+          </div>
+          <!-- end sidebar toggle -->
+
+          <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">
+            主控台
+          </p>
+
+          <!-- link -->
+          <a
+            href="admin.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-chart-pie text-xs mr-2"></i>
+            資料分析後台
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="admin_sale.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-shopping-cart text-xs mr-2"></i>
+            銷售分析後台
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+                  <a
+                  href="admin_member.html"
+                  class="
+                    mb-3
+                    capitalize
+                    font-medium
+                    text-sm
+                    hover:text-teal-600
+                    transition
+                    ease-in-out
+                    duration-500
+                  "
+                  >
+                  <i class="fas fa-users text-xs mr-2"></i>
+                  會員管理後台
+                  </a>
+                  <!-- end link -->
+          <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
+            應用程式
+          </p>
+
+          <!-- link -->
+          <a
+            href="./email.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-envelope-open-text text-xs mr-2"></i>
+            信件
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="#"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-comments text-xs mr-2"></i>
+            聊天
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="#"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-calendar-edit text-xs mr-2"></i>
+            日曆
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="#"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
+            發票
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="#"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-store text-xs mr-2"></i>
+            購物商城
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="#"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-book-open text-xs mr-2"></i>
+            健康存摺
+          </a>
+          <!-- end link -->
+          <!-- link -->
+          <a
+            href="#"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-calendar-check text-xs mr-2"></i>
+            預約看診
+          </a>
+          <!-- end link -->
+
+          <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
+            元件文件
+          </p>
+
+          <!-- link -->
+          <a
+            href="#"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-text text-xs mr-2"></i>
+            字型
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="#"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-whistle text-xs mr-2"></i>
+            警告
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="#"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-cricket text-xs mr-2"></i>
+            按鈕
+          </a>
+          <!-- end link -->
         </div>
-        <!-- end sidebar toggle -->
-
-        <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">
-          主控台
-        </p>
-
-        <!-- link -->
-        <a
-          href="admin.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-chart-pie text-xs mr-2"></i>
-          管理者主頁
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="admin_sale.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-shopping-cart text-xs mr-2"></i>
-          銷售分析後台
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="admin_member.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fas fa-users text-xs mr-2"></i>
-          會員管理後台
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="admin_doctor.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fas fa-users text-xs mr-2"></i>
-          醫生管理後台
-        </a>
-        <!-- end link -->
-
-        <!-- end link -->
-        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
-          應用程式
-        </p>
-
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-envelope-open-text text-xs mr-2"></i>
-          信件（未做）
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-comments text-xs mr-2"></i>
-          聊天（未做）
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="calendar.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-calendar-edit text-xs mr-2"></i>
-          日曆
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
-          發票（未做）
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-store text-xs mr-2"></i>
-          購物商城（未做）
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-book-open text-xs mr-2"></i>
-          健康存摺（未做）
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-calendar-check text-xs mr-2"></i>
-          預約看診
-        </a>
-
-        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
-          其他頁面（暫存處）
-        </p>
-        <!-- link -->
-        <a
-          href="admin_member_profile.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-text text-xs mr-2"></i>
-          個人資料頁面
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="patient_list.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          病患資料列表
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="patient_list_2.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          病患資料列表（版本二）
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="patient_list.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          病患個人資料頁面（一半）
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="patient_appointment.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          病患預約介面
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="https://www.behance.net/gallery/90714005/Zendenta-Dental-clinic-management-system"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          介面參考網址
-        </a>
-        <!-- end link -->
-      </div>
       </div>
 
       <!-- end sidebar content -->
@@ -1208,110 +1133,42 @@
 
       <!-- strat content （從這裡開始寫）-->
       <div class="bg-gray-100 flex-1 p-6 md:mt-16">
-    
-        <div class="flex flex-row justify-between items-center mb-4">
-          <h1 class="font-extrabold text-lg">病人列表</h1>
-          <h1 class="font-extrabold text-xl "><span class="text-teal-400">3</span> 位</h1>
-          <!--  -->
-         
-        
+        <div class="calculator">
+            <div class="fields">
+              <h1 >BMI 計算機</h1>
+                <div class="bmi_calcu">
+                  <label for="bodyHeight">身高 :</label>
+                  <input type="number" class="bodyHeight" min="0">cm
+                  <br><br>
+
+                  <label for="bodyWeight">體重 :</label>
+                  <input type="number" class="bodyWeight" min="0">Kg
+                </div>
+              <div class="btn_block">
+                <input type="submit" value="計算"  class="calcualteBMI"> 
+                <i class="fas fa-undo reset" title="重新整理"></i>
+              </div>
+              <br>
+      
+            </div>
             
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
-                <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" />
-                <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" />
-                <rect x="7" y="13" width="10" height="8" rx="2" />
-              </svg>				  
-           
-          
-
-          <!--  -->
-        </div>
-
-        <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-          <table
-            id="member_table"
-            class="stripe hover"
-            style="width: 100%; padding-top: 1em; padding-bottom: 1em"
-          >
-            <thead>
-              <tr>
-                <th data-priority="1">使用者名稱</th>
-                <th data-priority="2">帳號權限等級</th>
-                <th data-priority="3">性別</th>
-                <th data-priority="4">信箱</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center">RYO</td>
-                <td  class=" text-center text-green-500"><i class="fad fa-circle mr-4 mb-4 "></i> 醫生</td>
-                <td class="text-center">男</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-              <tr>
-                <td class="text-center">Sasha</td>
-                <td  class=" text-center text-red-500"><i class="fad fa-circle mr-4 mb-4 "></i> 管理者</td>
-                <td class="text-center">女</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-              <tr>
-                <td class="text-center">Ben</td>
-                <td  class=" text-center text-gray-500"><i class="fad fa-circle mr-4 mb-4 "></i> 一般會員</td>
-                <td class="text-center">男</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-              <tr>
-                <td class="text-center">Justin</td>
-                <td  class=" text-center text-gray-500"><i class="fad fa-circle mr-4 mb-4 "></i> 一般會員</td>
-                <td class="text-center">男</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-              <tr>
-                <td class="text-center">Heren</td>
-                <td  class=" text-center text-yellow-500"><i class="fad fa-circle mr-4 mb-4 "></i> 高級會員</td>
-                <td class="text-center">女</td>
-                <td class="text-center" >healthy@example.com</td>
-              </tr>
-             
+              <div class="result_txt">
+                <h2 class="result_txt">您的BMI：</h2>
+                
+                <p id="bmiText"></p>
+                <p id="resultText">0</p>
               
-              <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
-            </tbody>
-          </table>
-        </div>
+              </div>
         </div>
       </div>
-    
-      <!-- end content -->
+        
+     <!-- end content -->
     </div>
     <!-- end wrapper -->
 
     <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  
     <script src="js/scripts.js"></script>
-     <!-- jQuery -->
-     <script
-     type="text/javascript"
-     src="https://code.jquery.com/jquery-3.4.1.min.js"
-   ></script>
-
-   <!--Datatables -->
-   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-   <script>
-    
-     $(document).ready(function () {
-       var table = $("#member_table")
-         .DataTable({
-           responsive: true,
-         })
-         .columns.adjust()
-         .responsive.recalc();
-     });
-
-     
-   </script>
-   
     <!-- end script -->
   </body>
 </html>
