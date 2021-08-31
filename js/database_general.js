@@ -38,15 +38,25 @@ healthyLifeStyleDBUtil.getCurrentLoginAccount([successCallBack][, failCallBack][
 若有登入的帳號，請求會成功，回乎函式中的data會是當前登入的帳號資訊，資料格式為已解析好的json資料。
 帳號資料包含兩個參數：
 user: 當前登入的帳號名稱。
-permissionLevel: 當前帳號的權限等級，以字串表示，可能的值有NONE,ADMIN,NORMAL_EMPLOYEE。
+loginIdentity: 當前帳號的登入身分，以字串表示，可能的值有NONE,ADMIN,NORMAL_EMPLOYEE,DOCTOR;
+NONE表示一般無特殊權限的登入用戶。
 
 healthyLifeStyleDBUtil.logOut([successCallBack][, replaceSuccessCallBack])
 執行後將當前網頁登入的帳號登出。
 
 healthyLifeStyleDBUtil.getRegisteredMembers([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
-取得會員列表。當前登入的帳號必須要有管理員(ADMIN)權限等級才可執行成功。above
+取得會員列表。當前登入的帳號必須要有管理員(ADMIN)權限等級才可執行成功。
 目前還沒有把切換權限的功能完成。因此執行此函數時，會自動嘗試將帳號切換為管理員模式，若切換失敗則請求失敗。
 若成功，則回乎函式中的data會是已註冊的會員列表(以陣列形式存放，含系統帳號)，格式為解析完成的json資料。
+會列表中的會員訊息，包含下列參數：
+user: 用戶帳號名稱
+email: 用戶的電子郵件。可能為null
+nickName: 用戶的暱稱。可能為null
+gender: 用戶的性別。可能的值有:OTHER,MALE,FEMALE或null
+bloodtypeABO: 用戶的ABO血型。可能的值有O,A,B,AB或null
+birthday: 用戶的生日，可能為null
+phone: 用戶的手機號碼，可能為null
+photo: 用戶的頭像(照片)，資料格式應該是base64，可能為null。
 
 
 */
@@ -58,7 +68,7 @@ const healthyLifeStyleDBUtil = {};
 		
 		var activatingAJAX = {};
 		
-		this.requestOrigin = window.location.origin;
+		this.requestOrigin = "https://healthylifestyle.hopto.org"//window.location.origin;
 		this.loginPath = "/HealthyLifestyle/Account/Login";
 		
 		this.login = (user, password, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
