@@ -26,7 +26,6 @@ healthyLifeStyleDBUtil.login(user, password[, successCallBack][, failCallBack][,
 healthyLifeStyleDBUtil.isLoginRequestActivate()
 登入請求是否正在執行中。
 
-
 healthyLifeStyleDBUtil.register(user, password[, email][, successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
 向網頁伺服器提交帳戶註冊請求。
 回乎函式的行為同login函式。
@@ -53,7 +52,7 @@ healthyLifeStyleDBUtil.getRegisteredMembers([successCallBack][, failCallBack][, 
 */
 const healthyLifeStyleDBUtil = {};
 
-(function () {
+healthyLifeStyleDBUtil.login()(function () {
   healthyLifeStyleDBUtil.init = function () {
     var activatingAJAX = {};
 

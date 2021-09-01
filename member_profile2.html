@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="shortcut icon" href="./img/logo2.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="css/general.css" /> -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <title>Welcome To Healthy</title>
+</head>
+
+<body class="bg-gray-100">
+  <!-- start navbar -->
+  <div class="
+        md:fixed md:w-full md:top-0 md:z-20
+        flex flex-row flex-wrap
+        items-center
+        bg-white
+        p-6
+        border-b border-gray-300
+      ">
+    <!-- logo -->
+    <div class="flex-none w-56 flex flex-row items-center">
+      <a href="index.html">
+
+        <img src="img/healthy.png" class="w-12 flex-none" style="width: 10.5rem" />
+        <!-- <strong class="capitalize ml-1 flex-1">Healthy</strong> -->
+
+        <button id="sliderBtn" class="flex-none text-right text-gray-900 hidden md:block">
+          <i class="fad fa-list-ul"></i>
+        </button>
+    </div>
+    </a>
+    <!-- end logo -->
+
+    <!-- navbar content toggle -->
+    <button id="navbarToggle" class="hidden md:block md:fixed right-0 mr-6">
+      <i class="fad fa-chevron-double-down"></i>
+    </button>
+    <!-- end navbar content toggle -->
+
+    <!-- navbar content -->
+    <div id="navbar" class="
+          animated
+          md:hidden
+          md:fixed
+          md:top-0
+          md:w-full
+          md:left-0
+          md:mt-16
+          md:border-t
+          md:border-b
+          md:border-gray-200
+          md:p-10
+          md:bg-white
+          flex-1
+          pl-3
+          flex flex-row flex-wrap
+          justify-between
+          items-center
+          md:flex-col md:items-center
+        ">
+      <!-- left -->
+      <div class="
+            text-gray-600
+            md:w-full
+            md:flex
+            md:flex-row
+            md:justify-evenly
+            md:pb-10
+            md:mb-10
+            md:border-b
+            md:border-gray-200
+          ">
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="#" title="email"><i
+            class="fad fa-envelope-open-text"></i></a>
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="#" title="email"><i
+            class="fad fa-comments-alt"></i></a>
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="#" title="email"><i
+            class="fad fa-check-circle"></i></a>
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="#" title="email"><i
+            class="fad fa-calendar-exclamation"></i></a>
+      </div>
+      <!-- end left -->
+
+      <!-- right -->
+      <div class="flex flex-row-reverse items-center">
+        <!-- user -->
+        <div class="dropdown relative md:static">
+          <button class="
+                menu-btn
+                focus:outline-none focus:shadow-outline
+                flex flex-wrap
+                items-center
+              ">
+            <div class="w-8 h-8 overflow-hidden rounded-full">
+              <img class="w-full h-full object-cover" src="img/user.svg" />
+            </div>
+
+            <div class="ml-2 capitalize flex">
+              <h1 class="
+                    text-sm text-gray-800
+                    font-semibold
+                    m-0
+                    p-0
+                    leading-none
+                  ">
+                RYO
+              </h1>
+              <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
+            </div>
+          </button>
+
+          <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
+
+          <div class="
+                text-gray-500
+                menu
+                hidden
+                md:mt-10 md:w-full
+                rounded
+                bg-white
+                shadow-md
+                absolute
+                z-20
+                right-0
+                w-40
+                mt-5
+                py-2
+                animated
+                faster
+              ">
+            <!-- item -->
+            <a class="
+                  px-4
+                  py-2
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200 hover:text-gray-900
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <i class="fad fa-user-edit text-xs mr-1"></i>
+              編輯個人資料
+            </a>
+            <!-- end item -->
+
+            <!-- item -->
+            <a class="
+                  px-4
+                  py-2
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200 hover:text-gray-900
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <i class="fad fa-inbox-in text-xs mr-1"></i>
+              我的盒子
+            </a>
+            <!-- end item -->
+
+            <!-- item -->
+            <a class="
+                  px-4
+                  py-2
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200 hover:text-gray-900
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <i class="fad fa-badge-check text-xs mr-1"></i>
+              任務
+            </a>
+            <!-- end item -->
+
+            <!-- item -->
+            <a class="
+                  px-4
+                  py-2
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200 hover:text-gray-900
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <i class="fad fa-comment-alt-dots text-xs mr-1"></i>
+              聊天
+            </a>
+            <!-- end item -->
+
+            <hr />
+
+            <!-- item -->
+            <a class="
+                  px-4
+                  py-2
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200 hover:text-gray-900
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <i class="fad fa-user-times text-xs mr-1"></i>
+              登出
+            </a>
+            <!-- end item -->
+          </div>
+        </div>
+        <!-- end user -->
+
+        <!-- notifcation -->
+        <div class="dropdown relative mr-5 md:static">
+          <button class="
+                text-gray-500
+                menu-btn
+                p-0
+                m-0
+                hover:text-gray-900
+                focus:text-gray-900 focus:outline-none
+                transition-all
+                ease-in-out
+                duration-300
+              ">
+            <i class="fad fa-bells"></i>
+          </button>
+
+          <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
+
+          <div class="
+                menu
+                hidden
+                rounded
+                bg-white
+                md:right-0 md:w-full
+                shadow-md
+                absolute
+                z-20
+                right-0
+                w-84
+                mt-5
+                py-2
+                animated
+                faster
+              ">
+            <!-- top -->
+            <div class="
+                  px-4
+                  py-2
+                  flex flex-row
+                  justify-between
+                  items-center
+                  capitalize
+                  font-semibold
+                  text-sm
+                ">
+              <h1>通知</h1>
+              <div class="
+                    bg-teal-100
+                    border border-teal-200
+                    text-teal-500 text-xs
+                    rounded
+                    px-1
+                  ">
+                <strong>5</strong>
+              </div>
+            </div>
+            <hr />
+            <!-- end top -->
+
+            <!-- body -->
+
+            <!-- item -->
+            <a class="
+                  flex flex-row
+                  items-center
+                  justify-start
+                  px-4
+                  py-4
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <div class="
+                    px-3
+                    py-2
+                    rounded
+                    mr-3
+                    bg-gray-100
+                    border border-gray-300
+                  ">
+                <i class="fad fa-birthday-cake text-sm"></i>
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">戳..</h1>
+                  <p class="text-xs text-gray-500">寫些東西</p>
+                </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>4 分前</p>
+                </div>
+              </div>
+            </a>
+            <hr />
+            <!-- end item -->
+
+            <!-- item -->
+            <a class="
+                  flex flex-row
+                  items-center
+                  justify-start
+                  px-4
+                  py-4
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <div class="
+                    px-3
+                    py-2
+                    rounded
+                    mr-3
+                    bg-gray-100
+                    border border-gray-300
+                  ">
+                <i class="fad fa-user-circle text-sm"></i>
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">ryo..</h1>
+                  <p class="text-xs text-gray-500">寫些東西</p>
+                </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>78 分前</p>
+                </div>
+              </div>
+            </a>
+            <hr />
+            <!-- end item -->
+
+            <!-- item -->
+            <a class="
+                  flex flex-row
+                  items-center
+                  justify-start
+                  px-4
+                  py-4
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <div class="
+                    px-3
+                    py-2
+                    rounded
+                    mr-3
+                    bg-gray-100
+                    border border-gray-300
+                  ">
+                <i class="fad fa-images text-sm"></i>
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">新增圖片</h1>
+                  <p class="text-xs text-gray-500">寫些東西</p>
+                </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>65 分前</p>
+                </div>
+              </div>
+            </a>
+            <hr />
+            <!-- end item -->
+
+            <!-- item -->
+            <a class="
+                  flex flex-row
+                  items-center
+                  justify-start
+                  px-4
+                  py-4
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <div class="
+                    px-3
+                    py-2
+                    rounded
+                    mr-3
+                    bg-gray-100
+                    border border-gray-300
+                  ">
+                <i class="fad fa-alarm-exclamation text-sm"></i>
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">時間到了</h1>
+                  <p class="text-xs text-gray-500">寫些東西</p>
+                </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>1 分前</p>
+                </div>
+              </div>
+            </a>
+            <!-- end item -->
+
+            <!-- end body -->
+
+            <!-- bottom -->
+            <hr />
+            <div class="px-4 py-2 mt-2">
+              <a href="#" class="
+                    border border-gray-300
+                    block
+                    text-center text-xs
+                    uppercase
+                    rounded
+                    p-1
+                    hover:text-teal-500
+                    transition-all
+                    ease-in-out
+                    duration-500
+                  ">
+                觀看全部
+              </a>
+            </div>
+            <!-- end bottom -->
+          </div>
+        </div>
+        <!-- end notifcation -->
+
+        <!-- messages -->
+        <div class="dropdown relative mr-5 md:static">
+          <button class="
+                text-gray-500
+                menu-btn
+                p-0
+                m-0
+                hover:text-gray-900
+                focus:text-gray-900 focus:outline-none
+                transition-all
+                ease-in-out
+                duration-300
+              ">
+            <i class="fad fa-comments"></i>
+          </button>
+
+          <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
+
+          <div class="
+                menu
+                hidden
+                md:w-full md:right-0
+                rounded
+                bg-white
+                shadow-md
+                absolute
+                z-20
+                right-0
+                w-84
+                mt-5
+                py-2
+                animated
+                faster
+              ">
+            <!-- top -->
+            <div class="
+                  px-4
+                  py-2
+                  flex flex-row
+                  justify-between
+                  items-center
+                  capitalize
+                  font-semibold
+                  text-sm
+                ">
+              <h1>訊息</h1>
+              <div class="
+                    bg-teal-100
+                    border border-teal-200
+                    text-teal-500 text-xs
+                    rounded
+                    px-1
+                  ">
+                <strong>3</strong>
+              </div>
+            </div>
+            <hr />
+            <!-- end top -->
+
+            <!-- body -->
+
+            <!-- item -->
+            <a class="
+                  flex flex-row
+                  items-center
+                  justify-start
+                  px-4
+                  py-4
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <div class="
+                    w-10
+                    h-10
+                    rounded-full
+                    overflow-hidden
+                    mr-3
+                    bg-gray-100
+                    border border-gray-300
+                  ">
+                <img class="w-full h-full object-cover" src="img/user1.jpg" alt="" />
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">RYO</h1>
+                  <p class="text-xs text-gray-500">我知道了</p>
+                </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>4 分前</p>
+                </div>
+              </div>
+            </a>
+            <hr />
+            <!-- end item -->
+
+            <!-- item -->
+            <a class="
+                  flex flex-row
+                  items-center
+                  justify-start
+                  px-4
+                  py-4
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <div class="
+                    w-10
+                    h-10
+                    rounded-full
+                    overflow-hidden
+                    mr-3
+                    bg-gray-100
+                    border border-gray-300
+                  ">
+                <img class="w-full h-full object-cover" src="img/user2.jpg" alt="" />
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">sull goldmen</h1>
+                  <p class="text-xs text-gray-500">牛肉麵</p>
+                </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>1 天前</p>
+                </div>
+              </div>
+            </a>
+            <hr />
+            <!-- end item -->
+
+            <!-- item -->
+            <a class="
+                  flex flex-row
+                  items-center
+                  justify-start
+                  px-4
+                  py-4
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <div class="
+                    w-10
+                    h-10
+                    rounded-full
+                    overflow-hidden
+                    mr-3
+                    bg-gray-100
+                    border border-gray-300
+                  ">
+                <img class="w-full h-full object-cover" src="img/user3.jpg" alt="" />
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">mick</h1>
+                  <p class="text-xs text-gray-500">正在輸入</p>
+                </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>31 二月</p>
+                </div>
+              </div>
+            </a>
+            <!-- end item -->
+
+            <!-- end body -->
+
+            <!-- bottom -->
+            <hr />
+            <div class="px-4 py-2 mt-2">
+              <a href="#" class="
+                    border border-gray-300
+                    block
+                    text-center text-xs
+                    uppercase
+                    rounded
+                    p-1
+                    hover:text-teal-500
+                    transition-all
+                    ease-in-out
+                    duration-500
+                  ">
+                觀看全部
+              </a>
+            </div>
+            <!-- end bottom -->
+          </div>
+        </div>
+        <!-- end messages -->
+      </div>
+      <!-- end right -->
+    </div>
+    <!-- end navbar content -->
+  </div>
+  <!-- end navbar -->
+
+  <!-- strat wrapper -->
+  <div class="h-screen flex flex-row flex-wrap">
+    <!-- start sidebar -->
+    <div id="sideBar" class="
+          relative
+          flex flex-col flex-wrap
+          bg-white
+          border-r border-gray-300
+          p-6
+          flex-none
+          w-64
+          md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl
+          animated
+          faster
+        ">
+      <!-- sidebar content -->
+      <div class="flex flex-col">
+        <!-- sidebar toggle -->
+        <div class="text-right hidden md:block mb-4">
+          <button id="sideBarHideBtn">
+            <i class="fad fa-times-circle"></i>
+          </button>
+        </div>
+        <!-- end sidebar toggle -->
+
+        <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">
+          主控台
+        </p>
+
+        <!-- link -->
+        <a href="admin.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-chart-pie text-xs mr-2"></i>
+          資料分析後台
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="admin_sale.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-shopping-cart text-xs mr-2"></i>
+          銷售分析後台
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="admin_member.html" class="
+                    mb-3
+                    capitalize
+                    font-medium
+                    text-sm
+                    hover:text-teal-600
+                    transition
+                    ease-in-out
+                    duration-500
+                  ">
+          <i class="fas fa-users text-xs mr-2"></i>
+          會員管理後台
+        </a>
+        <!-- end link -->
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
+          應用程式
+        </p>
+
+        <!-- link -->
+        <a href="./email.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-envelope-open-text text-xs mr-2"></i>
+          信件
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-comments text-xs mr-2"></i>
+          聊天
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-calendar-edit text-xs mr-2"></i>
+          日曆
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
+          發票
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-store text-xs mr-2"></i>
+          購物商城
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-book-open text-xs mr-2"></i>
+          健康存摺
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-calendar-check text-xs mr-2"></i>
+          預約看診
+        </a>
+        <!-- end link -->
+
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
+          元件文件
+        </p>
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-text text-xs mr-2"></i>
+          字型
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-whistle text-xs mr-2"></i>
+          警告
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-cricket text-xs mr-2"></i>
+          按鈕
+        </a>
+        <!-- end link -->
+      </div>
+    </div>
+
+    <!-- end sidebar content -->
+
+    <!-- end sidbar -->
+
+    <!-- start content -->
+    <div class="bg-gray-100 flex-1 p-6 md:mt-16">
+
+      <!-- start personal Info -->
+      <div class="grid grid-cols-3 gap-6 mt-6 xl:grid-cols-1">
+        <!-- personal pic -->
+        <div class="card">
+          <div class="card-header     flex flex-row justify-between">
+            RYO
+            <div class="set">
+              <button class="
+                  mb-3
+                  capitalize
+                  font-medium
+                  hover:text-teal-600
+                  transition
+                  ease-in-out
+                  duration-500
+                  focus:outline-none
+                  " title="set-picture"><i class="fas fa-camera-alt ml-2 leading-none"></i></button>
+              <button class="
+                  show-modal
+                  mb-3
+                  capitalize
+                  font-medium
+                  hover:text-teal-600
+                  transition
+                  ease-in-out
+                  duration-500
+                  focus:outline-none
+                " title="set-password">
+                <i class="fas fa-unlock-alt ml-2 leading-none"></i>
+            </button>
+            </div>
+          </div>
+          
+          <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
+            <img class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="/img/user.svg" alt=""
+              width="384" height="512">
+            <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+              <p class="text-lg font-semibold text-green-500">
+                <i class="fad fa-circle mr-4 mb-4 "></i>
+                醫生
+              </p>
+            </div>
+          </figure>
+          <div class="w-full flex flex-wrap p-6">
+            <div class="card-header w-1/2 md:w-1/2 px-3 ">
+
+              <li class="list-none">
+                <i class="fas fa-map-marker-alt mr-2 "></i>
+                地區:
+                <span class="text-blue-500">台中市</span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-birthday-cake mr-2 "></i>
+                年齡:
+                <span class="text-blue-500">66</span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-tint mr-2 "></i>
+                血型:
+                <span class="text-blue-500">O</span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-male mr-4 "></i>
+                身高:
+                <span class="text-blue-500">173</span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-language "></i>
+                語言:
+                <span class="text-blue-500"> 中文、英文</span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-weight mr-2 "></i>
+                體重:
+                <span class="text-blue-500"> 60</span>
+              </li>
+            </div>
+          </div>
+
+        </div>
+        <!-- end personal pic -->
+
+        <!-- set-password-modal -->
+        <div
+          class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50  hidden">
+          <!--modal-->
+          <div class="bg-white card ronded shadow-lg w-1/3">
+            <!--modal header-->
+            <div class="border-b px-4 py-2 flex justify-between items-center">
+              <h3 class="font-semibold text-lg">變更密碼</h3>
+              <button class="close-modal focus:outline-none"><i class="fal fa-times"></i></button>
+            </div>
+            <!--modal body-->
+            <div class="p-3">
+              <div class="w-full md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 required"
+                  for="grid-account">
+                  新密碼
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-account" type="password" placeholder="Password">
+              </div>
+
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+                  確認密碼
+                </label>
+
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white"
+                  id="grid-email" type="password" placeholder="Password">
+              </div>
+            </div>
+            <div class="flex justify-end items-center w-100 border-t p-3">
+              <button
+                class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white mr-1 focus:outline-none close-modal">取消(Cancel)</button>
+              <button
+                class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white focus:outline-none">確定(Ok)</button>
+            </div>
+          </div>
+        </div>
+        <!-- End set-password-modal -->
+
+        <!-- Start member data -->
+        <div class="card col-span-2 xl:col-span-1  ">
+          <div class="card-header">會員資料
+          </div>
+          <form class="w-full  flex flex-wrap p-6">
+            <div class="w-full flex flex-wrap">
+              <div class="w-1/2 md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 required"
+                  for="grid-account">
+                  使用者名稱
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-account" type="text" disabled="disabled">
+              </div>
+
+              <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+                  信箱
+                </label>
+
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white"
+                  id="grid-email" type="text" placeholder="Email@Xmail.com">
+
+              </div>
+
+            </div>
+
+            <div class="w-full flex flex-wrap">
+              <div class="w-1/2 md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 required"
+                  for="grid-last-name">
+                  姓氏
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-last-name" type="text" placeholder="Doe">
+              </div>
+
+              <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                  名字
+                </label>
+
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white"
+                  id="grid-first-name" type="text" placeholder="Jane">
+
+              </div>
+
+            </div>
+            <div class="w-full flex flex-wrap">
+              <div class="w-1/2 md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 required"
+                  for="grid-phone">
+                  手機號碼
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-phone" type="text" placeholder="0987654321">
+              </div>
+
+              <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-birthday">
+                  生日
+                </label>
+
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white"
+                  id="grid-birthday" type="date">
+
+              </div>
+
+              <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-language">
+                  語言
+                </label>
+
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white"
+                  id="grid-language" type="text" placeholder="English">
+
+              </div>
+
+            </div>
+
+            <div class="w-full flex flex-wrap">
+
+              <div class="w-1/4 md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                  縣市
+                </label>
+                <div>
+                  <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-state">
+                    <option value="">請選擇縣市</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="台北市">台北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="宜蘭市">宜蘭市</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="台中市">台中市</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="台南市">台南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="台東縣">台東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="金門縣">金門縣</option>
+                    <option value="連江縣">連江縣</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                  </div>
+                </div>
+
+              </div>
+              <div class="w-3/4 md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-address">
+                  詳細地址
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-city" type="text" placeholder="Albuquerque">
+              </div>
+            </div>
+            <button class="btn hover:bg-teal-400 ml-3">修改變更</button>
+          </form>
+        </div>
+        <!-- End  member data -->
+      </div>
+
+      <!-- end quick Info -->
+    </div>
+    <!-- end content -->
+
+  </div>
+  <!-- end wrapper -->
+
+  <!-- script -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+  </script>
+  <!--Modal script-->
+  <script>
+    const modal = document.querySelector('.modal');
+
+    const showModal = document.querySelector('.show-modal');
+    const closeModal = document.querySelectorAll('.close-modal');
+
+    showModal.addEventListener('click', function () {
+      modal.classList.remove('hidden')
+    });
+
+    closeModal.forEach(close => {
+      close.addEventListener('click', function () {
+        modal.classList.add('hidden')
+      });
+    });
+  </script>
+  <!-- end script -->
+</body>
+
+</html>

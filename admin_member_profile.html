@@ -1203,9 +1203,9 @@
 
       <!-- end sidebar content -->
 
-      <!-- end sidbar -->
+      <!-- end sidebar -->
 
-      <!-- strat content -->
+      <!-- start content -->
       <div class="bg-gray-100 flex-1 p-6 md:mt-16">
         <!-- start personal Info -->
         <div class="grid grid-cols-3 gap-6 mt-6 xl:grid-cols-1">
@@ -1213,23 +1213,39 @@
           <div class="card">
             <div class="card-header flex flex-row justify-between">
               RYO
-              <i class="fad fa-wrench ml-2 text-xs leading-none"></i>
+              <div class="set">
+                <button
+                  class="
+                    mb-3
+                    capitalize
+                    font-medium
+                    hover:text-teal-600
+                    transition
+                    ease-in-out
+                    duration-500
+                    focus:outline-none
+                  "
+                  title="set-picture"
+                ></button>
+                <button
+                  class="
+                    show-modal
+                    mb-3
+                    capitalize
+                    font-medium
+                    hover:text-teal-600
+                    transition
+                    ease-in-out
+                    duration-500
+                    focus:outline-none
+                  "
+                  title="set-password"
+                >
+                  修改密碼<i class="fas fa-unlock-alt ml-2 leading-none"></i>
+                </button>
+              </div>
             </div>
             <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
-              <!-- <img
-                class="
-                  w-32
-                  h-32
-                  md:w-48 md:h-auto md:rounded-none
-                  rounded-full
-                  mx-auto
-                "
-                src="/img/user.svg"
-                alt=""
-                width="384"
-                height="512"
-              /> -->
-              <!-- test -->
               <div x-data="app()" x-cloak>
                 <div class="mb-5 text-center">
                   <div
@@ -1295,14 +1311,8 @@
                       />
                       <circle cx="12" cy="13" r="3" />
                     </svg>
-                    瀏覽照片
+                    更新照片
                   </label>
-
-                  <div
-                    class="mx-auto w-48 text-gray-500 text-xs text-center mt-1"
-                  >
-                    點選更新照片
-                  </div>
 
                   <input
                     name="photo"
@@ -1319,7 +1329,7 @@
               </div>
               <!-- test end-->
 
-              <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+              <div class="pt-0 md:p-8 text-center md:text-left space-y-4">
                 <p class="text-lg font-semibold text-green-500">
                   <i class="fad fa-circle mr-4 mb-4"></i>
                   醫生
@@ -1327,16 +1337,264 @@
               </div>
             </figure>
 
-            <div class="card-header">其他資訊</div>
+            <div class="w-full flex flex-wrap p-6">
+              <div class="card-header w-1/2 md:w-1/2 px-3">
+                <li class="list-none">
+                  <i class="fas fa-map-marker-alt mr-2"></i>
+                  地區:
+                  <span class="text-grey-700 mr-2">台中市</span>
+                </li>
+              </div>
+              <div class="card-header w-1/2 md:w-1/2 px-3">
+                <li class="list-none">
+                  <i class="fas fa-birthday-cake mr-2"></i>
+                  年齡:
+                  <span class="text-grey-700 mr-2">66</span>
+                </li>
+              </div>
+              <div class="card-header w-1/2 md:w-1/2 px-3">
+                <li class="list-none">
+                  <i class="fas fa-tint mr-2"></i>
+                  血型:
+                  <span class="text-grey-700 mr-2">O</span>
+                </li>
+              </div>
+              <div class="card-header w-1/2 md:w-1/2 px-3">
+                <li class="list-none">
+                  <i class="fas fa-male mr-2"></i>
+                  身高:
+                  <span class="text-grey-700 mr-2">173</span>
+                </li>
+              </div>
+              <div class="card-header w-1/2 md:w-1/2 px-3">
+                <li class="list-none">
+                  <i class="fas fa-language mr-2"></i>
+                  語言:
+                  <span class="text-grey-700 mr-2"> 中文、英文</span>
+                </li>
+              </div>
+              <div class="card-header w-1/2 md:w-1/2 px-3">
+                <li class="list-none">
+                  <i class="fas fa-weight mr-2"></i>
+                  體重:
+                  <span class="text-grey-700 mr-2"> 60</span>
+                </li>
+              </div>
+            </div>
           </div>
           <!-- end personal pic -->
+
+          <!-- set-password-modal -->
+          <div
+            class="
+              modal
+              h-screen
+              w-full
+              fixed
+              left-0
+              top-0
+              flex
+              justify-center
+              items-center
+              bg-black bg-opacity-50
+              hidden
+            "
+          >
+            <!--modal-->
+            <div class="bg-white card ronded shadow-lg w-1/3">
+              <!--modal header-->
+              <div class="border-b px-4 py-2 flex justify-between items-center">
+                <h3 class="font-semibold text-lg">變更密碼</h3>
+                <button class="close-modal focus:outline-none">
+                  <i class="fal fa-times"></i>
+                </button>
+              </div>
+              <!--modal body-->
+              <div class="p-3">
+                <div class="w-full md:w-1/2 px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                      required
+                    "
+                    for="grid-account"
+                  >
+                    新密碼
+                  </label>
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border border-gray-200
+                      rounded
+                      py-3
+                      px-4
+                      mb-3
+                      leading-tight
+                      focus:outline-none focus:bg-white focus:border-gray-500
+                    "
+                    id="grid-account"
+                    type="password"
+                    placeholder="Password"
+                  />
+                </div>
+
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    "
+                    for="grid-email"
+                  >
+                    確認密碼
+                  </label>
+
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border
+                      rounded
+                      py-3
+                      px-4
+                      leading-tight
+                      focus:outline-none focus:bg-white
+                    "
+                    id="grid-email"
+                    type="password"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+              <div class="flex justify-end items-center w-100 border-t p-3">
+                <button
+                  class="
+                    bg-red-400
+                    hover:bg-red-500
+                    px-3
+                    py-1
+                    rounded
+                    text-white
+                    mr-1
+                    focus:outline-none
+                    close-modal
+                  "
+                >
+                  取消(Cancel)
+                </button>
+                <button
+                  class="
+                    bg-blue-400
+                    hover:bg-blue-600
+                    px-3
+                    py-1
+                    rounded
+                    text-white
+                    focus:outline-none
+                  "
+                >
+                  確定(Ok)
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End set-password-modal -->
 
           <!-- Start member data -->
           <div class="card col-span-2 xl:col-span-1">
             <div class="card-header">會員資料</div>
-            <form class="w-full max-w-lg flex flex-col m-6">
-              <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/2 px-3">
+            <form class="w-full flex flex-wrap p-6">
+              <div class="w-full flex flex-wrap">
+                <div class="w-1/2 md:w-1/2 px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                      required
+                    "
+                    for="grid-account"
+                  >
+                    使用者名稱
+                  </label>
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border border-gray-200
+                      rounded
+                      py-3
+                      px-4
+                      mb-3
+                      leading-tight
+                      focus:outline-none focus:bg-white focus:border-gray-500
+                    "
+                    id="grid-account"
+                    type="text"
+                    disabled="disabled"
+                  />
+                </div>
+
+                <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    "
+                    for="grid-email"
+                  >
+                    信箱
+                  </label>
+
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border
+                      rounded
+                      py-3
+                      px-4
+                      leading-tight
+                      focus:outline-none focus:bg-white
+                    "
+                    id="grid-email"
+                    type="text"
+                    placeholder="Email@Xmail.com"
+                  />
+                </div>
+              </div>
+
+              <div class="w-full flex flex-wrap">
+                <div class="w-1/2 md:w-1/2 px-3">
                   <label
                     class="
                       block
@@ -1372,7 +1630,7 @@
                   />
                 </div>
 
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
                   <label
                     class="
                       block
@@ -1407,9 +1665,115 @@
                   />
                 </div>
               </div>
+              <div class="w-full flex flex-wrap">
+                <div class="w-1/2 md:w-1/2 px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                      required
+                    "
+                    for="grid-phone"
+                  >
+                    手機號碼
+                  </label>
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border border-gray-200
+                      rounded
+                      py-3
+                      px-4
+                      mb-3
+                      leading-tight
+                      focus:outline-none focus:bg-white focus:border-gray-500
+                    "
+                    id="grid-phone"
+                    type="text"
+                    placeholder="0987654321"
+                  />
+                </div>
 
-              <div class="flex flex-wrap -mx-3">
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    "
+                    for="grid-birthday"
+                  >
+                    生日
+                  </label>
+
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border
+                      rounded
+                      py-3
+                      px-4
+                      leading-tight
+                      focus:outline-none focus:bg-white
+                    "
+                    id="grid-birthday"
+                    type="date"
+                  />
+                </div>
+
+                <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    "
+                    for="grid-language"
+                  >
+                    語言
+                  </label>
+
+                  <input
+                    class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border
+                      rounded
+                      py-3
+                      px-4
+                      leading-tight
+                      focus:outline-none focus:bg-white
+                    "
+                    id="grid-language"
+                    type="text"
+                    placeholder="English"
+                  />
+                </div>
+              </div>
+
+              <div class="w-full flex flex-wrap">
+                <div class="w-1/4 md:w-1/3 px-3 mb-6 md:mb-0">
                   <label
                     class="
                       block
@@ -1423,7 +1787,7 @@
                   >
                     縣市
                   </label>
-                  <div class="relative">
+                  <div>
                     <select
                       class="
                         block
@@ -1489,7 +1853,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <div class="w-3/4 md:w-1/3 px-3 mb-6 md:mb-0">
                   <label
                     class="
                       block
@@ -1523,7 +1887,7 @@
                   />
                 </div>
               </div>
-              <button class="btn hover:bg-teal-400">修改變更</button>
+              <button class="btn hover:bg-teal-400 ml-3">修改變更</button>
             </form>
           </div>
           <!-- End  member data -->
@@ -1547,6 +1911,22 @@
           gender: "Male",
         };
       }
+      //  Modal script
+      const modal = document.querySelector(".modal");
+
+      const showModal = document.querySelector(".show-modal");
+      const closeModal = document.querySelectorAll(".close-modal");
+
+      showModal.addEventListener("click", function () {
+        modal.classList.remove("hidden");
+      });
+
+      closeModal.forEach((close) => {
+        close.addEventListener("click", function () {
+          modal.classList.add("hidden");
+        });
+      });
+      // end Modal script
     </script>
     <!-- end script -->
   </body>

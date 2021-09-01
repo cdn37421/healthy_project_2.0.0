@@ -25,7 +25,7 @@ tailwind
 
 使用 fontawesome
 
-[https://fontawesome.com/v6.0](https://fontawesome.com/v6.0)
+https://fontawesome.com/v5.15/icons?d=gallery&p=2&s=brands&v=5.12.0
 
 例：
 
@@ -35,9 +35,9 @@ tailwind
 
 顏色：
 
-灰色：bg-gray-100（主調）
+灰色：text-gray-100（主調）
 
-藍綠：bg-teal-400（副調）
+藍綠：text-teal-400（副調）
 
 其他自行配色
 
