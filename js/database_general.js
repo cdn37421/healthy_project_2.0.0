@@ -26,7 +26,6 @@ healthyLifeStyleDBUtil.login(user, password[, successCallBack][, failCallBack][,
 healthyLifeStyleDBUtil.isLoginRequestActivate()
 登入請求是否正在執行中。
 
-
 healthyLifeStyleDBUtil.register(user, password[, email][, successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
 向網頁伺服器提交帳戶註冊請求。
 回乎函式的行為同login函式。
@@ -38,241 +37,244 @@ healthyLifeStyleDBUtil.getCurrentLoginAccount([successCallBack][, failCallBack][
 取得當前網頁登入的帳號。若沒有登入，則請求會失敗。
 若有登入的帳號，請求會成功，回乎函式中的data會是當前登入的帳號資訊，資料格式為已解析好的json資料。
 帳號資料包含兩個參數：
-user: 當前登入的帳號名稱。
-permissionLevel: 當前帳號的權限等級，以字串表示，可能的值有NONE,ADMIN,NORMAL_EMPLOYEE。
+loginProfile: 當前登入帳號的身分，實際身分為其中的loginIdentity。可能的值有NONE,ADMIN,NORMAL_EMPLOYEE,DOCTOR。
+NONE表示一般無特殊權限的登入用戶。
+userProfile: 當前登入帳號的所有基本資料。
+
+帳號資料範例：
+{
+	"loginProfile":{
+		"user":"RRR",
+		"loginIdentity":"NONE"
+	},
+	"userProfile":{
+		"user":"RRR",
+		"email":"RRR@RRR.com",
+		"lastName":null,
+		"firstName":null,
+		"gender":null,
+		"bloodtypeABO":null,
+		"birthday":null,
+		"phone":null,
+		"photo":null,
+		"height":0,
+		"weight":0,
+		"city":null,
+		"location":null,
+		"availableLangs":[
+			"zh_tw",
+			"ja_jp"
+		]
+	}
+}
 
 healthyLifeStyleDBUtil.logOut([successCallBack][, replaceSuccessCallBack])
 執行後將當前網頁登入的帳號登出。
 
 healthyLifeStyleDBUtil.getRegisteredMembers([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
-取得會員列表。當前登入的帳號必須要有管理員(ADMIN)權限等級才可執行成功。above
+取得會員列表。當前登入的帳號必須要有管理員(ADMIN)權限等級才可執行成功。
 目前還沒有把切換權限的功能完成。因此執行此函數時，會自動嘗試將帳號切換為管理員模式，若切換失敗則請求失敗。
 若成功，則回乎函式中的data會是已註冊的會員列表(以陣列形式存放，含系統帳號)，格式為解析完成的json資料。
+會列表中的會員訊息，包含下列參數：
+user: 用戶帳號名稱
+email: 用戶的電子郵件。可能為null
+nickName: 用戶的暱稱。可能為null
+gender: 用戶的性別。可能的值有:OTHER,MALE,FEMALE或null
+bloodtypeABO: 用戶的ABO血型。可能的值有O,A,B,AB或null
+birthday: 用戶的生日，可能為null
+phone: 用戶的手機號碼，可能為null
+photo: 用戶的頭像(照片)，資料格式應該是base64，可能為null。
 
 
 */
 const healthyLifeStyleDBUtil = {};
 
-(function () {
-  healthyLifeStyleDBUtil.init = function () {
-    var activatingAJAX = {};
+(function(){
 
-    this.requestOrigin = window.location.origin;
-    this.loginPath = "/HealthyLifestyle/Account/Login";
+	healthyLifeStyleDBUtil.init = function(){
+		
+		var activatingAJAX = {};
+		
+		this.requestOrigin = "https://healthylifestyle.hopto.org"//window.location.origin;
+		this.loginPath = "/HealthyLifestyle/Account/Login";
+		
+		this.login = (user, password, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			
+			if(activatingAJAX["login"]) return;
+			activatingAJAX["login"] = true;
+			
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功登入帳號!!");
+				successCallBack(data, textStatus, jqXHR);
+				//window.location.replace("account.html");
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "無效的帳號或密碼!!";
+						break;
+					case 404:
+						errmsg = "伺服器沒有回應，無法登入帳號。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法登入帳號。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			};
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.post({
+				url: this.requestOrigin+this.loginPath,
+				data: $.param({user:user, password:password})
+			}).done(finalSuccessCallBack).fail(finalFailCallBack).always(() => {
+				activatingAJAX["login"] = false;
+			});
+		};
+		this.isLoginRequestActivate = () => {
+			return !!activatingAJAX["login"];
+		}
+		
+		
+		this.register = (user, password, email, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			
+			if(activatingAJAX["register"]) return;
+			activatingAJAX["register"] = true;
+			
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功註冊帳號!!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 400:
+						errmsg = "註冊資料(帳號、密碼或電子郵件)格式錯誤，無法註冊。";
+						break;
+					case 409:
+						errmsg = "已存在相同的帳號，請選擇另一個帳號註冊。";
+						break;
+					case 404:
+						errmsg = "伺服器沒有回應，無法註冊帳號。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法註冊帳號。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.post({
+				url: this.requestOrigin+"/HealthyLifestyle/Account/Register",
+				data: $.param({user:user, password:password, email:email})
+			}).done(finalSuccessCallBack).fail(finalFailCallBack).always(() => {
+				activatingAJAX["register"] = false;
+			});
+			
+		};
+		this.isRegisterRequestActivate = () => {
+			return !!activatingAJAX["register"];
+		}
+		
+		
+		this.getCurrentLoginAccount = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，請重新登入。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			
+			$.get({
+				url: this.requestOrigin+this.loginPath
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+		}
+		
+		
+		this.logOut = (successCallBack, replaceSuccessCallBack) => {
+			
+			successCallBack = successCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功登出帳號");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			
+			
+			$.get({
+				url: this.requestOrigin + "/HealthyLifestyle/Account/Logout"
+			}).done(finalSuccessCallBack);
+			
+		}
+		
+		
+		this.getRegisteredMembers = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
 
-    this.login = (
-      user,
-      password,
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      if (activatingAJAX["login"]) return;
-      activatingAJAX["login"] = true;
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功取得會員列表。");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 403:
+						errmsg = "無權限的操作。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			
+			$.get({
+				url: this.requestOrigin + "/HealthyLifestyle/Account/Admin/MemberManager"
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
 
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
+		}
+		
+		
+	};
+	
+	healthyLifeStyleDBUtil.init();
+	healthyLifeStyleDBUtil.init = null;
 
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功登入帳號!!");
-        successCallBack(data, textStatus, jqXHR);
-        //window.location.replace("account.html");
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 401:
-            errmsg = "無效的帳號或密碼!!";
-            break;
-          case 404:
-            errmsg = "伺服器沒有回應，無法登入帳號。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤，無法登入帳號。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.post({
-        url: this.requestOrigin + this.loginPath,
-        data: $.param({ user: user, password: password }),
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack)
-        .always(() => {
-          activatingAJAX["login"] = false;
-        });
-    };
-    this.isLoginRequestActivate = () => {
-      return !!activatingAJAX["login"];
-    };
-
-    this.register = (
-      user,
-      password,
-      email,
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      if (activatingAJAX["register"]) return;
-      activatingAJAX["register"] = true;
-
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功註冊帳號!!");
-        successCallBack(data, textStatus, jqXHR);
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 400:
-            errmsg = "註冊資料(帳號、密碼或電子郵件)格式錯誤，無法註冊。";
-            break;
-          case 409:
-            errmsg = "已存在相同的帳號，請選擇另一個帳號註冊。";
-            break;
-          case 404:
-            errmsg = "伺服器沒有回應，無法註冊帳號。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤，無法註冊帳號。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.post({
-        url: this.requestOrigin + "/HealthyLifestyle/Account/Register",
-        data: $.param({ user: user, password: password, email: email }),
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack)
-        .always(() => {
-          activatingAJAX["register"] = false;
-        });
-    };
-    this.isRegisterRequestActivate = () => {
-      return !!activatingAJAX["register"];
-    };
-
-    this.getCurrentLoginAccount = (
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        successCallBack(data, textStatus, jqXHR);
-      };
-      var defaultFailCallBack = function (data) {
-        var errmsg = "";
-        switch (data.status) {
-          case 401:
-            errmsg = "登入狀態過期，請重新登入。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤，請重新登入。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.get({
-        url: this.requestOrigin + this.loginPath,
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack);
-    };
-
-    this.logOut = (successCallBack, replaceSuccessCallBack) => {
-      successCallBack = successCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功登出帳號");
-        successCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-
-      $.get({
-        url: this.requestOrigin + "/HealthyLifestyle/Account/Logout",
-      }).done(finalSuccessCallBack);
-    };
-
-    this.getRegisteredMembers = (
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功取得會員列表。");
-        successCallBack(data, textStatus, jqXHR);
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 403:
-            errmsg = "無權限的操作。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.get({
-        url:
-          this.requestOrigin + "/HealthyLifestyle/Account/Admin/MemberManager",
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack);
-    };
-  };
-
-  healthyLifeStyleDBUtil.init();
-  healthyLifeStyleDBUtil.init = null;
 })();
