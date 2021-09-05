@@ -27,9 +27,6 @@
 
 
 
-
-
-
 </style>
 
   </head>
@@ -1286,6 +1283,7 @@
         </style>
       
         <div x-data="app()" x-cloak>
+          
           <div class="max-w-full mx-auto px-4 py-10">
       
             <div x-show.transition="step === 'complete'">
@@ -1297,6 +1295,11 @@
       
                   <div class="text-gray-600 mb-8 ">
                     謝謝您，已經預約成功，您可以在日曆查看預約行程。
+                    預約科別：
+                    預約時間：
+                    預約日期：
+                    預約醫生：
+ 
                   </div>
       
                   <button
@@ -1306,7 +1309,8 @@
                 </div>
               </div>
             </div>
-      
+            
+            <form action="">
             <div x-show.transition="step != 'complete'">	
               <!-- Top Navigation -->
               <div class="border-b-2 py-4">
@@ -1341,11 +1345,11 @@
                 <div x-show.transition.in="step === 1" >
                  
                   <div class="relative inline-block  mb-5">
-                    <label for="datepicker" class="font-bold mb-1 text-gray-700 block">選擇科別</label>
+                    <label for="patient-pick-specialty" class="font-bold mb-1 text-gray-700 block">選擇科別</label>
                     <div class="absolute top-5 right-0 px-3 py-2">
                     <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
                   </div>
-                    <select class="border border-gray-300 font-medium rounded-lg shadow-sm text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none ocus:shadow-outline appearance-none">
+                    <select id="patient-pick-specialty" class="border border-gray-300 font-medium rounded-lg shadow-sm text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none ocus:shadow-outline appearance-none">
 
                       <option >請選擇</option>     
                       <option>內科</option>
@@ -1385,7 +1389,7 @@
                         <label for="datepicker" class="font-bold mb-1 text-gray-700 block">選擇日期</label>
                         <div class="relative rounded-lg shadow-sm ">
                           <input type="hidden" name="date" x-ref="date" :value="datepickerValue" />
-                          <input type="text" x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" class="w-full pl-4 pr-10 py-3 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
+                          <input id="patient-pick-date" type="text" x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" class="w-full pl-4 pr-10 py-3 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
                 
                           <div class="absolute top-0 right-0 px-3 py-2">
                             <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1470,8 +1474,8 @@
                     <!-- card 1 -->
 
                     <div class="doctor doctor-card-input">
-                      <label>
-                        <input type="radio" name="doctor-card" class="doctor-card-input-element " />
+                      <label id=patient-pick-doctor>
+                        <input id=patient-pick-doctor type="radio" name="doctor-card" class="doctor-card-input-element required" />
                       <img
                         src="img/doctors/Doctor_woman.jpg"
                         class="doctor-img"
@@ -1548,13 +1552,13 @@
       
                   <div x-show.transition.in="step === 3">
                     <div class="mb-5">
-                      <label for="email" class="font-bold mb-1 text-gray-700 block">Gender</label>
+                      <label for="patient-gender" class="font-bold mb-1 text-gray-700 block">Gender</label>
                       
                       <div class="flex">
                         <label
                           class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm mr-4">
                           <div class="text-teal-600 mr-3">
-                            <input type="radio" x-model="gender" value="Male" class="form-radio focus:outline-none focus:shadow-outline" />
+                            <input id="patient-gender" type="radio" x-model="gender" value="Male" class="form-radio focus:outline-none focus:shadow-outline" />
                           </div>
                           <div class="select-none text-gray-700">男性</div>
                         </label>
@@ -1562,7 +1566,7 @@
                         <label
                           class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm">
                           <div class="text-teal-600 mr-3">
-                            <input type="radio" x-model="gender" value="Female" class="form-radio focus:outline-none focus:shadow-outline" />
+                            <input patient-gender type="radio" x-model="gender" value="Female" class="form-radio focus:outline-none focus:shadow-outline" />
                           </div>
                           <div class="select-none text-gray-700">女性</div>
                         </label>
@@ -1582,6 +1586,9 @@
               </div>
               <!-- / Step Content -->
             </div>
+           </form>
+          
+          
           </div>
       
           <!-- Bottom Navigation -->	
@@ -1604,6 +1611,7 @@
                   >下一步</button>
       
                   <button
+                  id="submitBtn"
                     @click="step = 'complete'"
                     x-show="step === 3"
                     class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
@@ -1766,8 +1774,16 @@
         };
       }
     </script>
-    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script> 
-    <script>paypal.Buttons().render('body');</script>
+     <script>
+       const submitBtn = document.getElementById("submitBtn");
+       submitBtn.addEventListener("click",function(){
+
+         console.log("heelo")
+       })
+
+
+     </script>
+   
     <!-- end script -->
   </body>
 </html>
