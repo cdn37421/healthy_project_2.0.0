@@ -85,6 +85,20 @@ birthday: 用戶的生日，可能為null
 phone: 用戶的手機號碼，可能為null
 photo: 用戶的頭像(照片)，資料格式應該是base64，可能為null。
 
+healthyLifeStyleDBUtil.updateProfile(profile, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+更新用戶資料。
+profile表示用戶資料的js物件，格式等同於healthyLifeStyleDBUtil.getCurrentLoginAccount中，帳號資料的"userProfile"的格式。
+
+以下為更新帳戶資料的範例：
+healthyLifeStyleDBUtil.getCurrentLoginAccount(function(data){
+	//從伺服器取得當前登入帳戶資料後更新
+	var profile = data.userProfile;
+	profile.lastName = "Lu";
+	profile.firstName = "Yu-Lin";
+	profile.height = 8787;
+	profile.availableLangs.push("en_us");
+	healthyLifeStyleDBUtil.updateProfile(profile);
+});
 
 */
 const healthyLifeStyleDBUtil = {};
@@ -95,8 +109,11 @@ const healthyLifeStyleDBUtil = {};
 		
 		var activatingAJAX = {};
 		
-		this.requestOrigin = "https://healthylifestyle.hopto.org"//window.location.origin;
-		this.loginPath = "/HealthyLifestyle/Account/Login";
+		//TODO 正式上線時記得更改這邊的請求網址
+		this.requestOrigin = window.location.origin+"/HealthyLifestyle";
+		//this.requestOrigin = "https://healthylifestyle.hopto.org"+"/HealthyLifestyle";
+		
+		this.loginPath = "/Account/Login";
 		
 		this.login = (user, password, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
 			
@@ -132,7 +149,9 @@ const healthyLifeStyleDBUtil = {};
 			
 			$.post({
 				url: this.requestOrigin+this.loginPath,
-				data: $.param({user:user, password:password})
+				data: $.param({user:user, password:password}),
+				xhrFields: {withCredentials: true},
+				crossDomain: true
 			}).done(finalSuccessCallBack).fail(finalFailCallBack).always(() => {
 				activatingAJAX["login"] = false;
 			});
@@ -177,8 +196,10 @@ const healthyLifeStyleDBUtil = {};
 			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
 			
 			$.post({
-				url: this.requestOrigin+"/HealthyLifestyle/Account/Register",
-				data: $.param({user:user, password:password, email:email})
+				url: this.requestOrigin+"/Account/Register",
+				data: $.param({user:user, password:password, email:email}),
+				xhrFields: {withCredentials: true},
+				crossDomain: true
 			}).done(finalSuccessCallBack).fail(finalFailCallBack).always(() => {
 				activatingAJAX["register"] = false;
 			});
@@ -213,12 +234,12 @@ const healthyLifeStyleDBUtil = {};
 			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
 			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
 			
-			
 			$.get({
-				url: this.requestOrigin+this.loginPath
+				url: this.requestOrigin+this.loginPath,
+				xhrFields: {withCredentials: true},
+				crossDomain: true
 			}).done(finalSuccessCallBack).fail(finalFailCallBack);
 		}
-		
 		
 		this.logOut = (successCallBack, replaceSuccessCallBack) => {
 			
@@ -233,7 +254,9 @@ const healthyLifeStyleDBUtil = {};
 			
 			
 			$.get({
-				url: this.requestOrigin + "/HealthyLifestyle/Account/Logout"
+				url: this.requestOrigin + "/Account/Logout",
+				xhrFields: {withCredentials: true},
+				crossDomain: true
 			}).done(finalSuccessCallBack);
 			
 		}
@@ -266,11 +289,45 @@ const healthyLifeStyleDBUtil = {};
 			
 			
 			$.get({
-				url: this.requestOrigin + "/HealthyLifestyle/Account/Admin/MemberManager"
+				url: this.requestOrigin + "/Account/Admin/MemberManager",
+				xhrFields: {withCredentials: true},
+				crossDomain: true
 			}).done(finalSuccessCallBack).fail(finalFailCallBack);
 
 		}
 		
+		this.updateProfile = (profile, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功更新個人資料!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，請重新登入。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.post({
+				url: this.requestOrigin+"/Account/UpdateProfile",
+				data: JSON.stringify(profile),
+				xhrFields: {withCredentials: true},
+				crossDomain: true
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
 		
 	};
 	
