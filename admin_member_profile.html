@@ -1,66 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link rel="shortcut icon" href="./img/logo2.png" type="image/x-icon" />
-    <link
-      rel="stylesheet"
-      href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css"
-    />
 
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
-      defer
-    ></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="shortcut icon" href="./img/logo2.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css" />
 
-    <title>Welcome To Healthy</title>
-  </head>
-  <body class="bg-gray-100">
-    <!-- start navbar -->
-    <div
-      class="
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+  <script src="js/database_general.js">
+  </script>
+
+
+  <title>Welcome To Healthy</title>
+</head>
+
+<body class="bg-gray-100">
+  <!-- start navbar -->
+  <div class="
         md:fixed md:w-full md:top-0 md:z-20
         flex flex-row flex-wrap
         items-center
         bg-white
         p-6
         border-b border-gray-300
-      "
-    >
-      <!-- logo -->
-      <div class="flex-none w-56 flex flex-row items-center">
-        <a href="index.html">
-          <img
-            src="img/healthy.png"
-            class="w-12 flex-none"
-            style="width: 10.5rem"
-          />
-        </a>
+      ">
+    <!-- logo -->
+    <div class="flex-none w-56 flex flex-row items-center">
+      <a href="index.html">
+        <img src="img/healthy.png" class="w-12 flex-none" style="width: 10.5rem" />
+      </a>
 
-        <button
-          id="sliderBtn"
-          class="flex-none text-right text-gray-900 hidden md:block ml-2"
-        >
-          <i class="fad fa-list-ul"></i>
-        </button>
-      </div>
-      <!-- end logo -->
-
-      <!-- navbar content toggle -->
-      <button id="navbarToggle" class="hidden md:block md:fixed right-0 mr-6">
-        <i class="fad fa-chevron-double-down"></i>
+      <button id="sliderBtn" class="flex-none text-right text-gray-900 hidden md:block ml-2">
+        <i class="fad fa-list-ul"></i>
       </button>
-      <!-- end navbar content toggle -->
+    </div>
+    <!-- end logo -->
 
-      <!-- navbar content -->
-      <div
-        id="navbar"
-        class="
+    <!-- navbar content toggle -->
+    <button id="navbarToggle" class="hidden md:block md:fixed right-0 mr-6">
+      <i class="fad fa-chevron-double-down"></i>
+    </button>
+    <!-- end navbar content toggle -->
+
+    <!-- navbar content -->
+    <div id="navbar" class="
           animated
           md:hidden
           md:fixed
@@ -79,11 +64,9 @@
           justify-between
           items-center
           md:flex-col md:items-center
-        "
-      >
-        <!-- left -->
-        <div
-          class="
+        ">
+      <!-- left -->
+      <div class="
             text-gray-600
             md:w-full
             md:flex
@@ -93,73 +76,49 @@
             md:mb-10
             md:border-b
             md:border-gray-200
-          "
-        >
-          <a
-            class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
-            href="#"
-            title="email"
-            ><i class="fad fa-envelope-open-text"></i
-          ></a>
-          <a
-            class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
-            href="#"
-            title="email"
-            ><i class="fad fa-comments-alt"></i
-          ></a>
-          <a
-            class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
-            href="#"
-            title="email"
-            ><i class="fad fa-check-circle"></i
-          ></a>
-          <a
-            class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
-            href="#"
-            title="email"
-            ><i class="fad fa-calendar-exclamation"></i
-          ></a>
-        </div>
-        <!-- end left -->
+          ">
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="#" title="email"><i
+            class="fad fa-envelope-open-text"></i></a>
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="#" title="email"><i
+            class="fad fa-comments-alt"></i></a>
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="#" title="email"><i
+            class="fad fa-check-circle"></i></a>
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="#" title="email"><i
+            class="fad fa-calendar-exclamation"></i></a>
+      </div>
+      <!-- end left -->
 
-        <!-- right -->
-        <div class="flex flex-row-reverse items-center">
-          <!-- user -->
-          <div class="dropdown relative md:static">
-            <button
-              class="
+      <!-- right -->
+      <div class="flex flex-row-reverse items-center">
+        <!-- user -->
+        <div class="dropdown relative md:static">
+          <button class="
                 menu-btn
                 focus:outline-none focus:shadow-outline
                 flex flex-wrap
                 items-center
-              "
-            >
-              <div class="w-8 h-8 overflow-hidden rounded-full">
-                <img class="w-full h-full object-cover" src="img/user.svg" />
-              </div>
+              ">
+            <div class="w-8 h-8 overflow-hidden rounded-full">
+              <img class="w-full h-full object-cover" src="img/user.svg" />
+            </div>
 
-              <div class="ml-2 capitalize flex">
-                <h1
-                  class="
+            <div class="ml-2 capitalize flex">
+              <h1 class="
                     text-sm text-gray-800
                     font-semibold
                     m-0
                     p-0
                     leading-none
-                  "
-                >
-                  RYO
-                </h1>
-                <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
-              </div>
-            </button>
+                  " id="title-account">
 
-            <button
-              class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"
-            ></button>
+              </h1>
+              <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
+            </div>
+          </button>
 
-            <div
-              class="
+          <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
+
+          <div class="
                 text-gray-500
                 menu
                 hidden
@@ -175,11 +134,9 @@
                 py-2
                 animated
                 faster
-              "
-            >
-              <!-- item -->
-              <a
-                class="
+              ">
+            <!-- item -->
+            <a class="
                   px-4
                   py-2
                   block
@@ -192,17 +149,14 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <i class="fad fa-user-edit text-xs mr-1"></i>
-                編輯個人資料
-              </a>
-              <!-- end item -->
+                " href="#">
+              <i class="fad fa-user-edit text-xs mr-1"></i>
+              編輯個人資料
+            </a>
+            <!-- end item -->
 
-              <!-- item -->
-              <a
-                class="
+            <!-- item -->
+            <a class="
                   px-4
                   py-2
                   block
@@ -215,17 +169,14 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <i class="fad fa-inbox-in text-xs mr-1"></i>
-                我的盒子
-              </a>
-              <!-- end item -->
+                " href="#">
+              <i class="fad fa-inbox-in text-xs mr-1"></i>
+              我的盒子
+            </a>
+            <!-- end item -->
 
-              <!-- item -->
-              <a
-                class="
+            <!-- item -->
+            <a class="
                   px-4
                   py-2
                   block
@@ -238,17 +189,14 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <i class="fad fa-badge-check text-xs mr-1"></i>
-                任務
-              </a>
-              <!-- end item -->
+                " href="#">
+              <i class="fad fa-badge-check text-xs mr-1"></i>
+              任務
+            </a>
+            <!-- end item -->
 
-              <!-- item -->
-              <a
-                class="
+            <!-- item -->
+            <a class="
                   px-4
                   py-2
                   block
@@ -261,19 +209,16 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <i class="fad fa-comment-alt-dots text-xs mr-1"></i>
-                聊天
-              </a>
-              <!-- end item -->
+                " href="#">
+              <i class="fad fa-comment-alt-dots text-xs mr-1"></i>
+              聊天
+            </a>
+            <!-- end item -->
 
-              <hr />
+            <hr />
 
-              <!-- item -->
-              <a
-                class="
+            <!-- item -->
+            <a class="
                   px-4
                   py-2
                   block
@@ -286,21 +231,18 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <i class="fad fa-user-times text-xs mr-1"></i>
-                登出
-              </a>
-              <!-- end item -->
-            </div>
+                " href="#">
+              <i class="fad fa-user-times text-xs mr-1"></i>
+              登出
+            </a>
+            <!-- end item -->
           </div>
-          <!-- end user -->
+        </div>
+        <!-- end user -->
 
-          <!-- notifcation -->
-          <div class="dropdown relative mr-5 md:static">
-            <button
-              class="
+        <!-- notifcation -->
+        <div class="dropdown relative mr-5 md:static">
+          <button class="
                 text-gray-500
                 menu-btn
                 p-0
@@ -310,17 +252,13 @@
                 transition-all
                 ease-in-out
                 duration-300
-              "
-            >
-              <i class="fad fa-bells"></i>
-            </button>
+              ">
+            <i class="fad fa-bells"></i>
+          </button>
 
-            <button
-              class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"
-            ></button>
+          <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
 
-            <div
-              class="
+          <div class="
                 menu
                 hidden
                 rounded
@@ -335,11 +273,9 @@
                 py-2
                 animated
                 faster
-              "
-            >
-              <!-- top -->
-              <div
-                class="
+              ">
+            <!-- top -->
+            <div class="
                   px-4
                   py-2
                   flex flex-row
@@ -348,29 +284,67 @@
                   capitalize
                   font-semibold
                   text-sm
-                "
-              >
-                <h1>通知</h1>
-                <div
-                  class="
+                ">
+              <h1>通知</h1>
+              <div class="
                     bg-teal-100
                     border border-teal-200
                     text-teal-500 text-xs
                     rounded
                     px-1
-                  "
-                >
-                  <strong>5</strong>
+                  ">
+                <strong>5</strong>
+              </div>
+            </div>
+            <hr />
+            <!-- end top -->
+
+            <!-- body -->
+
+            <!-- item -->
+            <a class="
+                  flex flex-row
+                  items-center
+                  justify-start
+                  px-4
+                  py-4
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <div class="
+                    px-3
+                    py-2
+                    rounded
+                    mr-3
+                    bg-gray-100
+                    border border-gray-300
+                  ">
+                <i class="fad fa-birthday-cake text-sm"></i>
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">戳..</h1>
+                  <p class="text-xs text-gray-500">寫些東西</p>
+                </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>4 分前</p>
                 </div>
               </div>
-              <hr />
-              <!-- end top -->
+            </a>
+            <hr />
+            <!-- end item -->
 
-              <!-- body -->
-
-              <!-- item -->
-              <a
-                class="
+            <!-- item -->
+            <a class="
                   flex flex-row
                   items-center
                   justify-start
@@ -386,38 +360,33 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <div
-                  class="
+                " href="#">
+              <div class="
                     px-3
                     py-2
                     rounded
                     mr-3
                     bg-gray-100
                     border border-gray-300
-                  "
-                >
-                  <i class="fad fa-birthday-cake text-sm"></i>
-                </div>
+                  ">
+                <i class="fad fa-user-circle text-sm"></i>
+              </div>
 
-                <div class="flex-1 flex flex-rowbg-green-100">
-                  <div class="flex-1">
-                    <h1 class="text-sm font-semibold">戳..</h1>
-                    <p class="text-xs text-gray-500">寫些東西</p>
-                  </div>
-                  <div class="text-right text-xs text-gray-500">
-                    <p>4 分前</p>
-                  </div>
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">ryo..</h1>
+                  <p class="text-xs text-gray-500">寫些東西</p>
                 </div>
-              </a>
-              <hr />
-              <!-- end item -->
+                <div class="text-right text-xs text-gray-500">
+                  <p>78 分前</p>
+                </div>
+              </div>
+            </a>
+            <hr />
+            <!-- end item -->
 
-              <!-- item -->
-              <a
-                class="
+            <!-- item -->
+            <a class="
                   flex flex-row
                   items-center
                   justify-start
@@ -433,38 +402,33 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <div
-                  class="
+                " href="#">
+              <div class="
                     px-3
                     py-2
                     rounded
                     mr-3
                     bg-gray-100
                     border border-gray-300
-                  "
-                >
-                  <i class="fad fa-user-circle text-sm"></i>
-                </div>
+                  ">
+                <i class="fad fa-images text-sm"></i>
+              </div>
 
-                <div class="flex-1 flex flex-rowbg-green-100">
-                  <div class="flex-1">
-                    <h1 class="text-sm font-semibold">ryo..</h1>
-                    <p class="text-xs text-gray-500">寫些東西</p>
-                  </div>
-                  <div class="text-right text-xs text-gray-500">
-                    <p>78 分前</p>
-                  </div>
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">新增圖片</h1>
+                  <p class="text-xs text-gray-500">寫些東西</p>
                 </div>
-              </a>
-              <hr />
-              <!-- end item -->
+                <div class="text-right text-xs text-gray-500">
+                  <p>65 分前</p>
+                </div>
+              </div>
+            </a>
+            <hr />
+            <!-- end item -->
 
-              <!-- item -->
-              <a
-                class="
+            <!-- item -->
+            <a class="
                   flex flex-row
                   items-center
                   justify-start
@@ -480,89 +444,36 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <div
-                  class="
+                " href="#">
+              <div class="
                     px-3
                     py-2
                     rounded
                     mr-3
                     bg-gray-100
                     border border-gray-300
-                  "
-                >
-                  <i class="fad fa-images text-sm"></i>
+                  ">
+                <i class="fad fa-alarm-exclamation text-sm"></i>
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">時間到了</h1>
+                  <p class="text-xs text-gray-500">寫些東西</p>
                 </div>
-
-                <div class="flex-1 flex flex-rowbg-green-100">
-                  <div class="flex-1">
-                    <h1 class="text-sm font-semibold">新增圖片</h1>
-                    <p class="text-xs text-gray-500">寫些東西</p>
-                  </div>
-                  <div class="text-right text-xs text-gray-500">
-                    <p>65 分前</p>
-                  </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>1 分前</p>
                 </div>
-              </a>
-              <hr />
-              <!-- end item -->
+              </div>
+            </a>
+            <!-- end item -->
 
-              <!-- item -->
-              <a
-                class="
-                  flex flex-row
-                  items-center
-                  justify-start
-                  px-4
-                  py-4
-                  block
-                  capitalize
-                  font-medium
-                  text-sm
-                  tracking-wide
-                  bg-white
-                  hover:bg-gray-200
-                  transition-all
-                  duration-300
-                  ease-in-out
-                "
-                href="#"
-              >
-                <div
-                  class="
-                    px-3
-                    py-2
-                    rounded
-                    mr-3
-                    bg-gray-100
-                    border border-gray-300
-                  "
-                >
-                  <i class="fad fa-alarm-exclamation text-sm"></i>
-                </div>
+            <!-- end body -->
 
-                <div class="flex-1 flex flex-rowbg-green-100">
-                  <div class="flex-1">
-                    <h1 class="text-sm font-semibold">時間到了</h1>
-                    <p class="text-xs text-gray-500">寫些東西</p>
-                  </div>
-                  <div class="text-right text-xs text-gray-500">
-                    <p>1 分前</p>
-                  </div>
-                </div>
-              </a>
-              <!-- end item -->
-
-              <!-- end body -->
-
-              <!-- bottom -->
-              <hr />
-              <div class="px-4 py-2 mt-2">
-                <a
-                  href="#"
-                  class="
+            <!-- bottom -->
+            <hr />
+            <div class="px-4 py-2 mt-2">
+              <a href="#" class="
                     border border-gray-300
                     block
                     text-center text-xs
@@ -573,20 +484,18 @@
                     transition-all
                     ease-in-out
                     duration-500
-                  "
-                >
-                  觀看全部
-                </a>
-              </div>
-              <!-- end bottom -->
+                  ">
+                觀看全部
+              </a>
             </div>
+            <!-- end bottom -->
           </div>
-          <!-- end notifcation -->
+        </div>
+        <!-- end notifcation -->
 
-          <!-- messages -->
-          <div class="dropdown relative mr-5 md:static">
-            <button
-              class="
+        <!-- messages -->
+        <div class="dropdown relative mr-5 md:static">
+          <button class="
                 text-gray-500
                 menu-btn
                 p-0
@@ -596,17 +505,13 @@
                 transition-all
                 ease-in-out
                 duration-300
-              "
-            >
-              <i class="fad fa-comments"></i>
-            </button>
+              ">
+            <i class="fad fa-comments"></i>
+          </button>
 
-            <button
-              class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"
-            ></button>
+          <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
 
-            <div
-              class="
+          <div class="
                 menu
                 hidden
                 md:w-full md:right-0
@@ -621,11 +526,9 @@
                 py-2
                 animated
                 faster
-              "
-            >
-              <!-- top -->
-              <div
-                class="
+              ">
+            <!-- top -->
+            <div class="
                   px-4
                   py-2
                   flex flex-row
@@ -634,29 +537,68 @@
                   capitalize
                   font-semibold
                   text-sm
-                "
-              >
-                <h1>訊息</h1>
-                <div
-                  class="
+                ">
+              <h1>訊息</h1>
+              <div class="
                     bg-teal-100
                     border border-teal-200
                     text-teal-500 text-xs
                     rounded
                     px-1
-                  "
-                >
-                  <strong>3</strong>
+                  ">
+                <strong>3</strong>
+              </div>
+            </div>
+            <hr />
+            <!-- end top -->
+
+            <!-- body -->
+
+            <!-- item -->
+            <a class="
+                  flex flex-row
+                  items-center
+                  justify-start
+                  px-4
+                  py-4
+                  block
+                  capitalize
+                  font-medium
+                  text-sm
+                  tracking-wide
+                  bg-white
+                  hover:bg-gray-200
+                  transition-all
+                  duration-300
+                  ease-in-out
+                " href="#">
+              <div class="
+                    w-10
+                    h-10
+                    rounded-full
+                    overflow-hidden
+                    mr-3
+                    bg-gray-100
+                    border border-gray-300
+                  ">
+                <img class="w-full h-full object-cover" src="img/user1.jpg" alt="" />
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">RYO</h1>
+                  <p class="text-xs text-gray-500">我知道了</p>
+                </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>4 分前</p>
                 </div>
               </div>
-              <hr />
-              <!-- end top -->
+            </a>
+            <hr />
+            <!-- end item -->
 
-              <!-- body -->
-
-              <!-- item -->
-              <a
-                class="
+            <!-- item -->
+            <a class="
                   flex flex-row
                   items-center
                   justify-start
@@ -672,11 +614,8 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <div
-                  class="
+                " href="#">
+              <div class="
                     w-10
                     h-10
                     rounded-full
@@ -684,31 +623,25 @@
                     mr-3
                     bg-gray-100
                     border border-gray-300
-                  "
-                >
-                  <img
-                    class="w-full h-full object-cover"
-                    src="img/user1.jpg"
-                    alt=""
-                  />
-                </div>
+                  ">
+                <img class="w-full h-full object-cover" src="img/user2.jpg" alt="" />
+              </div>
 
-                <div class="flex-1 flex flex-rowbg-green-100">
-                  <div class="flex-1">
-                    <h1 class="text-sm font-semibold">RYO</h1>
-                    <p class="text-xs text-gray-500">我知道了</p>
-                  </div>
-                  <div class="text-right text-xs text-gray-500">
-                    <p>4 分前</p>
-                  </div>
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">sull goldmen</h1>
+                  <p class="text-xs text-gray-500">牛肉麵</p>
                 </div>
-              </a>
-              <hr />
-              <!-- end item -->
+                <div class="text-right text-xs text-gray-500">
+                  <p>1 天前</p>
+                </div>
+              </div>
+            </a>
+            <hr />
+            <!-- end item -->
 
-              <!-- item -->
-              <a
-                class="
+            <!-- item -->
+            <a class="
                   flex flex-row
                   items-center
                   justify-start
@@ -724,11 +657,8 @@
                   transition-all
                   duration-300
                   ease-in-out
-                "
-                href="#"
-              >
-                <div
-                  class="
+                " href="#">
+              <div class="
                     w-10
                     h-10
                     rounded-full
@@ -736,87 +666,28 @@
                     mr-3
                     bg-gray-100
                     border border-gray-300
-                  "
-                >
-                  <img
-                    class="w-full h-full object-cover"
-                    src="img/user2.jpg"
-                    alt=""
-                  />
+                  ">
+                <img class="w-full h-full object-cover" src="img/user3.jpg" alt="" />
+              </div>
+
+              <div class="flex-1 flex flex-rowbg-green-100">
+                <div class="flex-1">
+                  <h1 class="text-sm font-semibold">mick</h1>
+                  <p class="text-xs text-gray-500">正在輸入</p>
                 </div>
-
-                <div class="flex-1 flex flex-rowbg-green-100">
-                  <div class="flex-1">
-                    <h1 class="text-sm font-semibold">sull goldmen</h1>
-                    <p class="text-xs text-gray-500">牛肉麵</p>
-                  </div>
-                  <div class="text-right text-xs text-gray-500">
-                    <p>1 天前</p>
-                  </div>
+                <div class="text-right text-xs text-gray-500">
+                  <p>31 二月</p>
                 </div>
-              </a>
-              <hr />
-              <!-- end item -->
+              </div>
+            </a>
+            <!-- end item -->
 
-              <!-- item -->
-              <a
-                class="
-                  flex flex-row
-                  items-center
-                  justify-start
-                  px-4
-                  py-4
-                  block
-                  capitalize
-                  font-medium
-                  text-sm
-                  tracking-wide
-                  bg-white
-                  hover:bg-gray-200
-                  transition-all
-                  duration-300
-                  ease-in-out
-                "
-                href="#"
-              >
-                <div
-                  class="
-                    w-10
-                    h-10
-                    rounded-full
-                    overflow-hidden
-                    mr-3
-                    bg-gray-100
-                    border border-gray-300
-                  "
-                >
-                  <img
-                    class="w-full h-full object-cover"
-                    src="img/user3.jpg"
-                    alt=""
-                  />
-                </div>
+            <!-- end body -->
 
-                <div class="flex-1 flex flex-rowbg-green-100">
-                  <div class="flex-1">
-                    <h1 class="text-sm font-semibold">mick</h1>
-                    <p class="text-xs text-gray-500">正在輸入</p>
-                  </div>
-                  <div class="text-right text-xs text-gray-500">
-                    <p>31 二月</p>
-                  </div>
-                </div>
-              </a>
-              <!-- end item -->
-
-              <!-- end body -->
-
-              <!-- bottom -->
-              <hr />
-              <div class="px-4 py-2 mt-2">
-                <a
-                  href="#"
-                  class="
+            <!-- bottom -->
+            <hr />
+            <div class="px-4 py-2 mt-2">
+              <a href="#" class="
                     border border-gray-300
                     block
                     text-center text-xs
@@ -827,28 +698,25 @@
                     transition-all
                     ease-in-out
                     duration-500
-                  "
-                >
-                  觀看全部
-                </a>
-              </div>
-              <!-- end bottom -->
+                  ">
+                觀看全部
+              </a>
             </div>
+            <!-- end bottom -->
           </div>
-          <!-- end messages -->
         </div>
-        <!-- end right -->
+        <!-- end messages -->
       </div>
-      <!-- end navbar content -->
+      <!-- end right -->
     </div>
-    <!-- end navbar -->
+    <!-- end navbar content -->
+  </div>
+  <!-- end navbar -->
 
-    <!-- strat wrapper -->
-    <div class="h-screen flex flex-row flex-wrap">
-      <!-- start sidebar -->
-      <div
-        id="sideBar"
-        class="
+  <!-- strat wrapper -->
+  <div class="h-screen flex flex-row flex-wrap">
+    <!-- start sidebar -->
+    <div id="sideBar" class="
           relative
           flex flex-col flex-wrap
           bg-white
@@ -859,363 +727,310 @@
           md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl
           animated
           faster
-        "
-      >
-        <!-- sidebar content -->
-        <div class="flex flex-col">
-          <!-- sidebar toggle -->
-          <div class="text-right hidden md:block mb-4">
-            <button id="sideBarHideBtn">
-              <i class="fad fa-times-circle"></i>
-            </button>
-          </div>
-          <!-- end sidebar toggle -->
-
-          <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">
-            主控台
-          </p>
-
-          <!-- link -->
-          <a
-            href="admin.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-chart-pie text-xs mr-2"></i>
-            管理者主頁
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="admin_sale.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-shopping-cart text-xs mr-2"></i>
-            銷售分析後台
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="admin_member.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fas fa-users text-xs mr-2"></i>
-            會員管理後台
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="admin_doctor.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fas fa-users text-xs mr-2"></i>
-            醫生管理後台
-          </a>
-          <!-- end link -->
-
-          <!-- end link -->
-          <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
-            應用程式
-          </p>
-
-          <!-- link -->
-          <a
-            href="#"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-envelope-open-text text-xs mr-2"></i>
-            信件（未做）
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="#"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-comments text-xs mr-2"></i>
-            聊天（未做）
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="calendar.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-calendar-edit text-xs mr-2"></i>
-            日曆
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="#"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
-            發票（未做）
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="#"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-store text-xs mr-2"></i>
-            購物商城（未做）
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="#"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-book-open text-xs mr-2"></i>
-            健康存摺（未做）
-          </a>
-          <!-- end link -->
-          <!-- link -->
-          <a
-            href="#"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-calendar-check text-xs mr-2"></i>
-            預約看診
-          </a>
-
-          <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
-            其他頁面（暫存處）
-          </p>
-          <!-- link -->
-          <a
-            href="admin_member_profile.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-text text-xs mr-2"></i>
-            個人資料頁面
-          </a>
-          <!-- end link -->
-          <!-- link -->
-          <a
-            href="patient_list.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-person-sign text-xs mr-2"></i>
-            病患資料列表
-          </a>
-          <!-- end link -->
-          <!-- link -->
-          <a
-            href="patient_list_2.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-person-sign text-xs mr-2"></i>
-            病患資料列表（版本二）
-          </a>
-          <!-- end link -->
-          <!-- link -->
-          <a
-            href="patient_list.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-person-sign text-xs mr-2"></i>
-            病患個人資料頁面（一半）
-          </a>
-          <!-- end link -->
-          <!-- link -->
-          <a
-            href="patient_appointment.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-person-sign text-xs mr-2"></i>
-            病患預約介面
-          </a>
-          <!-- end link -->
-          <!-- link -->
-          <a
-            href="https://www.behance.net/gallery/90714005/Zendenta-Dental-clinic-management-system"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-person-sign text-xs mr-2"></i>
-            介面參考網址
-          </a>
-          <!-- end link -->
+        ">
+      <!-- sidebar content -->
+      <div class="flex flex-col">
+        <!-- sidebar toggle -->
+        <div class="text-right hidden md:block mb-4">
+          <button id="sideBarHideBtn">
+            <i class="fad fa-times-circle"></i>
+          </button>
         </div>
+        <!-- end sidebar toggle -->
+
+        <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">
+          主控台
+        </p>
+
+        <!-- link -->
+        <a href="admin.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-chart-pie text-xs mr-2"></i>
+          管理者主頁
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="admin_sale.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-shopping-cart text-xs mr-2"></i>
+          銷售分析後台
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="admin_member.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fas fa-users text-xs mr-2"></i>
+          會員管理後台
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="admin_doctor.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fas fa-users text-xs mr-2"></i>
+          醫生管理後台
+        </a>
+        <!-- end link -->
+
+        <!-- end link -->
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
+          應用程式
+        </p>
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-envelope-open-text text-xs mr-2"></i>
+          信件（未做）
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-comments text-xs mr-2"></i>
+          聊天（未做）
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="calendar.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-calendar-edit text-xs mr-2"></i>
+          日曆
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
+          發票（未做）
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-store text-xs mr-2"></i>
+          購物商城（未做）
+        </a>
+        <!-- end link -->
+
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-book-open text-xs mr-2"></i>
+          健康存摺（未做）
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a href="#" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-calendar-check text-xs mr-2"></i>
+          預約看診
+        </a>
+
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
+          其他頁面（暫存處）
+        </p>
+        <!-- link -->
+        <a href="admin_member_profile.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-text text-xs mr-2"></i>
+          個人資料頁面
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a href="patient_list.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-person-sign text-xs mr-2"></i>
+          病患資料列表
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a href="patient_list_2.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-person-sign text-xs mr-2"></i>
+          病患資料列表（版本二）
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a href="patient_list.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-person-sign text-xs mr-2"></i>
+          病患個人資料頁面（一半）
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a href="patient_appointment.html" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-person-sign text-xs mr-2"></i>
+          病患預約介面
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a href="https://www.behance.net/gallery/90714005/Zendenta-Dental-clinic-management-system" class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            ">
+          <i class="fad fa-person-sign text-xs mr-2"></i>
+          介面參考網址
+        </a>
+        <!-- end link -->
       </div>
+    </div>
 
-      <!-- end sidebar content -->
+    <!-- end sidebar content -->
 
-      <!-- end sidebar -->
+    <!-- end sidebar -->
 
-      <!-- start content -->
-      <div class="bg-gray-100 flex-1 p-6 md:mt-16">
-        <!-- start personal Info -->
-        <div class="grid grid-cols-3 gap-6 mt-6 xl:grid-cols-1">
-          <!-- personal pic -->
-          <div class="card">
-            <div class="card-header flex flex-row justify-between">
-              RYO
-              <div class="set">
-                <button
-                  class="
+    <!-- start content -->
+    <div class="bg-gray-100 flex-1 p-6 md:mt-16">
+      <!-- start personal Info -->
+      <div class="grid grid-cols-3 gap-6 mt-6 xl:grid-cols-1">
+        <!-- personal pic -->
+        <div class="card">
+          <div class="card-header flex flex-row justify-between">
+            <span id="card-account" ></span>
+            <div class="set">
+              <button class="
                     mb-3
                     capitalize
                     font-medium
@@ -1224,11 +1039,8 @@
                     ease-in-out
                     duration-500
                     focus:outline-none
-                  "
-                  title="set-picture"
-                ></button>
-                <button
-                  class="
+                  " title="set-picture"></button>
+              <button class="
                     show-modal
                     mb-3
                     capitalize
@@ -1238,18 +1050,15 @@
                     ease-in-out
                     duration-500
                     focus:outline-none
-                  "
-                  title="set-password"
-                >
-                  修改密碼<i class="fas fa-unlock-alt ml-2 leading-none"></i>
-                </button>
-              </div>
+                  " title="set-password">
+                修改密碼<i class="fas fa-unlock-alt ml-2 leading-none"></i>
+              </button>
             </div>
-            <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
-              <div x-data="app()" x-cloak>
-                <div class="mb-5 text-center">
-                  <div
-                    class="
+          </div>
+          <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
+            <div x-data="app()" x-cloak>
+              <div class="mb-5 text-center">
+                <div class="
                       mx-auto
                       w-32
                       h-32
@@ -1260,19 +1069,11 @@
                       bg-gray-100
                       mb-4
                       shadow-inset
-                    "
-                  >
-                    <img
-                      id="image"
-                      class="object-cover w-full h-32 rounded-full"
-                      :src="image"
-                    />
-                  </div>
+                    ">
+                  <img id="image" class="object-cover w-full h-32 rounded-full" :src="image" />
+                </div>
 
-                  <label
-                    for="fileInput"
-                    type="button"
-                    class="
+                <label for="fileInput" type="button" class="
                       cursor-pointer
                       inine-flex
                       justify-between
@@ -1287,106 +1088,83 @@
                       bg-white
                       hover:bg-gray-100
                       font-medium
-                    "
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke="currentColor"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect
-                        x="0"
-                        y="0"
-                        width="24"
-                        height="24"
-                        stroke="none"
-                      ></rect>
-                      <path
-                        d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"
-                      />
-                      <circle cx="12" cy="13" r="3" />
-                    </svg>
-                    更新照片
-                  </label>
+                    ">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+                    <path
+                      d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+                    <circle cx="12" cy="13" r="3" />
+                  </svg>
+                  更新照片
+                </label>
 
-                  <input
-                    name="photo"
-                    id="fileInput"
-                    accept="image/*"
-                    class="hidden"
-                    type="file"
-                    @change="let file = document.getElementById('fileInput').files[0]; 
+                <input name="photo" id="fileInput" accept="image/*" class="hidden" type="file" @change="let file = document.getElementById('fileInput').files[0]; 
                   var reader = new FileReader();
                   reader.onload = (e) => image = e.target.result;
-                  reader.readAsDataURL(file);"
-                  />
-                </div>
-              </div>
-              <!-- test end-->
-
-              <div class="pt-0 md:p-8 text-center md:text-left space-y-4">
-                <p class="text-lg font-semibold text-green-500">
-                  <i class="fad fa-circle mr-4 mb-4"></i>
-                  醫生
-                </p>
-              </div>
-            </figure>
-
-            <div class="w-full flex flex-wrap p-6">
-              <div class="card-header w-1/2 md:w-1/2 px-3">
-                <li class="list-none">
-                  <i class="fas fa-map-marker-alt mr-2"></i>
-                  地區:
-                  <span class="text-grey-700 mr-2">台中市</span>
-                </li>
-              </div>
-              <div class="card-header w-1/2 md:w-1/2 px-3">
-                <li class="list-none">
-                  <i class="fas fa-birthday-cake mr-2"></i>
-                  年齡:
-                  <span class="text-grey-700 mr-2">66</span>
-                </li>
-              </div>
-              <div class="card-header w-1/2 md:w-1/2 px-3">
-                <li class="list-none">
-                  <i class="fas fa-tint mr-2"></i>
-                  血型:
-                  <span class="text-grey-700 mr-2">O</span>
-                </li>
-              </div>
-              <div class="card-header w-1/2 md:w-1/2 px-3">
-                <li class="list-none">
-                  <i class="fas fa-male mr-2"></i>
-                  身高:
-                  <span class="text-grey-700 mr-2">173</span>
-                </li>
-              </div>
-              <div class="card-header w-1/2 md:w-1/2 px-3">
-                <li class="list-none">
-                  <i class="fas fa-language mr-2"></i>
-                  語言:
-                  <span class="text-grey-700 mr-2"> 中文、英文</span>
-                </li>
-              </div>
-              <div class="card-header w-1/2 md:w-1/2 px-3">
-                <li class="list-none">
-                  <i class="fas fa-weight mr-2"></i>
-                  體重:
-                  <span class="text-grey-700 mr-2"> 60</span>
-                </li>
+                  reader.readAsDataURL(file);" />
               </div>
             </div>
-          </div>
-          <!-- end personal pic -->
+            <!-- test end-->
 
-          <!-- set-password-modal -->
-          <div
-            class="
+            <div class="pt-0 md:p-8 text-center md:text-left space-y-4">
+              <p class="text-lg font-semibold text-green-500">
+                <i class="fad fa-circle mr-4 mb-4"></i>
+                醫生
+              </p>
+            </div>
+          </figure>
+
+          <div class="w-full flex flex-wrap p-6">
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                地區:
+                <span class="text-grey-700 mr-2" id="card-state"></span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-birthday-cake mr-2 "></i>
+                年齡:
+                <span class="text-grey-700 mr-2" id="card-years">66</span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-tint mr-2"></i>
+                血型:
+                <span class="text-grey-700 mr-2" id="card-blood">O</span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-male mr-2"></i>
+                身高:
+                <span class="text-grey-700 mr-2" id="card-height">173</span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-language mr-2"></i>
+                語言:
+                <span class="text-grey-700 mr-2" id="card-language"> 中文、英文</span>
+              </li>
+            </div>
+            <div class="card-header w-1/2 md:w-1/2 px-3">
+              <li class="list-none">
+                <i class="fas fa-weight mr-2"></i>
+                體重:
+                <span class="text-grey-700 mr-2" id="card-weight"> 60</span>
+              </li>
+            </div>
+          </div>
+        </div>
+        <!-- end personal pic -->
+
+        <!-- set-password-modal -->
+        <div class="
               modal
               h-screen
               w-full
@@ -1398,22 +1176,20 @@
               items-center
               bg-black bg-opacity-50
               hidden
-            "
-          >
-            <!--modal-->
-            <div class="bg-white card ronded shadow-lg w-1/3">
-              <!--modal header-->
-              <div class="border-b px-4 py-2 flex justify-between items-center">
-                <h3 class="font-semibold text-lg">變更密碼</h3>
-                <button class="close-modal focus:outline-none">
-                  <i class="fal fa-times"></i>
-                </button>
-              </div>
-              <!--modal body-->
-              <div class="p-3">
-                <div class="w-full md:w-1/2 px-3">
-                  <label
-                    class="
+            ">
+          <!--modal-->
+          <div class="bg-white card ronded shadow-lg w-1/3">
+            <!--modal header-->
+            <div class="border-b px-4 py-2 flex justify-between items-center">
+              <h3 class="font-semibold text-lg">變更密碼</h3>
+              <button class="close-modal focus:outline-none">
+                <i class="fal fa-times"></i>
+              </button>
+            </div>
+            <!--modal body-->
+            <div class="p-3">
+              <div class="w-full md:w-1/2 px-3">
+                <label class="
                       block
                       uppercase
                       tracking-wide
@@ -1421,13 +1197,10 @@
                       font-bold
                       mb-2
                       required
-                    "
-                    for="new-password"
-                  >
-                    新密碼
-                  </label>
-                  <input
-                    class="
+                    " for="new-password">
+                  新密碼
+                </label>
+                <input class="
                       appearance-none
                       block
                       w-full
@@ -1440,30 +1213,22 @@
                       mb-3
                       leading-tight
                       focus:outline-none focus:bg-white focus:border-gray-500
-                    "
-                    id="new-password"
-                    type="password"
-                    placeholder="Password"
-                  />
-                </div>
+                    " id="new-password" type="password" placeholder="Password" />
+              </div>
 
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label
-                    class="
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="
                       block
                       uppercase
                       tracking-wide
                       text-gray-700 text-xs
                       font-bold
                       mb-2
-                    "
-                    for="confirm-password"
-                  >
-                    確認密碼
-                  </label>
+                    " for="confirm-password">
+                  確認密碼
+                </label>
 
-                  <input
-                    class="
+                <input class="
                       appearance-none
                       block
                       w-full
@@ -1475,16 +1240,11 @@
                       px-4
                       leading-tight
                       focus:outline-none focus:bg-white
-                    "
-                    id="confirm-password"
-                    type="password"
-                    placeholder="Password"
-                  />
-                </div>
+                    " id="confirm-password" type="password" placeholder="Password" />
               </div>
-              <div class="flex justify-end items-center w-100 border-t p-3">
-                <button
-                  class="
+            </div>
+            <div class="flex justify-end items-center w-100 border-t p-3">
+              <button class="
                     bg-red-400
                     hover:bg-red-500
                     px-3
@@ -1494,12 +1254,10 @@
                     mr-1
                     focus:outline-none
                     close-modal
-                  "
-                >
-                  取消(Cancel)
-                </button>
-                <button
-                  class="
+                  ">
+                取消(Cancel)
+              </button>
+              <button class="
                     bg-blue-400
                     hover:bg-blue-600
                     px-3
@@ -1507,23 +1265,21 @@
                     rounded
                     text-white
                     focus:outline-none
-                  "
-                >
-                  確定(Ok)
-                </button>
-              </div>
+                  ">
+                確定(Ok)
+              </button>
             </div>
           </div>
-          <!-- End set-password-modal -->
+        </div>
+        <!-- End set-password-modal -->
 
-          <!-- Start member data -->
-          <div class="card col-span-2 xl:col-span-1">
-            <div class="card-header">會員資料</div>
-            <form class="w-full flex flex-wrap p-6">
-              <div class="w-full flex flex-wrap">
-                <div class="w-1/2 md:w-1/2 px-3">
-                  <label
-                    class="
+        <!-- Start member data -->
+        <div class="card col-span-2 xl:col-span-1">
+          <div class="card-header">會員資料</div>
+          <form class="w-full flex flex-wrap p-6">
+            <div class="w-full flex flex-wrap">
+              <div class="w-1/2 md:w-1/2 px-3">
+                <label class="
                       block
                       uppercase
                       tracking-wide
@@ -1531,13 +1287,10 @@
                       font-bold
                       mb-2
                       required
-                    "
-                    for="member-account"
-                  >
-                    使用者名稱
-                  </label>
-                  <input
-                    class="
+                    " for="member-account">
+                  使用者名稱
+                </label>
+                <input class="
                       appearance-none
                       block
                       w-full
@@ -1550,30 +1303,22 @@
                       mb-3
                       leading-tight
                       focus:outline-none focus:bg-white focus:border-gray-500
-                    "
-                    id="member-account"
-                    type="text"
-                    disabled="disabled"
-                  />
-                </div>
+                    " id="member-account" type="text" disabled="disabled"/>
+              </div>
 
-                <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label
-                    class="
+              <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="
                       block
                       uppercase
                       tracking-wide
                       text-gray-700 text-xs
                       font-bold
                       mb-2
-                    "
-                    for="member-email"
-                  >
-                    信箱
-                  </label>
+                    " for="member-email">
+                  信箱
+                </label>
 
-                  <input
-                    class="
+                <input class="
                       appearance-none
                       block
                       w-full
@@ -1585,18 +1330,13 @@
                       px-4
                       leading-tight
                       focus:outline-none focus:bg-white
-                    "
-                    id="member-email"
-                    type="text"
-                    placeholder="Email@Xmail.com"
-                  />
-                </div>
+                    " id="member-email" type="text" placeholder="Email@Xmail.com" />
               </div>
+            </div>
 
-              <div class="w-full flex flex-wrap">
-                <div class="w-1/2 md:w-1/2 px-3">
-                  <label
-                    class="
+            <div class="w-full flex flex-wrap">
+              <div class="w-1/2 md:w-1/2 px-3">
+                <label class="
                       block
                       uppercase
                       tracking-wide
@@ -1604,13 +1344,10 @@
                       font-bold
                       mb-2
                       required
-                    "
-                    for="member-lname"
-                  >
-                    姓氏
-                  </label>
-                  <input
-                    class="
+                    " for="member-lname">
+                  姓氏
+                </label>
+                <input class="
                       appearance-none
                       block
                       w-full
@@ -1623,30 +1360,22 @@
                       mb-3
                       leading-tight
                       focus:outline-none focus:bg-white focus:border-gray-500
-                    "
-                    id="member-lname"
-                    type="text"
-                    placeholder="Doe"
-                  />
-                </div>
+                    " id="member-lname" type="text" placeholder="Doe" />
+              </div>
 
-                <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label
-                    class="
+              <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="
                       block
                       uppercase
                       tracking-wide
                       text-gray-700 text-xs
                       font-bold
                       mb-2
-                    "
-                    for="member-fname"
-                  >
-                    名字
-                  </label>
+                    " for="member-fname">
+                  名字
+                </label>
 
-                  <input
-                    class="
+                <input class="
                       appearance-none
                       block
                       w-full
@@ -1658,17 +1387,12 @@
                       px-4
                       leading-tight
                       focus:outline-none focus:bg-white
-                    "
-                    id="member-fname"
-                    type="text"
-                    placeholder="Jane"
-                  />
-                </div>
+                    " id="member-fname" type="text" placeholder="Jane" />
               </div>
-              <div class="w-full flex flex-wrap">
-                <div class="w-1/2 md:w-1/2 px-3">
-                  <label
-                    class="
+            </div>
+            <div class="w-full flex flex-wrap">
+              <div class="w-1/2 md:w-1/2 px-3">
+                <label class="
                       block
                       uppercase
                       tracking-wide
@@ -1676,13 +1400,10 @@
                       font-bold
                       mb-2
                       required
-                    "
-                    for="member-phone"
-                  >
-                    手機號碼
-                  </label>
-                  <input
-                    class="
+                    " for="member-phone">
+                  手機號碼
+                </label>
+                <input class="
                       appearance-none
                       block
                       w-full
@@ -1695,101 +1416,78 @@
                       mb-3
                       leading-tight
                       focus:outline-none focus:bg-white focus:border-gray-500
-                    "
-                    id="member-phone"
-                    type="text"
-                    placeholder="0987654321"
-                  />
-                </div>
-
-                <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label
-                    class="
-                      block
-                      uppercase
-                      tracking-wide
-                      text-gray-700 text-xs
-                      font-bold
-                      mb-2
-                    "
-                    for="member-birthday"
-                  >
-                    生日
-                  </label>
-
-                  <input
-                    class="
-                      appearance-none
-                      block
-                      w-full
-                      bg-gray-200
-                      text-gray-700
-                      border
-                      rounded
-                      py-3
-                      px-4
-                      leading-tight
-                      focus:outline-none focus:bg-white
-                    "
-                    id="member-birthday"
-                    type="date"
-                  />
-                </div>
-
-                <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label
-                    class="
-                      block
-                      uppercase
-                      tracking-wide
-                      text-gray-700 text-xs
-                      font-bold
-                      mb-2
-                    "
-                    for="member-language"
-                  >
-                    語言
-                  </label>
-
-                  <input
-                    class="
-                      appearance-none
-                      block
-                      w-full
-                      bg-gray-200
-                      text-gray-700
-                      border
-                      rounded
-                      py-3
-                      px-4
-                      leading-tight
-                      focus:outline-none focus:bg-white
-                    "
-                    id="member-language"
-                    type="text"
-                    placeholder="English"
-                  />
-                </div>
+                    " id="member-phone" type="text" placeholder="0987654321" />
               </div>
 
-              <div class="w-full flex flex-wrap">
-                <div class="w-1/4 md:w-1/3 px-3 mb-6 md:mb-0">
-                  <label
-                    class="
+              <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="
                       block
                       uppercase
                       tracking-wide
                       text-gray-700 text-xs
                       font-bold
                       mb-2
-                    "
-                    for="member-state"
-                  >
-                    縣市
-                  </label>
-                  <div>
-                    <select
-                      class="
+                    " for="member-birthday">
+                  生日
+                </label>
+
+                <input class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border
+                      rounded
+                      py-3
+                      px-4
+                      leading-tight
+                      focus:outline-none focus:bg-white
+                    " id="member-birthday" type="date" />
+              </div>
+
+              <div class="w-1/2 md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    " for="member-language">
+                  語言
+                </label>
+
+                <input class="
+                      appearance-none
+                      block
+                      w-full
+                      bg-gray-200
+                      text-gray-700
+                      border
+                      rounded
+                      py-3
+                      px-4
+                      leading-tight
+                      focus:outline-none focus:bg-white
+                    " id="member-language" type="text" placeholder="English" />
+              </div>
+            </div>
+
+            <div class="w-full flex flex-wrap">
+              <div class="w-1/4 md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    " for="member-state">
+                  縣市
+                </label>
+                <div>
+                  <select class="
                         block
                         appearance-none
                         w-full
@@ -1802,51 +1500,45 @@
                         rounded
                         leading-tight
                         focus:outline-none focus:bg-white focus:border-gray-500
-                      "
-                      id="member-state"
-                    >
-                      <option value="">請選擇縣市</option>
-                      <option value="基隆市">基隆市</option>
-                      <option value="台北市">台北市</option>
-                      <option value="新北市">新北市</option>
-                      <option value="宜蘭市">宜蘭市</option>
-                      <option value="新竹市">新竹市</option>
-                      <option value="新竹縣">新竹縣</option>
-                      <option value="桃園市">桃園市</option>
-                      <option value="苗栗縣">苗栗縣</option>
-                      <option value="台中市">台中市</option>
-                      <option value="彰化縣">彰化縣</option>
-                      <option value="南投縣">南投縣</option>
-                      <option value="嘉義市">嘉義市</option>
-                      <option value="嘉義縣">嘉義縣</option>
-                      <option value="雲林縣">雲林縣</option>
-                      <option value="台南市">台南市</option>
-                      <option value="高雄市">高雄市</option>
-                      <option value="屏東縣">屏東縣</option>
-                      <option value="台東縣">台東縣</option>
-                      <option value="花蓮縣">花蓮縣</option>
-                      <option value="金門縣">金門縣</option>
-                      <option value="連江縣">連江縣</option>
-                      <option value="澎湖縣">澎湖縣</option>
-                    </select>
-                  </div>
+                      " id="member-state">
+                    <option value="">請選擇縣市</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="台北市">台北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="宜蘭市">宜蘭市</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="台中市">台中市</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="台南市">台南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="台東縣">台東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="金門縣">金門縣</option>
+                    <option value="連江縣">連江縣</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                  </select>
                 </div>
-                <div class="w-3/4 md:w-1/3 px-3 mb-6 md:mb-0">
-                  <label
-                    class="
+              </div>
+              <div class="w-3/4 md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="
                       block
                       uppercase
                       tracking-wide
                       text-gray-700 text-xs
                       font-bold
                       mb-2
-                    "
-                    for="member-address"
-                  >
-                    詳細地址
-                  </label>
-                  <input
-                    class="
+                    " for="member-address">
+                  詳細地址
+                </label>
+                <input class="
                       appearance-none
                       block
                       w-full
@@ -1858,54 +1550,134 @@
                       px-4
                       leading-tight
                       focus:outline-none focus:bg-white focus:border-gray-500
-                    "
-                    id="member-address"
-                    type="text"
-                    placeholder="Albuquerque"
-                  />
-                </div>
+                    " id="member-address" type="text" placeholder="Albuquerque" />
               </div>
-              <button class="btn hover:bg-teal-400 ml-3">修改變更</button>
-            </form>
-          </div>
-          <!-- End  member data -->
+            </div>
+            <button class="btn hover:bg-teal-400 ml-3" onclick="writeProfile()">修改變更</button>
+          </form>
         </div>
-
-        <!-- end quick Info -->
+        <!-- End  member data -->
       </div>
-      <!-- end content -->
+
+      <!-- end quick Info -->
     </div>
-    <!-- end wrapper -->
+    <!-- end content -->
+  </div>
+  <!-- end wrapper -->
 
-    <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="js/scripts.js"></script>
-    <script>
-      function app() {
-        return {
-          image:
-            "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD/4QBCRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAkAAAAMAAAABAAAAAEABAAEAAAABAAAAAAAAAAAAAP/bAEMACwkJBwkJBwkJCQkLCQkJCQkJCwkLCwwLCwsMDRAMEQ4NDgwSGRIlGh0lHRkfHCkpFiU3NTYaKjI+LSkwGTshE//bAEMBBwgICwkLFQsLFSwdGR0sLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLP/AABEIAdoB2gMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APTmZsnmk3N60N1NJTELub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lJQA7c3rSbm9aSigBdzetG4+tJRQAZPrRuPrSUUALub1/lRub1pKSgBdzUbm9aSigBdzetG5vX+VJSUALub1/lUu5qhqXj1oAG6mkpW6mkoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooASiiigAooooAKSiigAooo+lACUZoooAKKKSgAo/rRSUALUlRVJz60AObqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkoooAKKKKACiikoAKSlooASiiigA+lHpRQaACkoooATmilpPegBP/ANdS5HrUdSfL7UAObqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKSiigAooooAKKKKAEooooASij60UAFFFHpQAUmaKPxoAKSlpPWgA/wAmk/pS/Sk47dqADpUvPvUXrUn4H8qAHt1NJSt1NJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFISFBJIAHUk4FAC0VTlv4EyEBc+3C/nVSS9uX6MEHonX8zQBrEqvLEAe5A/nUTXVqvWVfwyf5VjFmY5Ykn3JP86SmBrG/tB3c/RTTf7QtvST8hWXRQBqi/te+8f8AAc09by0b/loB/vAiseigDeV43+66t9CDTq5/p04+lTJdXMfSQkej/MP1oA2qKoR6gpwJUK/7Scj8utXEkjkG5GDD2P8AMUgH0UUUAFFFJQAUUUUAFFFJQAtJRRQAUlFFABR2oo+lAB1pKKP60AFFFFACUHjNH/66KAEpaSj/APVQAc0/I9KZUufpQA5uppKVuppKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACimsyopZiAo5JNZlxePLlI8rH0J/ib60AWp72KLKph3/wDHR9TWdLNNMcuxPoOij6Co6KYBRRRQAUUUUAFFFFABRRRQAUUUUAFKruhDIxUjuDikooA0IL/os4/4Gv8AUVfBVgCpBB6Ecg1gVLBcSwH5eUP3lPQ/SgDaoqOKaOZdyH/eB6qfepKQBRRRQAlFFFABSUUUAFFFFABRRSf5NABxR6e1FJQAcUUUnP6UALSf5/GjvRz+FAB06d6KT6UGgA96kyf8mo//ANdP59P1oAlbqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACmu6RqzucKvJNKSACScADJJ7Csi6uDO2BkRqflHr7mgBLi5edu4QH5V/qagoopgFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACUUUUAPjkkiYOhwR+RHoa14J0nTI4YffX0NYtPileJ1dDyOoPQj0NAG7SUyKVJkDr36juD6U+kAUhoooAKKKKACij/JpKACj/PNFFABScUelFACUdqP8mj+dABn9KMjij60d+tACf5FH5Uf59qOOlACfhUn40zmn4oAlbqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKhuJhDEz/xfdQerGgCpfXGT5CHgf6w+/8AdqhQSSSScknJPqTRTAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkoooAKKKKACiiigCe2nMEnP+rbhx6e9bHoQevT3zXP1p2M+9DE33k5X/AHf/AK1AF2koNFIAoopKAFpKKPSgApPX0pf8mkoAKKTPP1paAE+lFFIT/ntQAelHAoz0oz/hQAd6T155oooAKk2+wqLPt/8AWqTj1P5GgCZuppKVuppKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArJvpd8uwH5Y+P+BHrWnK4jjkc/wAKkj69qwiSSSepJJ+ppgFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSUUUAFFFFABRRSUAFFFFABT4pDFIkg/hPPuO4plFAG8CGAYchgCD7HmlqpYy74dp6xnH4HkVapALSUUUAH+NFFJQAc0f5+tHFJQAUUUepoAP/r0nP/1sUH1ozQAUnOaPwo9OlAAcd6T60tJQAHn+lSZPotR/55qTJ/yKAJm6mkpW6mkoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAKWoPiNE/vtk/RazKt6g2Zgv9xB+Z5qpTAKKKKACiiigAooooAKKKKACiiigAooooAKKKSgAooooAKKKSgBaSiigAooooAKKKSgC3YPtmKdpFI/EcitSsOJiksTejr+Wa3PSgAoo/zzSflSAWkNBo/nQAlH9aPr60envQAf5NJS0noaADNFH+fYUH/61ACUetFJnGaADg//AK6O/NJ6fhRz0PrQAH/CpefVfzqI46ZNS8UATN1NJSt1NJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAYt0d1xOf9rA/AYqGnzHMsx/6aP/ADplMAooooAKKKKACiiigAooooAKKKKACiikoAKKKKACiikoAWkoo4oAKKKKACiikoAKWkooAOa3UOUjb1VT+lYVbUB/cwHuY1JoAkz+dGTR2pP5UgAn+lFFHNABSfjzS0nFABn2+lFFIfQj6UAB6c0elH+eKT/JoAPU/wD6qOaPUe1HpQAho+tHXp+lJ/8AqoAOPXrT8H0H50z/ADxUmT6n9KALDdTSUrdTSUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAGFL/AK2b/ro/8zTKluBiecf7Z/XmoqYBRRRQAUUUUAFFFFABRRRQAUUUUAJRRRQAUUUUAFJRRQAUUUUAFFFJQAtJRRQAUUUUAFbUH+og/wCua/yrFrbjGI4h6Io/SgB/NJR60H2pAB/Wj0o5ooATPSjj/P8A9ej/APVSelACn/PrSccYo/z/APXpPf8A/VQAo9KSg9OfX+VHIoAOo7/1pp/P0+lO/Wm8/wD6qAD07dfxo4/Wj9fekyOp/wAigBc9fqKk/Koj39sVLlvf9KALDdTSUrdTSUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAGRfLtuGP95Vb9MVWrQ1FP9TJ9UP8xWfTAKKKKACiiigAooooAKKKKACkoooAKKKKACkpaSgAooooAKKKKACkpaSgAooo5oAKKKSgByjcyL6sAPxrcHHHoMYrJs033Ef+zlz+HStf1xQAn+eKPSj/AD9aPxxSAQ8UUUnrzQAtJn6UZP8An2o5/wA+9ACHt+dHPt3/AP1Uen8qM/rQAZ/wpP8APt60f55o5/rmgA9+1J680fyo7mgBD+H0o6Z4o9/T60UAJz05p/Pv+dM/PnGKk59BQBabqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAguo/MgkUdQNy/Veaxq6CsS5i8qZ1/hJ3L9DTAiooooAKKKKACiiigApKWkoAKKKKACiikoAKKKKACiiigApKWkoAKKKKACiikoAKKKACSoHUkAY96ANDT0wskh/iIUfQcmr3/AOumRRiKNIx/CBn3PenfmaQC+lFJzzQe/wCtAB/k0nX8fSlJpBgcfj+FABRwfw6Un+TRnt+dAB9KT1xR24+uaKAA/wD6/ek6c0fnzQeP55oAPekOf896OOvPTrR+VABwTgen60hwADRS/T8KAEPJ+vTNSc+v8qj5/wAfwqTP0/OgC03U0lK3U0lABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVUvofMj3qPnjyfqverdFAHP0VYuoDDIcD92+Snt6iq9MAooooAKKKSgAooooAKKKSgAooooAKKKPagAoopKAFpKKKACiiigApKKKACrljFucyt0ThfdqqojSOqJ1Y4+nqa2Y0WNFReijH196AHUpopO34UgD/J5pP1o/w/Wj+tAAcfnzR/hRz9fSk4/wA/yFAB/k0Z46/Wjpn+tJ+NAAT3P6daT/PtS+tJQAd/0o5pOuOaO340AH+Tn1pAf8il9c+lJQAdPWjn/D2oP4e9Hp9PxoATPNSc+g/Sou3SpMD0NAFxuppKVuppKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAjmiSZGRu/IPofWsWSN4nZHGCP19xW9Ve5t1nXsJF+639DQBj0UrKyMysCGBwQabTAKKKKACiiigAopKKACiiigAopKKACiiigAoopKACiiigAzR1xjJNFaNpa7MSyj5uqKf4c9z70ASWlv5K7m/1jdf9kelWT3o/E/Wk/pSAPr6/wA6P50cGk6ZoAP0/Gj/APXRQf8AOKAEx9Pzo59f/r0HH5f1pP6UALx1FJ6cjPOfx7Ufp/jRx6/0oATnijpx+VGc/SkOefT8qAD+p9aD+uaOnNJj88/hQAuaT+lHrzSe/Hv3oAWkyP8APFGeg7d8Un/6qAD8sfrTvl9f1FN6YH6U/j0P5UAXW6mkpW6mkoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAguLZJ154cD5W/oayJIpImKOMHt6EeoNbtMkijlUq6gjt6g+oNAGFRVqezliyyZdOvH3h9RVWmAUlLSUAFFFFABRRRQAUlLSUAFFFFABRRSUAH+RQASQACWPAAHJNSw280x+VcL3Y9K04beKAZHL92P8qAIba0EeHlwXHReoX/AOvVz/Cj0opAJz+dH+FH5/Wk9f8AOKAD9P1o9f60c8Z70Z+lACUfnRRxx+vtQAnr/Wg5/wA9qP8AHvRxj86AE9M96Mn8aOOlJ/8Aq9aAD1/TPWk649sUvfr/AIUnH9KADP6Uf40H/wDX60c/l1oAOvpR/h+FJke/40nPHtn60AGee31NJ6+/tS8dun9fxpOOmPcUAL/hUmR/tfrUJ7/zNSZb1P50AXm6mkpW6mkoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKKKACiiigAqvNaQS5ONr/3k/qKsUlAGTLZXEedo3qO69fxFViCDgggjseDW/THjikGHRW+o5/OmBhUVqPYW7fdLp9DkfkahbTn/AIJQf94Y/lQBQoq2bC5GeYz9G/8ArUn2G69F/wC+hQBVoq0LG6PUIPq3+FPGnyn70iD6ZNAFKk/nWmunwjG93b8lFWEggj+5GoPTJGT+ZoAyo7a4kxtQhfVuBV2KxiTBkO8+nRfyq37Ht0ooAOAMDoPQYx9KKOn6UnFIAoo/z+dHagA4pMf5NFHagA+h59KTtR36fjRkc+tAB60n8/8APpSikJFACc+/09qPp75o/wA+oo4zQAZ6+vv/ACpOOPz/ABo6ZyaQ9vb0oAM9vzo/CjPtR2/oaAA496ODx7c0h9+9HJx70AJ3+lHHTP8A9ej8MUnHFAB3o54AoPP50h9fc8UAH+NScev+fzqPp/SpMH/P/wCugC83U0lK3U0lABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUlLSUAFFNeSOMbnYKPfv9BVKXUByIUz/tP/QUAX/X0qB7q2jyC4J9E5P6cVlSTzy/fckenQfkKjpgaJ1FMjETbe5JGfyqzHPBN9xxn0PDfkaxKP8AIoA3/wDPNFY8d3cx4G/cPR+f1q0mop/y0jI91Of0NIC9RUC3dq3/AC0A9mBFSh425DKfoRQA6ko560c+9ABSetLzTSyrncyj6kD+dAC9sUVC1zbLnMi/hz/KoGv4QPkVmPv8ooAuU15I4wS7Ko9zyfwrMkvrh+m1B/s8n8zVYlmOWYknuTk/rTA0X1CINhEZl7nO3P0FPS9tn6sUP+0OD26isqigDdBBGVIOeRtIP8qM9P8A9dYaO8ZJRmU/7JIq1HfyLxIoceo4b/CgDSIpOc1HFPDL9x8nH3Tww/CpM89KQBn/AOtQaT3/ADo/+vQAetJxijPWjigA6fypOOKO3PP1oPTr1zxQAf070np/n9aOaXuaAE4/+tR9Ov8AKg5PNJ+npQAHr/nmk4wc/wD6qMZ/z+NHH6fjQAentR/n2NJ+P/66P69qAD1H696THI+lH40hP+fagBeff2471Jg+pqI+nPT6VJuj9/zNAF9uppKVuppKACiiigAooooAKKKKACiiigAooooAKKKKACkpaimnigXLnk/dUdTQBISqgkkADqTwKoT34GVgGT/fbp+AqpPcSzn5jheyjoKhpgOd3clnYs3qabRSUALSUUUAFFFFABSUtJQAUf59KKKAFDOOAzD8TS+ZL/z0f/vo02koAcXfuzfmTTevX9aKSgBaKPak9KACg0UUAFJRn/69H/1qAA0UH0pKAAZByOCPTircN9ImFly6+v8AEKqHJzRQBtJIki7oyGH6j6in5/8Ar1iJJJG25GII/I/hWjb3SS4DfLJ6HofcUgLPpSZ/z9aX1/XNJ6+npQAcY/Sj29vyo65/SjnP+eKAG/y/WjrS/wCfzo/+tQAn+FJ3x3o6f56UUAJyM8cUUuP8OvakNAB/+qk70ev50maAF5603PtS55Ppn1oPqfWgBOOn40/n0P6VHk8D396mx9aAL7dTSUrdTSUAFFFFABRRRQAUUUUAFFFFABRRRQAUUVXubhYF4wZG+4P6mgAublYBgYMh+6vp7msh3eRi7klj1J/kKGZnYsxJYnJJptMAooooASiiigAo9KKKACiiigBKKKKACiiigApKWkoAKSlooAKTpRRQAUlLSUAFHeik4oAOaKP5Uf8A1qACkooOaACjODkH6e1Ic0UAaFtdlsRyn5sYVvX0Bq7nH096wsjmtC1ut+IZD83ARj3HoaALnXpQCcUfyo5+n+NIBOmaQ85pc89PxpPc8Dt/jQAh7evb8KU+tGevToTSenp3oAD9f/rUe3NJxkf5zR+PpigA57DnFJij6+lB9fWgAJFNPt/9elOfr/8AXpOP6e1AC+n+f1p2D/kmmf0/lUv4f5/KgDQbqaSlbqaSgAooooAKKKKACiiigAooooAKKKT1z2oAjmlSFGdu3AH94+lY0kjyOzuclj+XsKlupzNIcH92nCD196r0wCiiigAopKKACiiigAooooAKSiigAooooAKKKSgAo/z+NFFACcUUUUAFFFJQAUZoozQAlH50c0cUAFFFIfp/9agAo4oooASiiigBPTAoyfp3H/1qP8/nRQBqWtwJV2Mf3i9f9oetT8n61io7RsrqeVPHv7VsRyLIodeh5we3saAHd+Pxo9/84pOOv6mjn8+lIA9/zNJ69aX+VJ6e3WgA6elJye1LwfWkoAMdf0pD29s80uTjGfzpM57UAH8vz/Sk+oo/zn/61J0/GgBe4x6fp9Kkz7fpUf8An8aftP8AkigDSbqaSlbqaSgAooooAKKKKACiiigAooooAKpX0+xBEp+aTr7L/wDXq4SACTwACT9BWHNIZZHkPc8D0UdBQBHRRRTAKSiigAooooAKKKKACkoooAKKKKACkpaSgAoozRQAUUnPNFAB+dFFFABxSc0UUAJn9KKKOlABR/Wj/P1pOKACijmkoAKKKKAE/OjFFHGcUAHr+VHvRxSH2oAP8irVnNsfyz91zgZ7NVWjv+ORz0oA3OvUe4pPzqKGQSxK38XRvqOKk/8A1c+9IA9O3+e9HXjPP6UmeaD6CgAJ6Y9eaD0/mc0f5/Cm/wCf/r0AL+FJ/P8AzxR/niloAT/PsPaj+XbP+NHXP6UnX/69AB/Xr/OpMH3pnHv2qTn1P50AaLdTSUrdTSUAFFFFABRRRQAUUUUAFJRRQBUv5dkQQfekOP8AgI5NZVWb2TfOw7RgIPr3qtTAKKKSgAooooAKKKKACiikoAKKKKACiikoAWkoooAKSiloAT/PFFFFACf4UUdaM0AHY0nPY0UUAFFFJxxigAo/Gj+tFABSZoooAPcelFJ/+ujigA/yaKP88UGgBKPxo96KAEo7/jR3o70AW7GTDmPPDjI/3hWgTWKrbGVx/CQfy7VsghgpHQgE/jQAdf0zQf8AH86D+ntScc+nvSAPrnmj9P8A69JnpQM8fXJ7UAH+foaT29sClPXjHvSf4d6ADPtRkdPxpe3Xt9KT06ewoAOKlwPX9Ki44H4c80/H+cUAabdTSUrdTSUAFFFFABRRRQAUlLSUAFNdgiO56Kpb8hTqrXzbbdx3cqv9aAMgkkknqSSfx5oopKYC0lFFABRRRQAUlFFABRRRQAUUfhRQAUlHJooAPSkpe1JQAp/CkoNFABSUv1pKADpR60UlABx+dFFH6igBKWjmkoAKSlzmkoAM/wCelHpSUc8+9AB+NH+FFBoAM8dKb29+tLnvR/P1oAPWk/OjvRzxQAUUUnH60AHr6Vp2jhoQCTlMr/Wsw1csW5lT1Ab8uKAL3H4dKKP/ANXSjpn260gE7+vejijB/L9KTjII/wAmgBfek+n4fWl5GaD7flQAh9c59MUUcD+VH+cCgA7HH59qlyfb8jUX0HfvzzT+f7woA026mkpW6mkoAKKKKACiikoAKKKKACqGotxCnqWY/hxV+svUT+9Qekf8yaAKdJRRTAKKKKACkpaKAEooooAKKKKACkoooAKOwopPWgA/yKOKKKACkoo9f60AFJS5P+FJ6UAFHNFFABSUUUAGetBopPqaAD+fajrSZoPNAAf84oo9aOcf56UAHce1JzQeM0fSgA9aP85pP8KKAD0o49KKKAEzSelLmkzQAtTWhxOvuGX9M1BT4TtlhP8Atr+pxQBr/nxRzjJ/Gl56elJzxk0gE9Mk0vTuOf1o/wAf880fLQAnXp0/w9KPx9qP8k0f1zQAfjwKPbtzQPp/9ek49eOc0AGfY5Gafg+tMz7egp+1ff8AMUwNRuppKVuppKQBRRSUAFFFFABRRSUALWTf/wCv/wCALWrWVf8A+v8A+ALTAqUUUUAFFFJQAUUUUAHeiiigApKKPxoAPrRRRQAUlFHFAB/+rmg0UlAAaM0dDSfTpQAGiiigA4pKWkFAAaOaDSdqAD0ozR3pKACiiigA9Pb1pPalNJQAUZ+lJRQAGiij/wCv7UABpPWgnv0ooAPxpKKOmRQAdv8AGlj/ANZH/vr/ADpvH9adH/rI/wDfX+dAG0SMnpSY9KM/oaDn8/TikAeuPoaTH55OaOO1HPv/AI0AJ07Dpz6Gl9Pf+tJ0zx1/l1pc8fTpQAn+B5o9Onf15o5wT24zSHpwPwFMA44qTLepph/w+lPw3oaANRuppKVuppKQBSUUUAFFFFABSUUUAFZV/wD8fH/AFrVrJv8A/X/8AWmBVpKWkoAWkoooAKKKKACiikoAKKKDQAUlHtRQAUUUlAAaKPxpKAA0dOlFFABR/Sk5zR/KgBaSiigApO9FH+fxoAP8aPSk6+1J+NAC9x/n86M/5FH50lABRRSUALSUe/p60UAH86TP5UUmaAD0xRR/n6Uf5NAB70UUn/66ADinR/6yP/fU/rTeP8M0sf34+f41/nQBtZ/w/wDrc0nXsPwo/wAg0HvmkAen40Z70n6Z6fj2oIH59aAF70nP4Uf4YoPtxn9KYCc8eoxilznPWj+dJQAdR04NSZPoPzqOpMf5xSA1G6mm05upptABRRRQAUlLSUAFFFFACVlX/wDr/wDgC1q1lX/+v/4AtMCpRRRQAUUUUAFFFJQAUUUUAFJS0lABSUvpSUALSUUE+1ACUUfrRQAetJS0lAC5pP1oooASij2o9fc0AFH0pPT/ADmigAz9cUetHf8ADtSGgAycmjp/hR/+uj60AJR3oo+negAo6UnvRntQAGk9aX86SgAP40nFL+PekoAPX9KKPWk/yaAFpY/vx/768/jSUsePMj9d6/qaANk55+tH8v5UYoHT3HOD70gD/HvSf5/+tR6j19aOP8DTAOMd6Dx0+n/1qP8AI/nQe/tQAdO/5dqSl7Hpn3pPXikAemPp3qbI9aiHWpcD1NAGi3U0lS+n0H8qKAIqKk7UUARUVJQO9AEX+eKKlPb6UnYUAR1lX/8Ar+f7i1telZF//rx/uL/WmBRoqT/61JQAyipP/r0nc/57UAMpKkPf8KO5oAjop56Cg/0oAjop9Hp+FADKSnnrRQAyk61Ieg/Gjt+NAEdH+RUh6fjSDtQAz+dJ0qQ9/wDPakPSgBhpKlPT/PpSHvQBHzSf4mn+v4UGgBnej/PNSdjSdj9BQBH/AIUU80H7v5UAMpDUn9360Dv/AJ70AR/l0o9aef6UD/GgCPij+dSDr+dIe9AEdIal7fjTfX6UAMoz+dOPT8aWgBn+NJUvp+NN/wABQAzmnJ9+P/eX+dKO9SR/6yH/AHx/MUAanH+fekzUnYfSl9f8+lICLj+lH/6/6VKf4P8Ad/wpq/dpgM/Cgc9e2akPf/dpO/4D+YpAM6//AF+v5UZPH+cVJ3/E0rd/+BUAQ89fQcj2qXn1/nR3j+lNPVvqaAP/2Q==",
-          password: "",
-          gender: "Male",
-        };
+  <!-- script -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+    function app() {
+      return {
+        image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD/4QBCRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAkAAAAMAAAABAAAAAEABAAEAAAABAAAAAAAAAAAAAP/bAEMACwkJBwkJBwkJCQkLCQkJCQkJCwkLCwwLCwsMDRAMEQ4NDgwSGRIlGh0lHRkfHCkpFiU3NTYaKjI+LSkwGTshE//bAEMBBwgICwkLFQsLFSwdGR0sLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLP/AABEIAdoB2gMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APTmZsnmk3N60N1NJTELub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lJQA7c3rSbm9aSigBdzetG4+tJRQAZPrRuPrSUUALub1/lRub1pKSgBdzUbm9aSigBdzetG5vX+VJSUALub1/lUu5qhqXj1oAG6mkpW6mkoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooASiiigAooooAKSiigAooo+lACUZoooAKKKSgAo/rRSUALUlRVJz60AObqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkoooAKKKKACiikoAKSlooASiiigA+lHpRQaACkoooATmilpPegBP/ANdS5HrUdSfL7UAObqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKSiigAooooAKKKKAEooooASij60UAFFFHpQAUmaKPxoAKSlpPWgA/wAmk/pS/Sk47dqADpUvPvUXrUn4H8qAHt1NJSt1NJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFISFBJIAHUk4FAC0VTlv4EyEBc+3C/nVSS9uX6MEHonX8zQBrEqvLEAe5A/nUTXVqvWVfwyf5VjFmY5Ykn3JP86SmBrG/tB3c/RTTf7QtvST8hWXRQBqi/te+8f8AAc09by0b/loB/vAiseigDeV43+66t9CDTq5/p04+lTJdXMfSQkej/MP1oA2qKoR6gpwJUK/7Scj8utXEkjkG5GDD2P8AMUgH0UUUAFFFJQAUUUUAFFFJQAtJRRQAUlFFABR2oo+lAB1pKKP60AFFFFACUHjNH/66KAEpaSj/APVQAc0/I9KZUufpQA5uppKVuppKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACimsyopZiAo5JNZlxePLlI8rH0J/ib60AWp72KLKph3/wDHR9TWdLNNMcuxPoOij6Co6KYBRRRQAUUUUAFFFFABRRRQAUUUUAFKruhDIxUjuDikooA0IL/os4/4Gv8AUVfBVgCpBB6Ecg1gVLBcSwH5eUP3lPQ/SgDaoqOKaOZdyH/eB6qfepKQBRRRQAlFFFABSUUUAFFFFABRRSf5NABxR6e1FJQAcUUUnP6UALSf5/GjvRz+FAB06d6KT6UGgA96kyf8mo//ANdP59P1oAlbqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACmu6RqzucKvJNKSACScADJJ7Csi6uDO2BkRqflHr7mgBLi5edu4QH5V/qagoopgFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACUUUUAPjkkiYOhwR+RHoa14J0nTI4YffX0NYtPileJ1dDyOoPQj0NAG7SUyKVJkDr36juD6U+kAUhoooAKKKKACij/JpKACj/PNFFABScUelFACUdqP8mj+dABn9KMjij60d+tACf5FH5Uf59qOOlACfhUn40zmn4oAlbqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKhuJhDEz/xfdQerGgCpfXGT5CHgf6w+/8AdqhQSSSScknJPqTRTAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkoooAKKKKACiiigCe2nMEnP+rbhx6e9bHoQevT3zXP1p2M+9DE33k5X/AHf/AK1AF2koNFIAoopKAFpKKPSgApPX0pf8mkoAKKTPP1paAE+lFFIT/ntQAelHAoz0oz/hQAd6T155oooAKk2+wqLPt/8AWqTj1P5GgCZuppKVuppKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArJvpd8uwH5Y+P+BHrWnK4jjkc/wAKkj69qwiSSSepJJ+ppgFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSUUUAFFFFABRRSUAFFFFABT4pDFIkg/hPPuO4plFAG8CGAYchgCD7HmlqpYy74dp6xnH4HkVapALSUUUAH+NFFJQAc0f5+tHFJQAUUUepoAP/r0nP/1sUH1ozQAUnOaPwo9OlAAcd6T60tJQAHn+lSZPotR/55qTJ/yKAJm6mkpW6mkoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAKWoPiNE/vtk/RazKt6g2Zgv9xB+Z5qpTAKKKKACiiigAooooAKKKKA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",
+        password: "",
+        gender: "Male",
+      };
+    }
+    //  Modal script
+    const modal = document.querySelector(".modal");
+
+    const showModal = document.querySelector(".show-modal");
+    const closeModal = document.querySelectorAll(".close-modal");
+
+    showModal.addEventListener("click", function () {
+      modal.classList.remove("hidden");
+    });
+
+    closeModal.forEach((close) => {
+      close.addEventListener("click", function () {
+        modal.classList.add("hidden");
+      });
+    });
+    // end Modal script
+
+    // 人物卡資料
+    let cardYears = document.querySelector("#card-years");
+    let cardBlood = document.querySelector("#card-blood");
+    let cardHeight = document.querySelector("#card-height");
+    let cardLanguage = document.querySelector("#card-language");
+    let cardWeight = document.querySelector("#card-weight");
+
+
+    //會員資料欄位
+    healthyLifeStyleDBUtil.getCurrentLoginAccount(renderCardtest);
+
+    let profile;
+    let cardAccount = document.querySelector("#card-account");
+    let titleAccount = document.querySelector("#title-account");
+    let memberAccount = document.querySelector("#member-account");
+    let memberEmail = document.querySelector("#member-email");
+    let memberLname = document.querySelector("#member-lname");
+    let memberFname = document.querySelector("#member-fname");
+    let memberPhone = document.querySelector("#member-phone");
+    let memberBirthday = document.querySelector("#member-birthday");
+    let memberLanguage = document.querySelector("#member-language");
+    let memberState = document.querySelector("#member-state");
+    let memberAddress = document.querySelector("#member-address");
+
+    function renderCardtest(data) {
+      profile = data.userProfile;
+      cardAccount.innerHTML = profile.user;
+      titleAccount.innerHTML = profile.user;
+      memberAccount.value = profile.user;
+      memberEmail.value = profile.email;
+      memberLname.value = profile.lastName;
+      memberFname.value = profile.firstName;
+      memberPhone.value = profile.phone;
+      memberBirthday.value = profile.birthday;
+      //memberLanguage.value = profile.availableLangs;
+      memberState.value = profile.city;
+      memberAddress.value = profile.location;
+      //////////////////////////////////////////
+      cardBlood.value = profile.bloodtypeABO;
+      cardHeight.value = profile.height;
+      cardWeight.value = profile.weight;
+      cardLanguage.value = profile.availableLangs;
+    }
+
+    function writeProfile() {
+      profile.email = memberEmail.value;
+      profile.lastName = memberLname.value;
+      profile.firstName = memberFname.value;
+      profile.phone = memberPhone.value;
+      profile.birthday = memberBirthday.value;
+      //profile.language = memberLanguage.value;
+      profile.city = memberState.value;
+      profile.location = memberAddress.value;
+
+      healthyLifeStyleDBUtil.updateProfile(profile);
+    }
+
+
+
+    //////////////
+    function ageChange() {
+      var birth ='';
+      healthyLifeStyleDBUtil.getCurrentLoginAccount(function(data){birth = data.userProfile.birth});
+      birth = Date.parse(birth.replace('/-/g', "/"));
+      if (birth) {
+        var year = 1000 * 60 * 60 * 24 * 365;
+        var now = new Date();
+        var birthday = new Date(birth);
+        var age = parseInt((now - birthday) / year);
       }
-      //  Modal script
-      const modal = document.querySelector(".modal");
-
-      const showModal = document.querySelector(".show-modal");
-      const closeModal = document.querySelectorAll(".close-modal");
-
-      showModal.addEventListener("click", function () {
-        modal.classList.remove("hidden");
-      });
-
-      closeModal.forEach((close) => {
-        close.addEventListener("click", function () {
-          modal.classList.add("hidden");
+    }
+    /*
+        healthyLifeStyleDBUtil.getCurrentLoginAccount(function (data) {
+          //從伺服器取得當前登入帳戶資料後更新
+          profile = data.userProfile;
+          profile.lastName = "Lu";
+          profile.firstName = "Yu-Lin";
+          profile.height = 8787;
+          profile.availableLangs.push("en_us");
+          healthyLifeStyleDBUtil.updateProfile(profile);
         });
-      });
-      // end Modal script
-    </script>
-    <!-- end script -->
-  </body>
+      */
+  </script>
+  <!-- end script -->
+</body>
+
 </html>

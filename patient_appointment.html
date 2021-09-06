@@ -1552,7 +1552,7 @@
       
                   <div x-show.transition.in="step === 3">
                     <div class="mb-5">
-                      <label for="patient-gender" class="font-bold mb-1 text-gray-700 block">Gender</label>
+                      <!-- <label for="patient-gender" class="font-bold mb-1 text-gray-700 block">Gender</label>
                       
                       <div class="flex">
                         <label
@@ -1571,14 +1571,16 @@
                           <div class="select-none text-gray-700">女性</div>
                         </label>
                       </div>
-                    </div>
+                    </div> -->
         
                     <div class="mb-5">
                       <label for="profession" class="font-bold mb-1 text-gray-700 block">症狀敘述</label>
                       <input type="profession"
                         class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                        placeholder="頭痛">
-
+                        placeholder="請填寫症狀"
+                        required>
+                      
+                        <p><input type="submit" value="送出資料"></p>
                         
                     </div>
                   </div>
@@ -1611,6 +1613,7 @@
                   >下一步</button>
       
                   <button
+                  type="submit"
                   id="submitBtn"
                     @click="step = 'complete'"
                     x-show="step === 3"
@@ -1635,7 +1638,10 @@
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="js/scripts.js"></script>
+    <script defer src="js/database_general.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+    
     <script>
       function app() {
         return {
@@ -1677,9 +1683,10 @@
   
       function app2() {
         return {
+     
           showDatepicker: false,
           datepickerValue: "",
-          selectedDate: "2021-02-04",
+          selectedDate: "",
           dateFormat: "DD-MM-YYYY",
           month: "",
           year: "",
@@ -1776,9 +1783,9 @@
     </script>
      <script>
        const submitBtn = document.getElementById("submitBtn");
-       submitBtn.addEventListener("click",function(){
+       submitBtn.addEventListener("submit",function(){
 
-         console.log("heelo")
+         
        })
 
 

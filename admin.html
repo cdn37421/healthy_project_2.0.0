@@ -11,7 +11,6 @@
       rel="stylesheet"
       href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css"
     />
-    <!-- <link rel="stylesheet" type="text/css" href="css/general.css" /> -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Welcome To Healthy</title>
   </head>
@@ -284,7 +283,7 @@
                 "
                 href="#"
               >
-                <i class="fad fa-user-times text-xs mr-1"></i>
+                <i id="logOut" class="fad fa-user-times text-xs mr-1"></i>
                 登出
               </a>
               <!-- end item -->
@@ -1828,13 +1827,15 @@
     <script defer src="js/database_general.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- <script>
-      $(function () {
-        healthyLifeStyleDBUtil.getCurrentLoginAccount(function(data){
-          console.log(data.)
-        })
+    <script>
+      $("#logOut").submit(function () {
+        healthyLifeStyleDBUtil.logOut(),
+          function () {
+            window.location.replace("index.html");
+          };
+        return false;
       });
-    </script> -->
+    </script>
     <!-- end script -->
   </body>
 </html>

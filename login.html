@@ -251,7 +251,8 @@
 	
 	<script>
 		$("#loginForm").submit(function(){
-			healthyLifeStyleDBUtil.login($("#user-login")[0].value,
+			healthyLifeStyleDBUtil.login(
+				$("#user-login")[0].value,
 			 $("#pass-login")[0].value,
 			 function(){
 				window.location.replace("admin.html");
@@ -268,6 +269,8 @@
 			healthyLifeStyleDBUtil.register($("#user-sign-up")[0].value, $("#pass-sign-up")[0].value, $("#email-sign-up")[0].value);
 			return false;
 		});
+
+		
 	</script>
 </body>
 </html>
