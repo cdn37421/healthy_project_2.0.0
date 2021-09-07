@@ -289,9 +289,11 @@
                   ease-in-out
                 "
                 href="#"
+                onclick="logOut()"
               >
                 <i class="fad fa-user-times text-xs mr-1"></i>
                 登出
+
               </a>
               <!-- end item -->
             </div>
@@ -1306,7 +1308,10 @@
          .columns.adjust()
          .responsive.recalc();
      });
-
+     function logOut() {
+        healthyLifeStyleDBUtil.logOut();
+        window.location.replace("index.html");
+      }
      
    </script>
    
