@@ -98,8 +98,8 @@ healthyLifeStyleDBUtil.getSchedule((e)=>{
 length: 2
 [[Prototype]]: Array(0)
 ﻿
-healthyLifeStyleDBUtil.addSchedule(scheduleData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack)
-healthyLifeStyleDBUtil.removeSchedule(scheduleData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack)
+healthyLifeStyleDBUtil.addSchedule(scheduleData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+healthyLifeStyleDBUtil.removeSchedule(scheduleData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
 分別對日曆進行增加以及移除的特定記錄的方法。
 scheduleData的格式等同於successCallBack中，回傳陣列中的元素的值
 當要移除記錄時，scheduleData中的三筆資料必須「與資料庫內的記錄完全相同」才會成功移除。
@@ -108,467 +108,456 @@ healthyLifeStyleDBUtil.addSchedule({date: 1728438400000, title: "RR", theme: "bl
 以getSchedule中的資料為範例：
 healthyLifeStyleDBUtil.removeSchedule(sch[0])
 將會移除資料庫中的{date: 1628438400000, title: "YAA", theme: "green"}這筆記錄，如果存在的話。
-setSchedule(scheduleData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack)
+
+healthyLifeStyleDBUtil.setSchedule(scheduleData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
 指定一系列日曆資料，將當前當入的使用者的所有日曆資料設為傳入的資料。
 以getSchedul中的為範例：
 sch.push({date: 7468800000, title: "6ㄏ", theme: "red"})
 sch[1].theme = "white";
-setSchedule(sch);
-clearSchedule(successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack)
+healthyLifeStyleDBUtil.setSchedule(sch);
+
+clearSchedule([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
 清空當前登入的使用者的所有日曆資料。
+
+healthyLifeStyleDBUtil.getDiagBooking([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+使用方式與getSchedule相同。
+回傳資料的範例：
+var boo;
+healthyLifeStyleDBUtil.getSchedule((e)=>{
+	boo = e;
+	console.log(boo);
+})
+控制台將打印：
+0: {interval: 1800, doctor: "Lai", diagClass: "神經內科", desc: "脖子涼涼的，感覺有東西勒著。", datetime: 1657500423000}
+length: 1
+[[Prototype]]: Array(0)
+
+healthyLifeStyleDBUtil.addDiagBooking(bookingData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+healthyLifeStyleDBUtil.removeDiagBooking(bookingData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+healthyLifeStyleDBUtil.setDiagBooking(bookingData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+healthyLifeStyleDBUtil.clearDiagBooking([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+使用方式與操作日程表相同。
+唯一需要注意的是：若預約內容裡的「醫生」欄位填入了在資料庫的記錄中不是醫生的使用者，則伺服器會報錯(internal server error)。
+參考預設SQL腳本來增加預設的醫生。
+
 */
 const healthyLifeStyleDBUtil = {};
 
-(function () {
-  healthyLifeStyleDBUtil.init = function () {
-    var activatingAJAX = {};
+(function(){
 
-    //TODO 正式上線時記得更改這邊的請求網址
-    this.requestOrigin = window.location.origin + "/HealthyLifestyle";
-    //this.requestOrigin = "https://healthylifestyle.hopto.org"+"/HealthyLifestyle";
+	healthyLifeStyleDBUtil.init = function(){
+		
+		var activatingAJAX = {};
+		
+		//TODO 正式上線時記得更改這邊的請求網址
+		this.requestOrigin = window.location.origin+"/HealthyLifestyle";
+		//this.requestOrigin = "https://healthylifestyle.hopto.org"+"/HealthyLifestyle";
+		
+		this.loginPath = "/Account/Login";
+		
+		this.schedulePath = "/UserScheduleHandler";
+		this.diagBookingPath = "/DiagnosisBookingHandler";
+		
+		this.login = (user, password, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			
+			if(activatingAJAX["login"]) return;
+			activatingAJAX["login"] = true;
+			
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功登入帳號!!");
+				successCallBack(data, textStatus, jqXHR);
+				//window.location.replace("account.html");
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "無效的帳號或密碼!!";
+						break;
+					case 404:
+						errmsg = "伺服器沒有回應，無法登入帳號。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法登入帳號。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			};
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.post({
+				url: this.requestOrigin+this.loginPath,
+				data: $.param({user:user, password:password})
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack).always(() => {
+				activatingAJAX["login"] = false;
+			});
+		};
+		this.isLoginRequestActivate = () => {
+			return !!activatingAJAX["login"];
+		}
+		
+		
+		this.register = (user, password, email, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			
+			if(activatingAJAX["register"]) return;
+			activatingAJAX["register"] = true;
+			
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功註冊帳號!!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 400:
+						errmsg = "註冊資料(帳號、密碼或電子郵件)格式錯誤，無法註冊。";
+						break;
+					case 409:
+						errmsg = "已存在相同的帳號，請選擇另一個帳號註冊。";
+						break;
+					case 404:
+						errmsg = "伺服器沒有回應，無法註冊帳號。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法註冊帳號。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.post({
+				url: this.requestOrigin+"/Account/Register",
+				data: $.param({user:user, password:password, email:email})
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack).always(() => {
+				activatingAJAX["register"] = false;
+			});
+			
+		};
+		this.isRegisterRequestActivate = () => {
+			return !!activatingAJAX["register"];
+		}
+		
+		
+		this.getCurrentLoginAccount = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，請重新登入。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.get({
+				url: this.requestOrigin+this.loginPath
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+		}
+		
+		this.logOut = (successCallBack, replaceSuccessCallBack) => {
+			
+			successCallBack = successCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功登出帳號");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			
+			
+			$.get({
+				url: this.requestOrigin + "/Account/Logout"
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack);
+			
+		}
+		
+		
+		this.getRegisteredMembers = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
 
-    this.loginPath = "/Account/Login";
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功取得會員列表。");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 403:
+						errmsg = "無權限的操作。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			
+			$.get({
+				url: this.requestOrigin + "/Account/Admin/MemberManager"
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
 
-    this.schedulePath = "/UserScheduleHandler";
+		}
+		
+		this.updateProfile = (profile, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功更新個人資料!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					case 400:
+						errmsg = "個人資料格式可能有誤。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法更新資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.post({
+				url: this.requestOrigin+"/Account/UpdateProfile",
+				data: JSON.stringify(profile)
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		this.getSchedule = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功取得排程表!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法取得資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.get({
+				url: this.requestOrigin+this.schedulePath
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		function modifySchedule(scheduleData, oper, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack){
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功更新排程表!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法更新資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			var rqData = {};
+			rqData["rq_content"] = JSON.stringify(scheduleData);
+			rqData[oper] = 1;
+			$.post({
+				url: this.requestOrigin+this.schedulePath,
+				data: $.param(rqData)
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		this.addSchedule = (scheduleData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifySchedule.call(this,scheduleData,"rq_op_add", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		this.removeSchedule = (scheduleData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifySchedule.call(this,scheduleData,"rq_op_remove", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		this.setSchedule = (scheduleData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifySchedule.call(this,scheduleData,"rq_op_set", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		this.clearSchedule = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifySchedule.call(this,{},"rq_op_clear", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		//////////////////////////////////////////////////
+		
+		this.getDiagBooking = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功取得預約表!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法取得資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.get({
+				url: this.requestOrigin+this.diagBookingPath
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		function modifyDiagBooking(bookingData, oper, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack){
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功更新預約表!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法更新資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			var rqData = {};
+			rqData["rq_content"] = JSON.stringify(bookingData);
+			rqData[oper] = 1;
+			$.post({
+				url: this.requestOrigin+this.diagBookingPath,
+				data: $.param(rqData)
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		this.addDiagBooking = (bookingData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifyDiagBooking.call(this,bookingData,"rq_op_add", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		this.removeDiagBooking = (bookingData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifyDiagBooking.call(this,bookingData,"rq_op_remove", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		this.setDiagBooking = (bookingData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifyDiagBooking.call(this,bookingData,"rq_op_set", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		this.clearDiagBooking = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifyDiagBooking.call(this,{},"rq_op_clear", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+	};
+	
+	healthyLifeStyleDBUtil.init();
+	healthyLifeStyleDBUtil.init = null;
 
-    this.login = (
-      user,
-      password,
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      if (activatingAJAX["login"]) return;
-      activatingAJAX["login"] = true;
-
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功登入帳號!!");
-        successCallBack(data, textStatus, jqXHR);
-        //window.location.replace("account.html");
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 401:
-            errmsg = "無效的帳號或密碼!!";
-            break;
-          case 404:
-            errmsg = "伺服器沒有回應，無法登入帳號。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤，無法登入帳號。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.post({
-        url: this.requestOrigin + this.loginPath,
-        data: $.param({ user: user, password: password }),
-        //xhrFields: {withCredentials: true},
-        //crossDomain: true,
-        //headers: { 'Origin': window.location.origin }
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack)
-        .always(() => {
-          activatingAJAX["login"] = false;
-        });
-    };
-    this.isLoginRequestActivate = () => {
-      return !!activatingAJAX["login"];
-    };
-
-    this.register = (
-      user,
-      password,
-      email,
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      if (activatingAJAX["register"]) return;
-      activatingAJAX["register"] = true;
-
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功註冊帳號!!");
-        successCallBack(data, textStatus, jqXHR);
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 400:
-            errmsg = "註冊資料(帳號、密碼或電子郵件)格式錯誤，無法註冊。";
-            break;
-          case 409:
-            errmsg = "已存在相同的帳號，請選擇另一個帳號註冊。";
-            break;
-          case 404:
-            errmsg = "伺服器沒有回應，無法註冊帳號。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤，無法註冊帳號。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.post({
-        url: this.requestOrigin + "/Account/Register",
-        data: $.param({ user: user, password: password, email: email }),
-        //xhrFields: {withCredentials: true},
-        //crossDomain: true,
-        //headers: { 'Origin': window.location.origin }
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack)
-        .always(() => {
-          activatingAJAX["register"] = false;
-        });
-    };
-    this.isRegisterRequestActivate = () => {
-      return !!activatingAJAX["register"];
-    };
-
-    this.getCurrentLoginAccount = (
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        successCallBack(data, textStatus, jqXHR);
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 401:
-            errmsg = "登入狀態過期，請重新登入。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤，請重新登入。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.get({
-        url: this.requestOrigin + this.loginPath,
-        //xhrFields: {withCredentials: true},
-        //crossDomain: true,
-        //headers: { 'Origin': window.location.origin }
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack);
-    };
-
-    this.logOut = (successCallBack, replaceSuccessCallBack) => {
-      successCallBack = successCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功登出帳號");
-        successCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-
-      $.get({
-        url: this.requestOrigin + "/Account/Logout",
-        //xhrFields: {withCredentials: true},
-        //crossDomain: true,
-        //headers: { 'Origin': window.location.origin }
-      }).done(finalSuccessCallBack);
-    };
-
-    this.getRegisteredMembers = (
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功取得會員列表。");
-        successCallBack(data, textStatus, jqXHR);
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 403:
-            errmsg = "無權限的操作。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.get({
-        url: this.requestOrigin + "/Account/Admin/MemberManager",
-        //xhrFields: {withCredentials: true},
-        //crossDomain: true,
-        //headers: { 'Origin': window.location.origin }
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack);
-    };
-
-    this.updateProfile = (
-      profile,
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功更新個人資料!");
-        successCallBack(data, textStatus, jqXHR);
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 401:
-            errmsg = "登入狀態過期，請重新登入。";
-            break;
-          case 400:
-            errmsg = "個人資料格式可能有誤。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤，無法更新資料。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.post({
-        url: this.requestOrigin + "/Account/UpdateProfile",
-        data: JSON.stringify(profile),
-        //xhrFields: {withCredentials: true},
-        //crossDomain: true,
-        //headers: { 'Origin': window.location.origin }
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack);
-    };
-
-    this.getSchedule = (
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功取得排程表!");
-        successCallBack(data, textStatus, jqXHR);
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 401:
-            errmsg = "登入狀態過期，請重新登入。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤，無法取得資料。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      $.get({
-        url: this.requestOrigin + this.schedulePath,
-        //xhrFields: {withCredentials: true},
-        //crossDomain: true,
-        //headers: { 'Origin': window.location.origin }
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack);
-    };
-
-    function modifySchedule(
-      scheduleData,
-      oper,
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) {
-      successCallBack = successCallBack || function () {};
-      failCallBack = failCallBack || function () {};
-
-      var defaultSuccessCallBack = function (data, textStatus, jqXHR) {
-        alert("成功更新排程表!");
-        successCallBack(data, textStatus, jqXHR);
-      };
-      var defaultFailCallBack = function (data, textStatus, jqXHR) {
-        var errmsg = "";
-        switch (data.status) {
-          case 401:
-            errmsg = "登入狀態過期，請重新登入。";
-            break;
-          default:
-            errmsg = "伺服器發生未預期錯誤，無法更新資料。";
-        }
-        alert(errmsg);
-        failCallBack(data, textStatus, jqXHR);
-      };
-
-      var finalSuccessCallBack = !replaceSuccessCallBack
-        ? defaultSuccessCallBack
-        : successCallBack;
-      var finalFailCallBack = !replaceFailCallBack
-        ? defaultFailCallBack
-        : failCallBack;
-
-      var rqData = {};
-      rqData["rq_content"] = JSON.stringify(scheduleData);
-      rqData[oper] = 1;
-      $.post({
-        url: this.requestOrigin + this.schedulePath,
-        data: $.param(rqData),
-        //xhrFields: {withCredentials: true},
-        //crossDomain: true,
-        //headers: { 'Origin': window.location.origin }
-      })
-        .done(finalSuccessCallBack)
-        .fail(finalFailCallBack);
-    }
-
-    this.addSchedule = (
-      scheduleData,
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      modifySchedule.call(
-        this,
-        scheduleData,
-        "rq_op_add",
-        successCallBack,
-        failCallBack,
-        replaceSuccessCallBack,
-        replaceFailCallBack
-      );
-    };
-
-    this.removeSchedule = (
-      scheduleData,
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      modifySchedule.call(
-        this,
-        scheduleData,
-        "rq_op_remove",
-        successCallBack,
-        failCallBack,
-        replaceSuccessCallBack,
-        replaceFailCallBack
-      );
-    };
-
-    this.setSchedule = (
-      scheduleData,
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      modifySchedule.call(
-        this,
-        scheduleData,
-        "rq_op_set",
-        successCallBack,
-        failCallBack,
-        replaceSuccessCallBack,
-        replaceFailCallBack
-      );
-    };
-
-    this.clearSchedule = (
-      successCallBack,
-      failCallBack,
-      replaceSuccessCallBack,
-      replaceFailCallBack
-    ) => {
-      modifySchedule.call(
-        this,
-        {},
-        "rq_op_clear",
-        successCallBack,
-        failCallBack,
-        replaceSuccessCallBack,
-        replaceFailCallBack
-      );
-    };
-  };
-
-  healthyLifeStyleDBUtil.init();
-  healthyLifeStyleDBUtil.init = null;
 })();
