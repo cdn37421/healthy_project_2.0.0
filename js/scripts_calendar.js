@@ -41,23 +41,16 @@ function app() {
     events: [
       // months need +1
       // bug
-      {
-        event_date: new Date(2021, 8, 1),
-        event_title: "看診",
-        event_theme: "blue",
-      },
-
-      {
-        event_date: new Date(2021, 8, 17),
-        event_title: "生日",
-        event_theme: "red",
-      },
-
-      {
-        event_date: new Date(2021, 8, 16),
-        event_title: "測試 ",
-        event_theme: "green",
-      },
+      // {
+      //   event_date: new Date(2021, 8, 1),
+      //   event_title: "看診",
+      //   event_theme: "blue",
+      // },
+      // {
+      //   event_date: new Date(2021, 8, 10),
+      //   event_title: "看診2",
+      //   event_theme: "red",
+      // },
     ],
     event_title: "",
     event_date: "",
@@ -131,16 +124,87 @@ function app() {
       // open the modal
       this.openEventModal2 = true;
       this.event_date = new Date(this.year, this.month, date).toDateString();
+      //show the index
+      console.log(this.searchData(this.event_date));
     },
+    getData() {
+      let sch;
+
+      healthyLifeStyleDBUtil.getSchedule((e) => {
+        sch = e;
+        // render
+        for (let i in sch) {
+          let unix_timestamp = sch[i].date;
+          let date = new Date(unix_timestamp);
+          let title = sch[i].title;
+          let theme = sch[i].theme;
+
+          this.events.push({
+            event_date: date,
+            event_title: title,
+            event_theme: theme,
+          });
+        }
+
+        console.log(this.events);
+      });
+    },
+
+    searchData(xDay, [xTimestamp]) {
+      //xDay : Thu Sep 09 2021
+      let failMag = -1;
+      healthyLifeStyleDBUtil.getSchedule((e) => {
+        let sch = e;
+        // render
+        for (let i in sch) {
+          let unix_timestamp = sch[i].date;
+          let theYear = new Date(unix_timestamp).getFullYear();
+          let theMonth = new Date(unix_timestamp).getMonth();
+          let theDate = new Date(unix_timestamp).getDate();
+          let theXDay = new Date(theYear, theMonth, theDate).toDateString();
+          if (xDay == theXDay) {
+            console.log(i);
+            return i;
+          }
+          if (unix_timestamp == xTimestamp) {
+            return i;
+          }
+        }
+      });
+      return failMag;
+    },
+
+    show() {
+      console.log("hello");
+    },
+
     addEvent() {
       if (this.event_title == "") {
         return;
       }
 
+      // delete after figure out problem
       this.events.push({
         event_date: this.event_date,
         event_title: this.event_title,
         event_theme: this.event_theme,
+      });
+
+      theYear = this.event_date.slice(-4);
+      theMonth = this.event_date.slice(4, -8);
+      theDay = this.event_date.slice(8, 10);
+
+      theMonthNumber =
+        "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(theMonth) / 3 + 1;
+
+      let datestamp = new Date(
+        theYear + "-" + theMonthNumber + "-" + theDay
+      ).getTime();
+
+      healthyLifeStyleDBUtil.addSchedule({
+        date: datestamp,
+        title: this.event_title,
+        theme: this.event_theme,
       });
 
       console.log(this.events);
@@ -155,27 +219,23 @@ function app() {
     },
 
     deleteEvent() {
-      searchTittle();
+      this.searchData();
 
-      function searchTittle() {
-        console.log(app().events[0].event_title.indexOf("測試"));
-      }
-
-      //bug 順序上會有錯誤
-      this.events.pop({
-        event_date: "",
-        event_title: "",
-        event_theme: "",
-      });
-
-      // clear the form data
-      this.event_title = "";
-      this.event_date = "";
-      this.event_theme = "blue";
-
-      //close the modal
-      this.openEventModal = false;
+      // no database version
+      // //bug 順序上會有錯誤
+      // this.events.pop({
+      //   event_date: "",
+      //   event_title: "",
+      //   event_theme: "",
+      // });
+      // // clear the form data
+      // this.event_title = "";
+      // this.event_date = "";
+      // this.event_theme = "blue";
+      // //close the modal
+      // this.openEventModal = false;
     },
+
     updateEvent(new_event_title) {
       this.event_title = new_event_title;
     },
