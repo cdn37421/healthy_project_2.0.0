@@ -42,19 +42,19 @@ function app() {
       // months need +1
       // bug
       {
-        event_date: new Date(2021, 7, 1),
+        event_date: new Date(2021, 8, 1),
         event_title: "看診",
         event_theme: "blue",
       },
 
       {
-        event_date: new Date(2021, 7, 17),
+        event_date: new Date(2021, 8, 17),
         event_title: "生日",
         event_theme: "red",
       },
 
       {
-        event_date: new Date(2021, 7, 16),
+        event_date: new Date(2021, 8, 16),
         event_title: "測試 ",
         event_theme: "green",
       },
@@ -155,7 +155,11 @@ function app() {
     },
 
     deleteEvent() {
-      let toRemove = this.event_title;
+      searchTittle();
+
+      function searchTittle() {
+        console.log(app().events[0].event_title.indexOf("測試"));
+      }
 
       //bug 順序上會有錯誤
       this.events.pop({
@@ -163,8 +167,6 @@ function app() {
         event_title: "",
         event_theme: "",
       });
-
-      console.log(this.events);
 
       // clear the form data
       this.event_title = "";
