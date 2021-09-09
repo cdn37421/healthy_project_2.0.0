@@ -134,7 +134,8 @@ function app() {
         sch = e;
         // render
         for (let i in sch) {
-          let unix_timestamp = sch[i].date;
+          //bug need to plus 1day
+          let unix_timestamp = sch[i].date + 86400000;
           console.log(unix_timestamp);
           let date = new Date(unix_timestamp);
           let title = sch[i].title;
@@ -146,8 +147,24 @@ function app() {
             event_theme: theme,
           });
         }
-
-        console.log(this.events);
+      });
+      healthyLifeStyleDBUtil.getDiagBooking((e) => {
+        sch = e;
+        // render
+        for (let i in sch) {
+          let unix_timestamp = sch[i].datetime;
+          console.log(unix_timestamp);
+          let date = new Date(unix_timestamp);
+          let title = sch[0].diagClass + " " + sch[0].desc;
+          let theme = "red";
+          console.log(unix_timestamp);
+          this.events.push({
+            event_date: date,
+            event_title: title,
+            event_theme: theme,
+          });
+          console.log(this.events);
+        }
       });
     },
 

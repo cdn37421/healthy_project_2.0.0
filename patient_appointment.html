@@ -12,14 +12,15 @@
       href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css"
     />
     <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    type="module"
+    src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
     ></script>
     <script
-      nomodule=""
-      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    nomodule=""
+    src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
     ></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/landpage.css" />
     <title>Welcome To Healthy</title>
 
   </head>
@@ -1194,10 +1195,21 @@
       
                   <div class="text-gray-600 mb-8 ">
                     謝謝您，已經預約成功，您可以在日曆查看預約行程。
-                    預約科別：
-                    預約時間：
-                    預約日期：
-                    預約醫生：
+                    <br>
+                    <p class="inline">預約科別：<span id="patientPickSpecialityShow"></span></p> 
+                    <br>
+                    <p class="inline">預約時間：<span id="patientPickTimeShow"></span></p> 
+                    <br>
+                    <p class="inline">預約節數：<span id="patientPickLengthShow"></span></p> 
+                    <br>
+                    <p class="inline">預約日期：<span id="patientPickDateShow"></span></p> 
+                    <br>
+                    <p class="inline">預約醫生：<span id="patientPickDoctorShow"></span></p> 
+                    <br>
+                    <p class="inline">症狀敘述<span id=""></span></p> 
+                    
+                    
+                    
  
                   </div>
       
@@ -1209,7 +1221,7 @@
               </div>
             </div>
             
-            <form action="">
+            <form name="form_appointment" id="form_appointment">
             <div x-show.transition="step != 'complete'">	
               <!-- Top Navigation -->
               <div class="border-b-2 py-4">
@@ -1248,17 +1260,17 @@
                     <div class="absolute top-5 right-0 px-3 py-2">
                     <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
                   </div>
-                    <select id="patient-pick-specialty" class="border border-gray-300 font-medium rounded-lg shadow-sm text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none ocus:shadow-outline appearance-none">
+                    <select  id="patientPickSpeciality"  class="border border-gray-300 font-medium rounded-lg shadow-sm text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none ocus:shadow-outline appearance-none">
 
                       <option >請選擇</option>     
-                      <option>內科</option>
-                      <option>家醫科</option>
-                      <option>兒科</option>
-                      <option>一般外科</option>
-                      <option>精神科</option>
-                      <option>耳鼻喉科</option>
-                      <option>肝膽腸胃科</option>
-                      <option>耳鼻喉科</option>
+                      <option value="內科">內科</option>
+                      <option value="家醫科">家醫科</option>
+                      <option value="兒科">兒科</option>
+                      <option value="一般外科">一般外科</option>
+                      <option value="精神科">精神科</option>
+                      <option value="耳鼻喉科">耳鼻喉科</option>
+                      <option value="肝膽腸胃科">肝膽腸胃科</option>
+                      <option value="耳鼻喉科">耳鼻喉科</option>
                     </select>
                   </div>
                   <br>
@@ -1267,19 +1279,52 @@
                     <div class="absolute top-5 right-0 px-3 py-2">
                       <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
                     </div>
-                    <select class="border border-gray-300 font-medium rounded-lg shadow-sm text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none ocus:shadow-outline appearance-none">
+                    <select id="patientPickTime"  class="border border-gray-300 font-medium rounded-lg shadow-sm text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none ocus:shadow-outline appearance-none">
   
                       <option>請選擇</option>     
-                      <option>7:00~8:00</option>
-                      <option>8:00~9:00</option>
-                      <option>9:00~10:00</option>
-                      <option>10:00~11:00</option>
-                      <option>11:00~12:00</option>
-                      <option>13:00~14:00</option>
-                      <option>14:00~15:00</option>
-                      <option>15:00~16:00</option>
+                      <option value="1am">1:00~2:00</option>
+                      <option value="2am">2:00~3:00</option>
+                      <option value="3am">3:00~4:00</option>
+                      <option value="4am">4:00~5:00</option>
+                      <option value="5am">5:00~6:00</option>
+                      <option value="6am">6:00~7:00</option>
+                      <option value="7am">7:00~8:00</option>
+                      <option value="8am">8:00~9:00</option>
+                      <option value="9am">9:00~10:00</option>
+                      <option value="10am">10:00~11:00</option>
+                      <option value="11am">11:00~12:00</option>
+                      <option value="12pm">12:00~13:00</option>
+                      <option value="1pm">13:00~14:00</option>
+                      <option value="2pm">14:00~15:00</option>
+                      <option value="3pm">15:00~16:00</option>
+                      <option value="4pm">16:00~17:00</option>
+                      <option value="5pm">17:00~18:00</option>
+                      <option value="6pm">18:00~19:00</option>
+                      <option value="7pm">19:00~20:00</option>
+                      <option value="8pm">20:00~21:00</option>
+                      <option value="9pm">21:00~22:00</option>
+                      <option value="10pm">22:00~23:00</option>
+                      <option value="11pm">23:00~24:00</option>
+                      <option value="12pm">24:00~1:00</option>
                     </select>
                   </div>
+                  <br>
+                  <div class="relative inline-block  mb-5">
+                    <label for="datepicker" class="font-bold mb-1 text-gray-700 block">選擇時間長度</label>
+                    <div class="absolute top-5 right-0 px-3 py-2">
+                      <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
+                    </div>
+                    <select id="patientPickLength"  class="border border-gray-300 font-medium rounded-lg shadow-sm text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none ocus:shadow-outline appearance-none">
+  
+                      <option>請選擇</option>     
+                      <option value="period-1">一節（十五分鐘）</option>
+                      <option value="period-2">二節（三十分鐘）</option>
+                      <option value="period-3">三節（四十五分鐘）</option>
+                      <option value="period-4">四節（六十分鐘）</option>
+                  
+                    </select>
+                  </div>
+
                 <!--  -->
                 
                   <div x-data="app2()" x-init="[initDate(), getNoOfDays()]" x-cloak>
@@ -1371,10 +1416,9 @@
                     <div class="container center-text max-w-7xl">
                   <div class="grid grid-flow-col grid-cols-4 md:grid-cols-2 xl:grid-cols-3  text-base gap-4 text-center margin-bottom-md">
                     <!-- card 1 -->
-
                     <div class="doctor doctor-card-input">
-                      <label id=patient-pick-doctor>
-                        <input id=patient-pick-doctor type="radio" name="doctor-card" class="doctor-card-input-element required" />
+                      <label >
+                        <input name="pick" value="doctor1" type="radio" name="doctor-card" class="doctor-card-input-element required" />
                       <img
                         src="img/doctors/Doctor_woman.jpg"
                         class="doctor-img"
@@ -1408,7 +1452,7 @@
                     <!-- card 2 -->
                     <div class="doctor doctor-card-input">
                       <label>
-                        <input type="radio" name="doctor-card" class="doctor-card-input-element" />
+                        <input name="pick" value="doctor2" type="radio" name="doctor-card" class="doctor-card-input-element" />
                       <img
                         src="img/doctors/Doctor_man.jpg"
                         class="doctor-img "
@@ -1512,9 +1556,9 @@
                   >下一步</button>
       
                   <button
-                  type="submit"
+                  type="button"
                   id="submitBtn"
-                    @click="step = 'complete'"
+                    @click="step = 'complete', processFormData()"
                     x-show="step === 3"
                     class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
                   >預約</button>
@@ -1681,11 +1725,37 @@
       }
     </script>
      <script>
-       const submitBtn = document.getElementById("submitBtn");
-       submitBtn.addEventListener("submit",function(){
+       function processFormData() {     
+        const patientPickSpeciality =  document.querySelector('#patientPickSpeciality');
+        const patientPickTime =  document.querySelector('#patientPickTime');
+        const patientPickLength =  document.querySelector('#patientPickLength');
+        const patientPickDate =  document.querySelector('#patient-pick-date');     
+        const patientPickDoctor = $("input:radio[name=pick]:checked").val();
+ 
+        //
+        const patientPickSpecialityShow =  document.querySelector('#patientPickSpecialityShow');
+        const patientPickTimeShow =  document.querySelector('#patientPickTimeShow');
+        const patientPickLengthShow =  document.querySelector('#patientPickLengthShow');
+        const patientPickDateShow =  document.querySelector('#patientPickDateShow');
+        const patientPickDoctorShow =  document.querySelector('#patientPickDoctorShow');
 
-         
-       })
+        patientPickSpecialityShow.innerText= patientPickSpeciality.value;
+        patientPickTimeShow.innerText = patientPickTime.value;
+        patientPickLengthShow.innerText=patientPickLength.value;
+        patientPickDateShow.innerText=patientPickDate.value;
+        patientPickDateShow.innerText=patientPickDate.value;
+        patientPickDoctorShow.innerText=patientPickDoctor.value;
+
+        console.log(patientPickSpeciality.value);
+        console.log(patientPickTime.value);
+        console.log(patientPickLength.value);
+        console.log(patientPickDate.value);
+        console.log(patientPickDoctor.value);
+    
+
+
+
+      }
 
       function logOut() {
         healthyLifeStyleDBUtil.logOut();
