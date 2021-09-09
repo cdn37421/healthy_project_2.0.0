@@ -135,6 +135,7 @@ function app() {
         // render
         for (let i in sch) {
           let unix_timestamp = sch[i].date;
+          console.log(unix_timestamp);
           let date = new Date(unix_timestamp);
           let title = sch[i].title;
           let theme = sch[i].theme;
@@ -150,7 +151,7 @@ function app() {
       });
     },
 
-    searchData(xDay, [xTimestamp]) {
+    searchData(xDay) {
       //xDay : Thu Sep 09 2021
       let failMag = -1;
       healthyLifeStyleDBUtil.getSchedule((e) => {
@@ -164,9 +165,6 @@ function app() {
           let theXDay = new Date(theYear, theMonth, theDate).toDateString();
           if (xDay == theXDay) {
             console.log(i);
-            return i;
-          }
-          if (unix_timestamp == xTimestamp) {
             return i;
           }
         }
@@ -194,9 +192,10 @@ function app() {
       theMonth = this.event_date.slice(4, -8);
       theDay = this.event_date.slice(8, 10);
 
+      console.log(theYear, theMonth, theDay);
       theMonthNumber =
         "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(theMonth) / 3 + 1;
-
+      console.log(theYear + "-" + theMonthNumber + "-" + theDay);
       let datestamp = new Date(
         theYear + "-" + theMonthNumber + "-" + theDay
       ).getTime();

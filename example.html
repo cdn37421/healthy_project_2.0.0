@@ -30,22 +30,20 @@
       <!-- logo -->
       <div class="flex-none w-56 flex flex-row items-center">
         <a href="index.html">
-          
           <img
-          src="img/healthy.png"
-          class="w-12 flex-none"
-          style="width: 10.5rem"
+            src="img/healthy.png"
+            class="w-12 flex-none"
+            style="width: 10.5rem"
           />
-          <!-- <strong class="capitalize ml-1 flex-1">Healthy</strong> -->
-          
-          <button
+        </a>
+
+        <button
           id="sliderBtn"
-          class="flex-none text-right text-gray-900 hidden md:block"
-          >
+          class="flex-none text-right text-gray-900 hidden md:block ml-2"
+        >
           <i class="fad fa-list-ul"></i>
         </button>
       </div>
-    </a>
       <!-- end logo -->
 
       <!-- navbar content toggle -->
@@ -64,7 +62,7 @@
           md:top-0
           md:w-full
           md:left-0
-          md:mt-16
+          md:mt-20
           md:border-t
           md:border-b
           md:border-gray-200
@@ -95,13 +93,13 @@
           <a
             class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
             href="#"
-            title="email"
+            title="envelope"
             ><i class="fad fa-envelope-open-text"></i
           ></a>
           <a
             class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
             href="#"
-            title="email"
+            title="comments"
             ><i class="fad fa-comments-alt"></i
           ></a>
           <a
@@ -112,8 +110,8 @@
           ></a>
           <a
             class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
-            href="#"
-            title="email"
+            href="calendar.html"
+            title="calendar"
             ><i class="fad fa-calendar-exclamation"></i
           ></a>
         </div>
@@ -144,8 +142,9 @@
                     p-0
                     leading-none
                   "
+                  id="navbar-name"
                 >
-                  RYO
+                  使用者
                 </h1>
                 <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
               </div>
@@ -190,7 +189,7 @@
                   duration-300
                   ease-in-out
                 "
-                href="#"
+                href="admin_member_profile.html"
               >
                 <i class="fad fa-user-edit text-xs mr-1"></i>
                 編輯個人資料
@@ -215,11 +214,10 @@
                 "
                 href="#"
               >
-                <i class="fad fa-inbox-in text-xs mr-1"></i>
-                我的盒子
+                <i class="fad fa-store text-xs mr-1"></i>
+                購物商城
               </a>
               <!-- end item -->
-
               <!-- item -->
               <a
                 class="
@@ -238,11 +236,10 @@
                 "
                 href="#"
               >
-                <i class="fad fa-badge-check text-xs mr-1"></i>
-                任務
+                <i class="fad fa-book-open text-xs mr-1"></i>
+                健康存摺
               </a>
               <!-- end item -->
-
               <!-- item -->
               <a
                 class="
@@ -259,13 +256,12 @@
                   duration-300
                   ease-in-out
                 "
-                href="#"
+                href="calendar.html"
               >
-                <i class="fad fa-comment-alt-dots text-xs mr-1"></i>
-                聊天
+                <i class="fad fa-calendar text-xs mr-1"></i>
+                日曆
               </a>
               <!-- end item -->
-
               <hr />
 
               <!-- item -->
@@ -888,10 +884,27 @@
             "
           >
             <i class="fad fa-chart-pie text-xs mr-2"></i>
-            資料分析後台
+            管理者主頁
           </a>
           <!-- end link -->
-
+          <!-- link -->
+          <a
+            href="member_index.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fad fa-user text-xs mr-2"></i>
+            會員主頁
+          </a>
+          <!-- end link -->
           <!-- link -->
           <a
             href="admin_sale.html"
@@ -912,68 +925,51 @@
           <!-- end link -->
 
           <!-- link -->
-                  <a
-                  href="admin_member.html"
-                  class="
-                    mb-3
-                    capitalize
-                    font-medium
-                    text-sm
-                    hover:text-teal-600
-                    transition
-                    ease-in-out
-                    duration-500
-                  "
-                  >
-                  <i class="fas fa-users text-xs mr-2"></i>
-                  會員管理後台
-                  </a>
-                  <!-- end link -->
+          <a
+            href="admin_member.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fas fa-users text-xs mr-2"></i>
+            會員管理後台
+          </a>
+          <!-- end link -->
+
+          <!-- link -->
+          <a
+            href="admin_doctor.html"
+            class="
+              mb-3
+              capitalize
+              font-medium
+              text-sm
+              hover:text-teal-600
+              transition
+              ease-in-out
+              duration-500
+            "
+          >
+            <i class="fas fa-users text-xs mr-2"></i>
+            醫生管理後台
+          </a>
+          <!-- end link -->
+
+          <!-- end link -->
           <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
             應用程式
           </p>
 
           <!-- link -->
           <a
-            href="./email.html"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-envelope-open-text text-xs mr-2"></i>
-            信件
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="#"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-comments text-xs mr-2"></i>
-            聊天
-          </a>
-          <!-- end link -->
-
-          <!-- link -->
-          <a
-            href="#"
+            href="calendar.html"
             class="
               mb-3
               capitalize
@@ -992,7 +988,7 @@
 
           <!-- link -->
           <a
-            href="#"
+            href="patient_appointment.html"
             class="
               mb-3
               capitalize
@@ -1004,8 +1000,8 @@
               duration-500
             "
           >
-            <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
-            發票
+            <i class="fad fa-calendar-check text-xs mr-2"></i>
+            預約看診
           </a>
           <!-- end link -->
 
@@ -1024,7 +1020,7 @@
             "
           >
             <i class="fad fa-store text-xs mr-2"></i>
-            購物商城
+            購物商城（未做）
           </a>
           <!-- end link -->
 
@@ -1043,35 +1039,16 @@
             "
           >
             <i class="fad fa-book-open text-xs mr-2"></i>
-            健康存摺
-          </a>
-          <!-- end link -->
-          <!-- link -->
-          <a
-            href="#"
-            class="
-              mb-3
-              capitalize
-              font-medium
-              text-sm
-              hover:text-teal-600
-              transition
-              ease-in-out
-              duration-500
-            "
-          >
-            <i class="fad fa-calendar-check text-xs mr-2"></i>
-            預約看診
+            健康存摺（未做）
           </a>
           <!-- end link -->
 
           <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
-            元件文件
+            其他頁面（暫存處）
           </p>
-
           <!-- link -->
           <a
-            href="#"
+            href="admin_member_profile.html"
             class="
               mb-3
               capitalize
@@ -1084,13 +1061,12 @@
             "
           >
             <i class="fad fa-text text-xs mr-2"></i>
-            字型
+            個人資料頁面
           </a>
           <!-- end link -->
-
           <!-- link -->
           <a
-            href="#"
+            href="patient_list.html"
             class="
               mb-3
               capitalize
@@ -1102,14 +1078,14 @@
               duration-500
             "
           >
-            <i class="fad fa-whistle text-xs mr-2"></i>
-            警告
+            <i class="fad fa-person-sign text-xs mr-2"></i>
+            病患資料列表
           </a>
           <!-- end link -->
 
           <!-- link -->
           <a
-            href="#"
+            href="patient_appointment.html"
             class="
               mb-3
               capitalize
@@ -1121,8 +1097,8 @@
               duration-500
             "
           >
-            <i class="fad fa-cricket text-xs mr-2"></i>
-            按鈕
+            <i class="fad fa-person-sign text-xs mr-2"></i>
+            病患預約介面
           </a>
           <!-- end link -->
         </div>
@@ -1133,11 +1109,9 @@
       <!-- end sidbar -->
 
       <!-- strat content （從這裡開始寫）-->
-      <div class="bg-gray-100 flex-1 p-6 md:mt-16">
-    
-      </div>
-        
-     <!-- end content -->
+      <div class="bg-gray-100 flex-1 p-6 md:mt-16"></div>
+
+      <!-- end content -->
     </div>
     <!-- end wrapper -->
 

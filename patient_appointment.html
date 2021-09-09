@@ -20,14 +20,7 @@
       src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
     ></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/landpage.css" />
-
     <title>Welcome To Healthy</title>
-<style>
-
-
-
-</style>
 
   </head>
   <body class="bg-gray-100">
@@ -45,22 +38,20 @@
       <!-- logo -->
       <div class="flex-none w-56 flex flex-row items-center">
         <a href="index.html">
-          
           <img
-          src="img/healthy.png"
-          class="w-12 flex-none"
-          style="width: 10.5rem"
+            src="img/healthy.png"
+            class="w-12 flex-none"
+            style="width: 10.5rem"
           />
-          <!-- <strong class="capitalize ml-1 flex-1">Healthy</strong> -->
-          
-          <button
+        </a>
+
+        <button
           id="sliderBtn"
-          class="flex-none text-right text-gray-900 hidden md:block"
-          >
+          class="flex-none text-right text-gray-900 hidden md:block ml-2"
+        >
           <i class="fad fa-list-ul"></i>
         </button>
       </div>
-    </a>
       <!-- end logo -->
 
       <!-- navbar content toggle -->
@@ -79,7 +70,7 @@
           md:top-0
           md:w-full
           md:left-0
-          md:mt-16
+          md:mt-20
           md:border-t
           md:border-b
           md:border-gray-200
@@ -110,13 +101,13 @@
           <a
             class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
             href="#"
-            title="email"
+            title="envelope"
             ><i class="fad fa-envelope-open-text"></i
           ></a>
           <a
             class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
             href="#"
-            title="email"
+            title="comments"
             ><i class="fad fa-comments-alt"></i
           ></a>
           <a
@@ -127,8 +118,8 @@
           ></a>
           <a
             class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
-            href="#"
-            title="email"
+            href="calendar.html"
+            title="calendar"
             ><i class="fad fa-calendar-exclamation"></i
           ></a>
         </div>
@@ -158,10 +149,10 @@
                     m-0
                     p-0
                     leading-none
-                    id="navbar-name"
                   "
+                  id="navbar-name"
                 >
-                  RYO
+                  使用者
                 </h1>
                 <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
               </div>
@@ -206,7 +197,7 @@
                   duration-300
                   ease-in-out
                 "
-                href="#"
+                href="admin_member_profile.html"
               >
                 <i class="fad fa-user-edit text-xs mr-1"></i>
                 編輯個人資料
@@ -231,11 +222,10 @@
                 "
                 href="#"
               >
-                <i class="fad fa-inbox-in text-xs mr-1"></i>
-                我的盒子
+                <i class="fad fa-store text-xs mr-1"></i>
+                購物商城
               </a>
               <!-- end item -->
-
               <!-- item -->
               <a
                 class="
@@ -254,11 +244,10 @@
                 "
                 href="#"
               >
-                <i class="fad fa-badge-check text-xs mr-1"></i>
-                任務
+                <i class="fad fa-book-open text-xs mr-1"></i>
+                健康存摺
               </a>
               <!-- end item -->
-
               <!-- item -->
               <a
                 class="
@@ -275,13 +264,12 @@
                   duration-300
                   ease-in-out
                 "
-                href="#"
+                href="calendar.html"
               >
-                <i class="fad fa-comment-alt-dots text-xs mr-1"></i>
-                聊天
+                <i class="fad fa-calendar text-xs mr-1"></i>
+                日曆
               </a>
               <!-- end item -->
-
               <hr />
 
               <!-- item -->
@@ -311,7 +299,7 @@
           </div>
           <!-- end user -->
 
-          <!-- notification -->
+          <!-- notifcation -->
           <div class="dropdown relative mr-5 md:static">
             <button
               class="
@@ -595,7 +583,7 @@
               <!-- end bottom -->
             </div>
           </div>
-          <!-- end notification -->
+          <!-- end notifcation -->
 
           <!-- messages -->
           <div class="dropdown relative mr-5 md:static">
@@ -859,363 +847,272 @@
 
     <!-- start wrapper -->
     <div class="h-screen flex flex-row flex-wrap">
-      <!-- start sidebar -->
-      <div
-        id="sideBar"
+    <!-- start sidebar -->
+    <div
+    id="sideBar"
+    class="
+      relative
+      flex flex-col flex-wrap
+      bg-white
+      border-r border-gray-300
+      p-6
+      flex-none
+      w-64
+      md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl
+      animated
+      faster
+    "
+  >
+    <!-- sidebar content -->
+    <div class="flex flex-col">
+      <!-- sidebar toggle -->
+      <div class="text-right hidden md:block mb-4">
+        <button id="sideBarHideBtn">
+          <i class="fad fa-times-circle"></i>
+        </button>
+      </div>
+      <!-- end sidebar toggle -->
+
+      <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">
+        主控台
+      </p>
+
+      <!-- link -->
+      <a
+        href="admin.html"
         class="
-          relative
-          flex flex-col flex-wrap
-          bg-white
-          border-r border-gray-300
-          p-6
-          flex-none
-          w-64
-          md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl
-          animated
-          faster
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
         "
       >
-       <!-- sidebar content -->
-       <div class="flex flex-col">
-        <!-- sidebar toggle -->
-        <div class="text-right hidden md:block mb-4">
-          <button id="sideBarHideBtn">
-            <i class="fad fa-times-circle"></i>
-          </button>
-        </div>
-        <!-- end sidebar toggle -->
+        <i class="fad fa-chart-pie text-xs mr-2"></i>
+        管理者主頁
+      </a>
+      <!-- end link -->
+      <!-- link -->
+      <a
+        href="member_index.html"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fad fa-user text-xs mr-2"></i>
+        會員主頁
+      </a>
+      <!-- end link -->
+      <!-- link -->
+      <a
+        href="admin_sale.html"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fad fa-shopping-cart text-xs mr-2"></i>
+        銷售分析後台
+      </a>
+      <!-- end link -->
 
-        <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">
-          主控台
-        </p>
+      <!-- link -->
+      <a
+        href="admin_member.html"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fas fa-users text-xs mr-2"></i>
+        會員管理後台
+      </a>
+      <!-- end link -->
 
-        <!-- link -->
-        <a
-          href="admin.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-chart-pie text-xs mr-2"></i>
-          管理者主頁
-        </a>
-        <!-- end link -->
+      <!-- link -->
+      <a
+        href="admin_doctor.html"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fas fa-users text-xs mr-2"></i>
+        醫生管理後台
+      </a>
+      <!-- end link -->
 
-        <!-- link -->
-        <a
-          href="admin_sale.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-shopping-cart text-xs mr-2"></i>
-          銷售分析後台
-        </a>
-        <!-- end link -->
+      <!-- end link -->
+      <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
+        應用程式
+      </p>
 
-        <!-- link -->
-        <a
-          href="admin_member.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fas fa-users text-xs mr-2"></i>
-          會員管理後台
-        </a>
-        <!-- end link -->
+      <!-- link -->
+      <a
+        href="calendar.html"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fad fa-calendar-edit text-xs mr-2"></i>
+        日曆
+      </a>
+      <!-- end link -->
 
-        <!-- link -->
-        <a
-          href="admin_doctor.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fas fa-users text-xs mr-2"></i>
-          醫生管理後台
-        </a>
-        <!-- end link -->
+      <!-- link -->
+      <a
+        href="patient_appointment.html"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fad fa-calendar-check text-xs mr-2"></i>
+        預約看診
+      </a>
+      <!-- end link -->
 
-        <!-- end link -->
-        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
-          應用程式
-        </p>
+      <!-- link -->
+      <a
+        href="#"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fad fa-store text-xs mr-2"></i>
+        購物商城（未做）
+      </a>
+      <!-- end link -->
 
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-envelope-open-text text-xs mr-2"></i>
-          信件（未做）
-        </a>
-        <!-- end link -->
+      <!-- link -->
+      <a
+        href="#"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fad fa-book-open text-xs mr-2"></i>
+        健康存摺（未做）
+      </a>
+      <!-- end link -->
 
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-comments text-xs mr-2"></i>
-          聊天（未做）
-        </a>
-        <!-- end link -->
+      <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
+        其他頁面（暫存處）
+      </p>
+      <!-- link -->
+      <a
+        href="admin_member_profile.html"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fad fa-text text-xs mr-2"></i>
+        個人資料頁面
+      </a>
+      <!-- end link -->
+      <!-- link -->
+      <a
+        href="patient_list.html"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fad fa-person-sign text-xs mr-2"></i>
+        病患資料列表
+      </a>
+      <!-- end link -->
 
-        <!-- link -->
-        <a
-          href="calendar.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-calendar-edit text-xs mr-2"></i>
-          日曆
-        </a>
-        <!-- end link -->
+      <!-- link -->
+      <a
+        href="patient_appointment.html"
+        class="
+          mb-3
+          capitalize
+          font-medium
+          text-sm
+          hover:text-teal-600
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        <i class="fad fa-person-sign text-xs mr-2"></i>
+        病患預約介面
+      </a>
+      <!-- end link -->
+    </div>
+  </div>
 
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
-          發票（未做）
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-store text-xs mr-2"></i>
-          購物商城（未做）
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-book-open text-xs mr-2"></i>
-          健康存摺（未做）
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="#"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-calendar-check text-xs mr-2"></i>
-          預約看診
-        </a>
-
-        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
-          其他頁面（暫存處）
-        </p>
-        <!-- link -->
-        <a
-          href="admin_member_profile.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-text text-xs mr-2"></i>
-          個人資料頁面
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="patient_list.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          病患資料列表
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="patient_list_2.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          病患資料列表（版本二）
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="patient_list.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          病患個人資料頁面（一半）
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="patient_appointment.html"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          病患預約介面
-        </a>
-        <!-- end link -->
-        <!-- link -->
-        <a
-          href="https://www.behance.net/gallery/90714005/Zendenta-Dental-clinic-management-system"
-          class="
-            mb-3
-            capitalize
-            font-medium
-            text-sm
-            hover:text-teal-600
-            transition
-            ease-in-out
-            duration-500
-          "
-        >
-          <i class="fad fa-person-sign text-xs mr-2"></i>
-          介面參考網址
-        </a>
-        <!-- end link -->
-      </div>
-      </div>
-
-      <!-- end sidebar content -->
+  <!-- end sidebar content -->
 
       <!-- end sidebar -->
 
@@ -1638,9 +1535,7 @@
     <!-- end wrapper -->
 
     <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="js/scripts.js"></script>
-    <script defer src="js/database_general.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script defer src="js/database_general.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
