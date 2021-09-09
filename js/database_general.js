@@ -75,17 +75,20 @@ fr.readAsDataURL(inputimg.files[0])
 console.log(fr.result)//打印出data:image/jpeg;base64,.... 之類的
 
 之後可以如下方法來上傳圖片:
-var profile;
-healthyLifeStyleDBUtil.getCurrentLoginAccount(function(data){profile = data.userProfile})
-profile.photo = fr.result;
-healthyLifeStyleDBUtil.updateProfile(profile);
+healthyLifeStyleDBUtil.getCurrentLoginAccount(function(data){
+	var profile = data.userProfile;
+	profile.photo = fr.result;
+	healthyLifeStyleDBUtil.updateProfile(profile);
+})
 
 可以如下取得圖片:
-var profile;
-healthyLifeStyleDBUtil.getCurrentLoginAccount(function(data){profile = data.userProfile})
-var newImg = document.createElement("img");
-newImg.src = profile.photo;
-document.body.appendChild(newImg);
+healthyLifeStyleDBUtil.getCurrentLoginAccount(function(data){
+	var profile = data.userProfile;
+	var newImg = document.createElement("img");
+	newImg.src = profile.photo;
+	document.body.appendChild(newImg);
+})
+
 -----------------------------------------------------------------------------------------------------
 healthyLifeStyleDBUtil.logOut([successCallBack][, replaceSuccessCallBack])
 執行後將當前網頁登入的帳號登出。
