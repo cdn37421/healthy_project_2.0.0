@@ -1206,7 +1206,7 @@
                     <br>
                     <p class="inline">預約醫生：<span id="patientPickDoctorShow"></span></p> 
                     <br>
-                    <p class="inline">症狀敘述<span id=""></span></p> 
+                    <p class="inline">症狀敘述：<span id="descriptionShow"></span></p> 
                     
                     
                     
@@ -1418,7 +1418,8 @@
                     <!-- card 1 -->
                     <div class="doctor doctor-card-input">
                       <label >
-                        <input name="pick" value="doctor1" type="radio" name="doctor-card" class="doctor-card-input-element required" />
+                        <!-- value must be doctor's name -->
+                        <input name="pick" value="Meredith Grey" type="radio" name="doctor-card" class="doctor-card-input-element required" />
                       <img
                         src="img/doctors/Doctor_woman.jpg"
                         class="doctor-img"
@@ -1452,7 +1453,9 @@
                     <!-- card 2 -->
                     <div class="doctor doctor-card-input">
                       <label>
-                        <input name="pick" value="doctor2" type="radio" name="doctor-card" class="doctor-card-input-element" />
+                        <input name="pick" value="Derek Shepherd
+
+                        " type="radio" name="doctor-card" class="doctor-card-input-element" />
                       <img
                         src="img/doctors/Doctor_man.jpg"
                         class="doctor-img "
@@ -1517,14 +1520,11 @@
                     </div> -->
         
                     <div class="mb-5">
-                      <label for="profession" class="font-bold mb-1 text-gray-700 block">症狀敘述</label>
-                      <input type="profession"
+                      <label for="description" class="font-bold mb-1 text-gray-700 block">症狀敘述</label>
+                      <input id="description" type="description"
                         class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                         placeholder="請填寫症狀"
                         required>
-                      
-                        <p><input type="submit" value="送出資料"></p>
-                        
                     </div>
                   </div>
                   
@@ -1731,6 +1731,7 @@
         const patientPickLength =  document.querySelector('#patientPickLength');
         const patientPickDate =  document.querySelector('#patient-pick-date');     
         const patientPickDoctor = $("input:radio[name=pick]:checked").val();
+        const description = document.querySelector('#description');
  
         //
         const patientPickSpecialityShow =  document.querySelector('#patientPickSpecialityShow');
@@ -1738,19 +1739,23 @@
         const patientPickLengthShow =  document.querySelector('#patientPickLengthShow');
         const patientPickDateShow =  document.querySelector('#patientPickDateShow');
         const patientPickDoctorShow =  document.querySelector('#patientPickDoctorShow');
+        const descriptionShow =  document.querySelector('#descriptionShow');
 
         patientPickSpecialityShow.innerText= patientPickSpeciality.value;
         patientPickTimeShow.innerText = patientPickTime.value;
         patientPickLengthShow.innerText=patientPickLength.value;
         patientPickDateShow.innerText=patientPickDate.value;
         patientPickDateShow.innerText=patientPickDate.value;
-        patientPickDoctorShow.innerText=patientPickDoctor.value;
+        patientPickDoctorShow.innerText= patientPickDoctor;
+        descriptionShow.innerText=description.value;
 
+        //
         console.log(patientPickSpeciality.value);
         console.log(patientPickTime.value);
         console.log(patientPickLength.value);
         console.log(patientPickDate.value);
-        console.log(patientPickDoctor.value);
+        console.log(patientPickDoctor);
+        console.log(description.value);
     
 
 
