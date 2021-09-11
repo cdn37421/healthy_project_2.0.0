@@ -185,6 +185,81 @@ healthyLifeStyleDBUtil.updatePermission(perm, [successCallBack][, failCallBack][
 所有的身分可以參考https://github.com/XenonDB/III_FinalProject/blob/master/src/main/java/healthylifestyle/server/account/LoginIdentity.java
 目前若該會員可以使用醫生身分，則預設登入後即被指定為醫生身分。
 -----------------------------------------------------------------------------------------------------
+healthyLifeStyleDBUtil.getProductList([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+取得商品清單列表，就算未登入也可取得。
+取得的列表可以透過放入回乎函數successCallBack的第一個參數取得。
+例：
+healthyLifeStyleDBUtil.getProductList(function(l){console.log(l)});
+
+控制台將輸出：
+0:
+	pbewrite1: null
+	pbewrite2: null
+	pbewrite3: null
+	pid: 1
+	pname: "維維骨力"
+	ppic: null
+	price: 30
+	ptype: "medical"
+	qty: 300
+	seller: "System"
+[[Prototype]]: Object
+1: {pid: 2, ppic: null, pname: '普拿疼疼', price: 60, qty: 200, …}
+length: 2
+[[Prototype]]: Array(0)
+
+-----------------------------------------------------------------------------------------------------
+healthyLifeStyleDBUtil.addProduct(productData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+新增一筆商品資料。商品資料的格式和取得商品列表方法中，取出來的格式相同。
+只有擁有管理員權限的登入身分才能操作。
+-----------------------------------------------------------------------------------------------------
+healthyLifeStyleDBUtil.updateProduct(productData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+更新一筆商品資料。商品資料的格式和取得商品列表方法中，取出來的格式相同。
+只有擁有管理員權限的登入身分才能操作。
+-----------------------------------------------------------------------------------------------------
+healthyLifeStyleDBUtil.getAllOrders([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+取得所有訂單資料。只有擁有管理員權限的登入身分才能操作。
+範例：
+healthyLifeStyleDBUtil.getAllOrders(function(o){console.log(o)})
+
+控制台將輸出：
+0:
+customer: "Lai"
+customer_comment: null
+location_desc: null
+odate: 1631348782835
+oid: 1
+pid: 1
+postal_code: -1
+price: 140
+qty: 5
+seller: "System"
+seller_comment: null
+status: 0
+transactionStatus: "BOOKING"
+[[Prototype]]: Object
+1: {oid: 2, pid: 2, qty: 5, seller: 'System', customer: 'RRR', …}
+2: {oid: 3, pid: 1, qty: 5, seller: 'System', customer: 'RRR', …}
+length: 3
+[[Prototype]]: Array(0)
+-----------------------------------------------------------------------------------------------------
+healthyLifeStyleDBUtil.getOrdersAsCustomer([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+取得自己下訂的訂單資料。
+-----------------------------------------------------------------------------------------------------
+healthyLifeStyleDBUtil.getOrdersAsSeller([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+取得自己自己已接到的訂單資料。
+-----------------------------------------------------------------------------------------------------
+healthyLifeStyleDBUtil.newOrder(pid, qty, [postal_code], [location_desc], [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+新增一筆訂單資料。前四個參數依序為：商品ID，數量，郵遞區號(可為null)，寄送地址(可為null)
+-----------------------------------------------------------------------------------------------------
+healthyLifeStyleDBUtil.deleteOrder(oid, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+刪除一筆訂單資料。欲刪除的訂單資料必須和自己有關(販賣者或訂購者是自己)才可刪除成功。
+-----------------------------------------------------------------------------------------------------
+healthyLifeStyleDBUtil.updateOrder(order, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
+更新一筆訂單資料。order為一筆訂單資料，格式與getAllOrders中，取出的訂單資料格式相同。
+只有管理員才可執行此操作。
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 */
 const healthyLifeStyleDBUtil = {};
 
@@ -202,6 +277,9 @@ const healthyLifeStyleDBUtil = {};
 		
 		this.schedulePath = "/UserScheduleHandler";
 		this.diagBookingPath = "/DiagnosisBookingHandler";
+		
+		this.productPath = "/Shop/ProductListHandler";
+		this.orderPath = "/Shop/TransactionHandler";
 		
 		this.login = (user, password, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
 			
@@ -633,6 +711,300 @@ const healthyLifeStyleDBUtil = {};
 			$.post({
 				url: this.requestOrigin+"/Account/UpdatePermission",
 				data: $.param({updateLoginIdentity: perm})
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		//////////////////////////////////////////////////
+		
+		this.getProductList = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				alert("伺服器發生未預期錯誤，無法取得商品列表。");
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			$.get({
+				url: this.requestOrigin+this.productPath
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		function modifyProductList(productData, oper, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack){
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功更新商品清單!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 403:
+						errmsg = "無權限的操作。";
+						break;
+					case 400:
+						errmsg = "請求資料格式有誤，無法更新資料。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法更新資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			var rqData = {};
+			rqData["rq_content"] = JSON.stringify(productData);
+			rqData[oper] = 1;
+			$.post({
+				url: this.requestOrigin+this.productPath,
+				data: $.param(rqData)
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		this.addProduct = (productData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifyProductList.call(this,productData,"rq_op_add", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		this.updateProduct = (productData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			modifyProductList.call(this,productData,"rq_op_update", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		//////////////////////////////////////////////////
+		
+		this.getAllOrders = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 403:
+						errmsg = "無權限的操作。";
+						break;
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法取得資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			var rqData = {};
+			rqData["rq_op_getall"] = 1;
+			$.get({
+				url: this.requestOrigin+this.orderPath,
+				data: $.param(rqData)
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		function getOrdersOf(identity, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack){
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					case 400:
+						errmsg = "請求參數格式錯誤。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法取得資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			var rqData = {};
+			rqData["rq_content"] = identity;
+			$.get({
+				url: this.requestOrigin+this.orderPath,
+				data: $.param(rqData)
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		this.getOrdersAsCustomer = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			getOrdersOf.call(this,"customer", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		this.getOrdersAsSeller = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			getOrdersOf.call(this,"seller", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
+		}
+		
+		this.newOrder = (pid, qty, postal_code, location_desc, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功下訂商品!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					case 403:
+						errmsg = "無權限的操作!!";
+						break;
+					case 400:
+						errmsg = "商品不存在或是填寫的訂單資料不足。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法更新資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			var rqData = {};
+			rqData["rq_op_add"] = 1;
+			
+			rqData["pid"] = pid;
+			rqData["qty"] = qty;
+			if(postal_code) rqData["postal_code"] = postal_code;
+			if(location_desc) rqData["location_desc"] = location_desc;
+			$.post({
+				url: this.requestOrigin+this.orderPath,
+				data: $.param(rqData)
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		this.deleteOrder = (oid, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功刪除訂單!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					case 403:
+						errmsg = "無權限的操作!!";
+						break;
+					case 400:
+						errmsg = "商品不存在或是填寫的訂單資料不足。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法更新資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			var rqData = {};
+			rqData["rq_op_remove"] = 1;
+			rqData["oid"] = oid;
+			$.post({
+				url: this.requestOrigin+this.orderPath,
+				data: $.param(rqData)
+				//xhrFields: {withCredentials: true},
+				//crossDomain: true,
+				//headers: { 'Origin': window.location.origin }
+			}).done(finalSuccessCallBack).fail(finalFailCallBack);
+			
+		}
+		
+		this.updateOrder = (order, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			successCallBack = successCallBack || function(){};
+			failCallBack = failCallBack || function(){};
+			
+			var defaultSuccessCallBack = function(data, textStatus, jqXHR){
+				alert("成功修改訂單!");
+				successCallBack(data, textStatus, jqXHR);
+			};
+			var defaultFailCallBack = function(data, textStatus, jqXHR){
+				var errmsg = "";
+				switch(data.status){
+					case 401:
+						errmsg = "登入狀態過期，請重新登入。";
+						break;
+					case 403:
+						errmsg = "無權限的操作!!";
+						break;
+					case 400:
+						errmsg = "商品不存在或是填寫的訂單資料不足。";
+						break;
+					default:
+						errmsg = "伺服器發生未預期錯誤，無法更新資料。";
+				}
+				alert(errmsg);
+				failCallBack(data, textStatus, jqXHR);
+			}
+			
+			var finalSuccessCallBack = !replaceSuccessCallBack ? defaultSuccessCallBack : successCallBack;
+			var finalFailCallBack = !replaceFailCallBack ? defaultFailCallBack : failCallBack;
+			
+			var rqData = {};
+			rqData["rq_op_update"] = 1;
+			
+			rqData["rq_content"] = JSON.stringify(order);
+			$.post({
+				url: this.requestOrigin+this.orderPath,
+				data: $.param(rqData)
 				//xhrFields: {withCredentials: true},
 				//crossDomain: true,
 				//headers: { 'Origin': window.location.origin }
