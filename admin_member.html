@@ -1118,6 +1118,7 @@
         <!-- members Overview -->
         <div class="card mt-6">
           <!-- header -->
+          <button id="addRow">Add new row</button>
           <div class="card-header flex flex-row justify-between">
             <h1 class="h6">會員列表</h1>
 
@@ -1126,7 +1127,7 @@
             </div>
           </div>
           <!-- end header -->
-          <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+          <div id="myTable" class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
             <table
               id="member_table"
               class="stripe hover"
@@ -1140,7 +1141,7 @@
                   <th data-priority="4">信箱</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="member-list">
                 <tr>
                   <td class="text-center">RYO</td>
                   <td  class=" text-center text-green-500"><i class="fad fa-circle mr-4 mb-4 "></i> 醫生</td>
@@ -1410,7 +1411,7 @@
     <!-- end wrapper -->
 
     <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
     <script src="js/scripts.js"></script>
     <script defer src="js/database_general.js"></script>
     <!-- jQuery -->
@@ -1422,19 +1423,43 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
      
-      $(document).ready(function () {
+     $(document).ready(function () {
         var table = $("#member_table")
           .DataTable({
             responsive: true,
           })
           .columns.adjust()
-          .responsive.recalc();
+          .responsive.recalc()
+          .row.add(['ted',
+          '一般會員',
+          '男',
+          'Healthy@Example.Com',])
+          .draw().node();
+
+          $( table )
+          .addClass( 'text-center')
+          .animate( { color: 'black' } );
       });
+
+
       function logOut() {
         healthyLifeStyleDBUtil.logOut();
         window.location.replace("index.html");
       }
+      
+      const memberList =  document.querySelector('.member-list');
+      
+    
     </script>
     <!-- end script -->
   </body>
 </html>
+
+<!-- $('#addRow').on( 'click', function () {
+  table.row.add( [
+ 'ted',
+ '一般會員',
+ '男',
+ 'Healthy@Example.Com',
+
+] ).draw( false ); -->

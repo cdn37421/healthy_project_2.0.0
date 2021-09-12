@@ -1130,15 +1130,15 @@
               <!-- info -->
               <div class="col-span-3 xl:col-span-1 m-auto">
                 <h1 class="helloText h1">Welcome, RYO!</h1>
-                <p class="text-white text-lg">你今天看診了嗎?</p>
+                <p class="text-white text-lg">你今天使用我們的服務了嗎?</p>
 
                 <ul class="mt-4">
-                  <li class="text-lg font-light">
+                  <!-- <li class="text-lg font-light">
                     <i class="fal fa-bell-on mr-2 mb-2"></i> 有5則新訊息
-                  </li>
+                  </li> -->
                   <li class="text-lg font-light">
                     <i class="fal fa-bell-on mr-2 mb-2"></i>
-                    今天有1個線上預約門診
+                    <span class="helloText2">您的帳號等級：</span>
                   </li>
                   <li class="text-lg font-light">
                     <i class="fal fa-bell-on mr-2 mb-2"></i> 祝你有美好的一天
@@ -1465,6 +1465,7 @@
       // var
 
       let helloText = document.querySelector(".helloText");
+      let helloText2 = document.querySelector(".helloText2");
       let navbarName = document.querySelector("#navbar-name");
 
       // render
@@ -1473,7 +1474,8 @@
       function renderAdmin(data) {
         // profile = data.userProfile;
         navbarName.innerHTML = data.userProfile.user;
-        helloText.innerHTML = `Welcome, ${data.userProfile.user}`;
+        helloText.innerHTML = `Welcome, ${data.userProfile.user} 您是${data.loginProfile.loginIdentity}`;
+        helloText2.innerHTML = ` 您的帳號等級：${data.loginProfile.loginIdentity}`;
       }
 
       window.onload = function () {

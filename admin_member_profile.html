@@ -1232,8 +1232,19 @@
                     type="file"
                     @change="let file = document.getElementById('fileInput').files[0]; 
                   var reader = new FileReader();
-                  reader.onload = (e) => image = e.target.result;
-                  reader.readAsDataURL(file);"
+                  reader.onload = (e) => {
+                    image = e.target.result;
+                    console.log(e.target.result);
+                    healthyLifeStyleDBUtil.getCurrentLoginAccount(function(data){
+                      let profile = data.userProfile;
+                      profile.photo = e.target.result;
+                      healthyLifeStyleDBUtil.updateProfile(profile);
+                    })
+                    console.log(e.target.result);
+                  }
+                  reader.readAsDataURL(file);
+              
+                  "
                   />
                 </div>
               </div>
@@ -1806,7 +1817,7 @@
     <!-- end wrapper -->
 
     <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
     <script>
@@ -1843,6 +1854,7 @@
       let cardLanguage = document.querySelector("#card-language");
       let cardWeight = document.querySelector("#card-weight");
       let cardState = document.querySelector("#card-state");
+      let cardPic = document.querySelector("#image");
 
       //會員資料欄位
       healthyLifeStyleDBUtil.getCurrentLoginAccount(renderCardtest);
@@ -1879,6 +1891,8 @@
         //memberLanguage.value = profile.availableLangs;
         memberState.value = profile.city;
         memberAddress.value = profile.location;
+
+        cardPic.src = profile.photo;
         //////////////////////////////////////////
         cardLanguage.value = profile.availableLangs;
 

@@ -1310,7 +1310,7 @@
               <div class="card">
                 <div class="py-3 px-4 flex flex-row justify-between">
                   <h1 class="h6">
-                    <span class="num-4"></span>k
+                    <span class="">1</span>k
                     <p>瀏覽數</p>
                   </h1>
 
@@ -1336,7 +1336,7 @@
               <div class="card">
                 <div class="py-3 px-4 flex flex-row justify-between">
                   <h1 class="h6">
-                    <span class="num-2"></span>k
+                    <span class="num-2">0</span>k
                     <p>用戶活躍量</p>
                   </h1>
 
@@ -1387,7 +1387,7 @@
           <!-- body -->
           <div class="card-body grid grid-cols-2 gap-6 lg:grid-cols-1">
             <div class="p-8">
-              <h1 class="h2">5,337</h1>
+              <h1 class="h2">16</h1>
               <p class="text-black font-medium">註冊量（本月）</p>
 
               <div class="mt-20 mb-2 flex items-center">
@@ -1592,26 +1592,19 @@
           <div class="card col-span-2 xl:col-span-1">
             <div class="card-header">近期新增會員</div>
 
-            <table class="table-auto w-full text-left">
+            <table id="newMemberTable" class="table-auto w-full text-left">
               <thead>
                 <tr>
-                  <th class="px-4 py-2 border-r">狀態</th>
-                  <th class="px-4 py-2 border-r">產品</th>
-                  <th class="px-4 py-2 border-r">價格</th>
-                  <th class="px-4 py-2">日期</th>
+                  <th class="px-4 py-2 border-r">帳號權限</th>
+                  <th class="px-4 py-2 border-r">帳號名稱</th>
+                  <th class="px-4 py-2 border-r">姓氏</th>
+                  <th class="px-4 py-2">名字</th>
                 </tr>
               </thead>
               <tbody class="text-gray-600">
-                <tr>
-                  <td
-                    class="
-                      border border-l-0
-                      px-4
-                      py-2
-                      text-center text-green-500
-                    "
-                  >
-                    <i class="fad fa-circle"></i>
+                <tr id="member-1">
+                  <td class="border border-l-0 px-4 py-2 text-center">
+                    <i class="fad fa-circle text-green-500"></i>
                   </td>
                   <td class="border border-l-0 px-4 py-2">
                     治百病的奇蹟彗星炒飯
@@ -1696,6 +1689,7 @@
                     <span class="num-2"></span> minutes ago
                   </td>
                 </tr>
+
                 <tr>
                   <td
                     class="
@@ -1741,21 +1735,40 @@
       }
 
       // var
-
+      let memberList;
+      let data;
       let helloText = document.querySelector(".helloText");
       let navbarName = document.querySelector("#navbar-name");
+      let newMember = document.querySelector("#newMember");
+      let table = document.querySelector("#newMemberTable");
 
-      // render
-      healthyLifeStyleDBUtil.getCurrentLoginAccount(renderAdmin);
+      healthyLifeStyleDBUtil.getCurrentLoginAccount((e) => {
+        data = e;
+      });
 
-      function renderAdmin(data) {
-        // profile = data.userProfile;
+      healthyLifeStyleDBUtil.getRegisteredMembers((e) => {
+        memberList = e;
+      });
+
+      function renderAdmin() {
         navbarName.innerHTML = data.userProfile.user;
         helloText.innerHTML = `幹得好， ${data.userProfile.user}`;
+      }
+      function RenderMemberList() {
+        for (member in memberList) {
+          console.log(memberList[member].firstName); //ok
+          table.rows[parseInt(member) + 1].cells[2].innerHTML =
+            memberList[member].firstName;
+          table.rows[parseInt(member) + 1].cells[1].innerHTML =
+            memberList[member].user;
+          table.rows[parseInt(member) + 1].cells[3].innerHTML =
+            memberList[member].lastName;
+        }
       }
 
       window.onload = function () {
         renderAdmin();
+        RenderMemberList();
       };
     </script>
 

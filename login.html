@@ -252,16 +252,17 @@
 	<script>
 		$("#loginForm").submit(function(){
 			healthyLifeStyleDBUtil.login(
-				$("#user-login")[0].value,
+			 $("#user-login")[0].value,
 			 $("#pass-login")[0].value,
 			 function(){
-				window.location.replace("admin.html");
+				window.location.replace("member_index.html");
 			},
 			function(data, textStatus, jqXHR){
 				console.log(data);
 				console.log(textStatus);
 				console.log(jqXHR);
-			});
+			}
+			);
 			return false;
 		});
 

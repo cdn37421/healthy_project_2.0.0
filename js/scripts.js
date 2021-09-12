@@ -2445,11 +2445,11 @@ var options_doctor = {
   series: [
     {
       name: "預約取消",
-      data: [1, 2, 4, 3, 4, 5, 1],
+      data: [0, 0, 0, 0, 0, 0, 1],
     },
     {
       name: "予約成功",
-      data: [31, 40, 28, 51, 42, 109, 100],
+      data: [1, 2, 3, 5, 2, 1, 6],
     },
   ],
 
@@ -2472,7 +2472,7 @@ var options_doctor = {
       " Apr 2021",
       " May 2021",
       " Jun 2021",
-      " Jul 2021",
+      " Sep 2021",
     ],
   },
   tooltip: {

@@ -125,7 +125,35 @@ function app() {
       this.openEventModal2 = true;
       this.event_date = new Date(this.year, this.month, date).toDateString();
       //show the index
-      console.log(this.searchData(this.event_date));
+      // console.log(this.searchData(this.event_date));
+
+      // show detail in modal
+      healthyLifeStyleDBUtil.getDiagBooking((e) => {
+        sch = e;
+        // render
+        for (let i in sch) {
+          let unix_timestamp = sch[i].datetime;
+          console.log(unix_timestamp);
+          let date = new Date(unix_timestamp);
+          //
+          let title =
+            sch[i].diagClass +
+            " " +
+            sch[i].desc +
+            " 時間長度" +
+            sch[i].interval +
+            "節";
+          let theme = "red";
+
+          document.querySelector(".card-data").innerHTML = `<div>
+          時間：<p>${date}</p>
+          <br>
+          內容：<p>${title}</p>
+          <br>
+          重要程度：<p>${theme}</p>
+        </div>`;
+        }
+      });
     },
     getData() {
       let sch;
@@ -155,7 +183,14 @@ function app() {
           let unix_timestamp = sch[i].datetime;
           console.log(unix_timestamp);
           let date = new Date(unix_timestamp);
-          let title = sch[0].diagClass + " " + sch[0].desc;
+          //
+          let title =
+            sch[i].diagClass +
+            " " +
+            sch[i].desc +
+            " 時間長度" +
+            sch[i].interval +
+            "節";
           let theme = "red";
           console.log(unix_timestamp);
           this.events.push({
@@ -199,17 +234,17 @@ function app() {
       }
 
       // delete after figure out problem
-      this.events.push({
-        event_date: this.event_date,
-        event_title: this.event_title,
-        event_theme: this.event_theme,
-      });
+      // this.events.push({
+      //   event_date: this.event_date,
+      //   event_title: this.event_title,
+      //   event_theme: this.event_theme,
+      // });
 
       theYear = this.event_date.slice(-4);
       theMonth = this.event_date.slice(4, -8);
       theDay = this.event_date.slice(8, 10);
 
-      console.log(theYear, theMonth, theDay);
+      // console.log(theYear, theMonth, theDay);
       theMonthNumber =
         "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(theMonth) / 3 + 1;
       console.log(theYear + "-" + theMonthNumber + "-" + theDay);
@@ -234,22 +269,9 @@ function app() {
       this.openEventModal = false;
     },
 
-    deleteEvent() {
-      this.searchData();
-
-      // no database version
-      // //bug 順序上會有錯誤
-      // this.events.pop({
-      //   event_date: "",
-      //   event_title: "",
-      //   event_theme: "",
-      // });
-      // // clear the form data
-      // this.event_title = "";
-      // this.event_date = "";
-      // this.event_theme = "blue";
-      // //close the modal
-      // this.openEventModal = false;
+    deleteAllEvent() {
+      healthyLifeStyleDBUtil.clearSchedule();
+      healthyLifeStyleDBUtil.clearDiagBooking();
     },
 
     updateEvent(new_event_title) {
