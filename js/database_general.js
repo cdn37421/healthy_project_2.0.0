@@ -160,6 +160,7 @@ clearSchedule([successCallBack][, failCallBack][, replaceSuccessCallBack][, repl
 -----------------------------------------------------------------------------------------------------
 healthyLifeStyleDBUtil.getDiagBooking([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
 使用方式與getSchedule相同。
+若當前登入身分為醫生，伺服器將根據醫生欄位回傳預約表。
 回傳資料的範例：
 var boo;
 healthyLifeStyleDBUtil.getSchedule((e)=>{
@@ -173,10 +174,12 @@ length: 1
 -----------------------------------------------------------------------------------------------------
 healthyLifeStyleDBUtil.addDiagBooking(bookingData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
 healthyLifeStyleDBUtil.removeDiagBooking(bookingData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
-healthyLifeStyleDBUtil.setDiagBooking(bookingData, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
-healthyLifeStyleDBUtil.clearDiagBooking([successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
 使用方式與操作日程表相同。
-唯一需要注意的是：若預約內容裡的「醫生」欄位填入了在資料庫的記錄中不是醫生的使用者，則伺服器會報錯(internal server error)。
+需要注意的是：
+1.若預約內容裡的「醫生」欄位填入了在資料庫的記錄中不是醫生的使用者，則伺服器會報錯(internal server error)。
+2.新增預約時，預約者欄位在後台將強制設定為當前登入的帳戶名。新增的預約表除了ID以外，其格式需要跟取出預約表的格式相同。
+3.移除預約時，不可移除預約者或醫生皆不是當前登入的用戶(即與該預約無關的人士不可透過此函數移除預約)
+移除預約僅依據其中的ID來移除。
 參考預設SQL腳本來增加預設的醫生。
 -----------------------------------------------------------------------------------------------------
 healthyLifeStyleDBUtil.updatePermission(perm, [successCallBack][, failCallBack][, replaceSuccessCallBack][, replaceFailCallBack])
@@ -663,19 +666,12 @@ const healthyLifeStyleDBUtil = {};
 		}
 		
 		this.addDiagBooking = (bookingData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
+			bookingData["id"] = 0;
 			modifyDiagBooking.call(this,bookingData,"rq_op_add", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
 		}
 		
 		this.removeDiagBooking = (bookingData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
 			modifyDiagBooking.call(this,bookingData,"rq_op_remove", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
-		}
-		
-		this.setDiagBooking = (bookingData, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
-			modifyDiagBooking.call(this,bookingData,"rq_op_set", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
-		}
-		
-		this.clearDiagBooking = (successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
-			modifyDiagBooking.call(this,{},"rq_op_clear", successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack);
 		}
 		
 		this.updatePermission = (perm, successCallBack, failCallBack, replaceSuccessCallBack, replaceFailCallBack) => {
